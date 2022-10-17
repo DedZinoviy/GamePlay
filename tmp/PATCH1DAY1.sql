@@ -42,3 +42,4 @@ drop view films_of_genre;
 drop view film_production;
 drop view user_library;
 drop view film_information;
+drop database online_cinema;
