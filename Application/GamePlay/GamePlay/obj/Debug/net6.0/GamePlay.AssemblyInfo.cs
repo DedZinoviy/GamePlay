@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-GamePlay-30452801-F435-47F3-86BD-94A296F200BE")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("GamePlay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
