@@ -56,7 +56,7 @@ CREATE TABLE `critic_review` (
   `idgame` int NOT NULL,
   PRIMARY KEY (`idcritic_review`),
   KEY `idreview_to_film_idx` (`idgame`),
-  CONSTRAINT `fk_review_to_film` FOREIGN KEY (`idgame`) REFERENCES `games` (`idfilm`)
+  CONSTRAINT `fk_review_to_film` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2010 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -77,16 +77,12 @@ DROP TABLE IF EXISTS `games`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `games` (
-  `idfilm` int NOT NULL AUTO_INCREMENT,
+  `idgame` int NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
-  `category` varchar(20) NOT NULL,
   `annotation` varchar(200) DEFAULT NULL,
   `release_date` date NOT NULL,
-  `purchase_price` int NOT NULL,
-  `rental_price` int NOT NULL,
-  `rental_duration` int NOT NULL,
   `idage_restriction` int NOT NULL,
-  PRIMARY KEY (`idfilm`),
+  PRIMARY KEY (`idgame`),
   KEY `fk_film_to_age_restriction_idx` (`idage_restriction`),
   KEY `film_title_idx` (`title`),
   CONSTRAINT `fk_film_to_age_restriction` FOREIGN KEY (`idage_restriction`) REFERENCES `age_restrictions` (`idage_restriction`)
@@ -138,7 +134,7 @@ CREATE TABLE `genres_to_games` (
   `idgame` int NOT NULL,
   PRIMARY KEY (`idgenre`,`idgame`),
   KEY `fk_film_to_genre_idx` (`idgame`),
-  CONSTRAINT `fk_film_to_genre` FOREIGN KEY (`idgame`) REFERENCES `games` (`idfilm`),
+  CONSTRAINT `fk_film_to_genre` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
   CONSTRAINT `fk_genre_to_film` FOREIGN KEY (`idgenre`) REFERENCES `genres` (`idgenre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -222,7 +218,7 @@ CREATE TABLE `ratings` (
   PRIMARY KEY (`idgame`,`iduser`),
   KEY `idfilm_idx` (`idgame`),
   KEY `iduser_idy` (`iduser`),
-  CONSTRAINT `fk_film_to_rating` FOREIGN KEY (`idgame`) REFERENCES `games` (`idfilm`),
+  CONSTRAINT `fk_film_to_rating` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
   CONSTRAINT `fk_user_to_rating` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -248,7 +244,7 @@ CREATE TABLE `studio_to_games` (
   `idstudio` int NOT NULL,
   PRIMARY KEY (`idgame`,`idstudio`),
   KEY `fk_studio_to_film_idx` (`idstudio`),
-  CONSTRAINT `fk_film_to_studio` FOREIGN KEY (`idgame`) REFERENCES `games` (`idfilm`),
+  CONSTRAINT `fk_film_to_studio` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
   CONSTRAINT `fk_studio_to_film` FOREIGN KEY (`idstudio`) REFERENCES `studios` (`idstudio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -303,7 +299,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`iduser`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14155 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,6 +308,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (14155,'aboba','12345','abob.net','2009-09-09',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -324,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-17  8:57:19
+-- Dump completed on 2022-10-18  9:02:46
