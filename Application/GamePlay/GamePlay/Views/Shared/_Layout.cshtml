@@ -30,7 +30,14 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Collections">Подборки</a> @*Кнопка страницы с подборками*@
                         </li>
+                        <div class="search">
+                        <form class="d-flex">
+                            <input type="search" class="form-control" placeholder="Найти игру...">
+                            <button class="btn btn-outline-success" type="submit"></button>
+                        </form>
+                    </div>
                     </ul>
+                    
                     <partial name="_LoginPartial" />
                 </div>
             </div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c/DIcr53lRbIht5dTkjpPxlgJHgRZ2BUf8UmpN0E22c=",
+  "Hash": "9fRNsAzlJPRMowK0fDj921DKRkgGXJZ7HAEQjEXunnI=",
   "Source": "GamePlay",
   "BasePath": "_content/GamePlay",
   "Mode": "Default",
@@ -1120,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\Images\\search.png",
+      "SourceId": "GamePlay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\",
+      "BasePath": "_content/GamePlay",
+      "RelativePath": "Images/search.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\search.png"
     },
     {
       "Identity": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\js\\site.js",
