@@ -45,6 +45,7 @@ button[type="submit"]:hover, button[type="submit"]:active {
     outline: none;
     box-shadow: none;
     border:none;
+    border-radius: 0 10px 10px 0
 }
 
 button[type="submit"]:focus, input[type="search"]:focus {
