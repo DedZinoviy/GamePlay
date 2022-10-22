@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b5ME6pkmIazRpKSNMDN2S7luNJyITknxxsza/qhIIYY=",
+  "Hash": "cpDIfNmWGx8dVMcOqZH5B/yTBN/hjLWQZIyfaH7c2uE=",
   "Source": "GamePlay",
   "BasePath": "_content/GamePlay",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\GamePlay.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\css\\gamepage.css",
+      "SourceId": "GamePlay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\",
+      "BasePath": "_content/GamePlay",
+      "RelativePath": "css/gamepage.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\gamepage.css"
     },
     {
       "Identity": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\css\\homepage.css",

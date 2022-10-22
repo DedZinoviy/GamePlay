@@ -1,0 +1,59 @@
+﻿.gameName {
+    color:white;
+}
+
+section.images {
+    padding-bottom:11.5%;
+}
+
+.description {
+    color:white;
+}
+
+.card {
+    background: #242F43;
+    color: white;
+    border-radius: 0;
+}
+
+p.systemRequirements {
+    color: #808080;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+p.systemRequirementsTitle {
+    font-size: 20px;
+    padding-left:5px;
+}
+
+.nav-link {
+    color: white;
+    outline:none;
+    border:none;
+}
+
+.nav-tabs .nav-link.active{
+    background: none;
+    color: white;
+    border: none;
+    border-bottom: solid;
+    outline: none;
+}
+
+.nav-link:hover {
+    color: #495057;
+    border: none;
+    outline: none;
+}
+
+.nav-link:focus {
+    color: #495057;
+    border: none;
+    outline: none;
+}
+
+.nav-link:not(.active) {
+    border:none;
+}
+
