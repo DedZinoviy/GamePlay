@@ -1,5 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `game_play_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `game_play_db`;
+USE sql11528557;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: game_play_db
@@ -30,7 +29,7 @@ CREATE TABLE `age_restrictions` (
   `motion_picture` enum('G','PG','PG-13','R','NC-17') DEFAULT NULL,
   PRIMARY KEY (`idage_restriction`),
   KEY `russion_idx` (`russion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +56,7 @@ CREATE TABLE `critic_review` (
   PRIMARY KEY (`idcritic_review`),
   KEY `idreview_to_film_idx` (`idgame`),
   CONSTRAINT `fk_review_to_film` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
-) ENGINE=InnoDB AUTO_INCREMENT=2010 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2010 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +85,7 @@ CREATE TABLE `games` (
   KEY `fk_film_to_age_restriction_idx` (`idage_restriction`),
   KEY `film_title_idx` (`title`),
   CONSTRAINT `fk_film_to_age_restriction` FOREIGN KEY (`idage_restriction`) REFERENCES `age_restrictions` (`idage_restriction`)
-) ENGINE=InnoDB AUTO_INCREMENT=33843 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33843 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +109,7 @@ CREATE TABLE `genres` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`idgenre`),
   UNIQUE KEY `genres_name_idx` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +135,7 @@ CREATE TABLE `genres_to_games` (
   KEY `fk_film_to_genre_idx` (`idgame`),
   CONSTRAINT `fk_film_to_genre` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
   CONSTRAINT `fk_genre_to_film` FOREIGN KEY (`idgenre`) REFERENCES `genres` (`idgenre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +162,7 @@ CREATE TABLE `news` (
   PRIMARY KEY (`id`),
   KEY `fk_from_ver_users` (`iduser`),
   CONSTRAINT `fk_from_ver_users` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +188,7 @@ CREATE TABLE `password_log` (
   PRIMARY KEY (`idpassword_log`),
   KEY `fk_password_log_to_user` (`iduser`),
   CONSTRAINT `fk_password_log_to_user` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +219,7 @@ CREATE TABLE `ratings` (
   KEY `iduser_idy` (`iduser`),
   CONSTRAINT `fk_film_to_rating` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
   CONSTRAINT `fk_user_to_rating` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +245,7 @@ CREATE TABLE `studio_to_games` (
   KEY `fk_studio_to_film_idx` (`idstudio`),
   CONSTRAINT `fk_film_to_studio` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
   CONSTRAINT `fk_studio_to_film` FOREIGN KEY (`idstudio`) REFERENCES `studios` (`idstudio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -270,7 +269,7 @@ CREATE TABLE `studios` (
   `name` varchar(150) NOT NULL,
   `information` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`idstudio`)
-) ENGINE=InnoDB AUTO_INCREMENT=2006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +298,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`iduser`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
