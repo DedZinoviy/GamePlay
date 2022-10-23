@@ -36,3 +36,26 @@ form[id="account"] {
 .registerLink:hover {
     color: white;
 }
+
+.nav-link.registerLoginSwitch:hover {
+    color: white;
+    border: none;
+    border-bottom: solid;
+    border-color: gray;
+}
+.nav-link.active.registerLoginSwitch {
+    color: white;
+    background: none;
+    border: none;
+    border-bottom: solid;
+}
+
+.nav-link.registerLoginSwitch {
+    color: white;
+}
+
+
+
+.nav-link:not(.active) {
+    border: none;
+}
