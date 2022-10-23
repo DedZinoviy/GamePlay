@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\Practice\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {}
+    "C:\\Users\\dima-\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\Practice\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {
+    "C:\\Users\\dima-\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\Practice\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
+        "projectUniqueName": "C:\\Users\\dima-\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
         "projectName": "GamePlay",
-        "projectPath": "C:\\Users\\admin\\Desktop\\Practice\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\Practice\\GamePlay\\Application\\GamePlay\\GamePlay\\obj\\",
+        "projectPath": "C:\\Users\\dima-\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
+        "packagesPath": "C:\\Users\\dima-\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dima-\\GamePlay\\Application\\GamePlay\\GamePlay\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dima-\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -95,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
