@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Iuf9+cQX3REK8lDPPdFfgJkUatKH5aU9uJqIvqKIYbE=",
+  "Hash": "hev4QX/QEu66wULwa7gHBLtlKXU7on3t7C/BmGlP6AQ=",
   "Source": "GamePlay",
   "BasePath": "_content/GamePlay",
   "Mode": "Default",
@@ -1154,6 +1154,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\newspage.css"
+    },
+    {
+      "Identity": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\css\\registerpage.css",
+      "SourceId": "GamePlay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\",
+      "BasePath": "_content/GamePlay",
+      "RelativePath": "css/registerpage.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\registerpage.css"
     },
     {
       "Identity": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\wwwroot\\css\\site.css",

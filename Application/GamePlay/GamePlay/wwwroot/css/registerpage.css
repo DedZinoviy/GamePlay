@@ -1,0 +1,30 @@
+﻿.form-floating > .form-control {
+    height: calc(2rem + 2px);
+    text-indent: 8px;
+}
+
+button.register {
+    background: #242F43;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    margin-top: 10px;
+}
+
+button.register:hover {
+    border-radius: 15px;
+    background: #33405A;
+}
+
+.card {
+    background: #242F43;
+    border-radius: 15px;
+    margin: auto;
+}
+
+form[id="registerForm"] {
+    background: #2D3B55;
+    padding: 5px;
+    border-radius: 0 0 15px 15px;
+}
