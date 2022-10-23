@@ -33,6 +33,11 @@
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                     </div>
                     <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary register">Зарегистрироваться</button>
+                    <div>
+                        <p>
+                            <a class="loginLink" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Войти?</a>
+                        </p>
+                    </div>
                 </form>
             </section>
         </div>

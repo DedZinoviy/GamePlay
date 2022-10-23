@@ -28,3 +28,11 @@ form[id="registerForm"] {
     padding: 5px;
     border-radius: 0 0 15px 15px;
 }
+
+.loginLink {
+    color: #8F8F8F;
+}
+
+.loginLink:hover {
+    color: white;
+}
