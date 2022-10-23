@@ -1,0 +1,73 @@
+﻿/*Карточка*/
+.card {
+    background: #242F43;
+    border-radius: 15px;
+}
+
+/*Изображение на карточке*/
+img.img-fluid {
+    min-width:100%;
+    min-height:100%;
+    background-color: gray;
+    border-radius: 15px 0 0 15px;
+}
+
+/*Кнопка карточки*/
+.btn:hover {
+    box-shadow: rgba(51, 64, 90, 0.7) 10px 10px 10px 10px inset;
+    border-radius: 15px;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+/*Фильтры*/
+.accordion-button {
+    background-color: #242F43;
+    color: white;
+    outline:none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #242F43;
+    color: white;
+    outline:none;
+}
+
+.accordion-button.collapsed::after {
+    background-image: url(/Images/chevron-right.png)
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url(/Images/chevron-down.png)
+}
+
+
+.accordion-item {
+    color: #222B3D;
+    background: #222B3D;
+}
+
+input.btn-primary {
+    background-color: #314364;
+    border-color: #314364;
+}
+
+input.btn-primary:hover {
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+.form-check-input {
+    box-shadow: none;
+    background: #314364;
+}
+
+.filters {
+    margin-top:6px;
+}

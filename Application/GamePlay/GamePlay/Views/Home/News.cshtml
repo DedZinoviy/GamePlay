@@ -1,0 +1,79 @@
+﻿<link rel="stylesheet" href="/css/newspage.css" asp-append-version="true"/>
+
+@{
+    ViewData["Title"] = "News";
+    String[] FilterNames = { "Жанр", "Тип", "Платформа" };
+    String[] FilterId = { "genre", "type", "platform" };
+}
+
+
+<div class="row">
+    @*Фильтры*@
+    <div class="col-3">
+        <div class="card text-white filters">
+            <p style="font-size: 20px; text-align:center">Фильтры</p>
+            <div class="accordion accordion-flush" id="filtersPanel">
+                @for (int i = 0; i < 3; i++)
+                {
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="@FilterId[i]-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersPanel-collapse-@i" aria-expanded="true" aria-controls="filtersPane-collapse-@i">
+                                @FilterNames[i]
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="filtersPanel-collapse-@i" class="accordion-collapse collapse" aria-labelledby="@FilterId[i]-header">
+                            <div class="accordion-body">
+                                <form class="genre">
+                                @for (int j = 0; j < 10; j++) @*Для каждого элемента (заменить на foreach)*@
+                                {
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheck @j">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    @FilterNames[i] @j @*Нужно вставить название жанров, типов и платформ*@
+                                                </label>
+                                            </div>
+                                }
+                                </form>
+                            </div>
+                        </div>
+                }
+            </div>
+            <input type="submit" class="btn btn-primary" value="Подтвердить" onclick="this.blur()"> @*Кнопка подтверждения*@
+        </div>
+    </div>
+
+
+    @*Карточки с новостями*@
+    <div class="col-9">
+        <div class="row">
+            @for(int i=0; i<10; i++) 
+            {
+                <a href="#" class="row btn"> @*Нужно вставить ссылку на новость*@
+                    <div class="card text-white">
+                        <div class="row">
+                            <div class="col-2" style="padding-left:0;">
+                                <img src="" class="img-fluid"> @*Нужно вставить ссылку на изображение*@
+                            </div>
+                            <div class="col-10">
+                                <div class="card-body">
+                                    <h5 class="card-title text center text-truncate">name @i</h5> @*Нужно вставить название статьи*@
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-text text-start">Автор: autor @i</p> @*Нужно вставить автора статьи*@
+                                        </div>
+                                        <div class="col " style="max-width:200px;">
+                                                <p class="card-text text-end text-truncate">Источник: source @i</p> @*Нужно вставить источник*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
