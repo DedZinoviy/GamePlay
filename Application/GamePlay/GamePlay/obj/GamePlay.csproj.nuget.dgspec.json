@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {}
+    "C:\\Users\\varfolomey\\Desktop\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {}
   },
   "projects": {
-    "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {
+    "C:\\Users\\varfolomey\\Desktop\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
+        "projectUniqueName": "C:\\Users\\varfolomey\\Desktop\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
         "projectName": "GamePlay",
-        "projectPath": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
-        "packagesPath": "C:\\Users\\Yaroslav\\.nuget\\packages\\",
-        "outputPath": "D:\\С# Projects\\GamePlay\\Application\\GamePlay\\GamePlay\\obj\\",
+        "projectPath": "C:\\Users\\varfolomey\\Desktop\\GamePlay\\Application\\GamePlay\\GamePlay\\GamePlay.csproj",
+        "packagesPath": "C:\\Users\\varfolomey\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\varfolomey\\Desktop\\GamePlay\\Application\\GamePlay\\GamePlay\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Yaroslav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\varfolomey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
