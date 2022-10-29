@@ -1,5 +1,7 @@
 ﻿<link rel="stylesheet" href="/css/newspage.css" asp-append-version="true"/>
 
+@model GamePlay.Models.News;
+
 @{
     ViewData["Title"] = "News";
     String[] FilterNames = { "Жанр", "Тип", "Платформа" };
@@ -49,15 +51,15 @@
         <div class="row">
             @for(int i=0; i<10; i++) 
             {
-                <a href="#" class="row btn"> @*Нужно вставить ссылку на новость*@
+                <a href="@Model.Source" class="row btn"> @*Нужно вставить ссылку на новость*@
                     <div class="card text-white">
                         <div class="row">
                             <div class="col-2" style="padding-left:0;">
-                                <img src="" class="img-fluid"> @*Нужно вставить ссылку на изображение*@
+                                <img src="@Model.Img" class="img-fluid"> @*Нужно вставить ссылку на изображение*@
                             </div>
                             <div class="col-10">
                                 <div class="card-body">
-                                    <h5 class="card-title text center text-truncate">name @i</h5> @*Нужно вставить название статьи*@
+                                    <h5 class="card-title text center text-truncate">@Model.Title</h5> @*Нужно вставить название статьи*@
                                     <div class="row">
                                         <div class="col">
                                             <p class="card-text text-start">Автор: autor @i</p> @*Нужно вставить автора статьи*@

@@ -16,6 +16,8 @@ namespace GamePlay.Models
         /// <summary>
         /// Название жанра.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
+
+        public List<Game> Games { get; set; } = new List<Game>();
     }
 }

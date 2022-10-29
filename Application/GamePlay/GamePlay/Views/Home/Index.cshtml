@@ -1,6 +1,6 @@
 ﻿<link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true">
 
-@model IEnumerable<GamePlay.Models.User>
+@model List<GamePlay.Models.Game>
 @{
     ViewData["Title"] = "Home Page";
     String[] FilterNames = { "Жанр", "Особенности", "Платформа" };
@@ -50,19 +50,19 @@
     <div class="col-9">
         @*Карточки*@
         <div class="row row-cols-1 row-cols-md-4 g-4">
-                    @for (int i = 0; i < 21; i++)
+                    @foreach(var game in Model)
                     {
-                    <a href="#" class="col btn"> @*Нужно вставить ссылку на страницу с игрой*@
+                    <a asp-action="Game" asp-controller="Home" asp-route-id="@game.Idgame" class="col btn"> @*Нужно вставить ссылку на страницу с игрой*@
                         <div class="card h-100 text-white">
-                              <img class="card-img-top" src="">@*Нужно всавить ссылку на картинку*@
+                              <img class="card-img-top" src="@game.Main_Image?.Source">@*Нужно всавить ссылку на картинку*@
                               <div class="card-body">
-                                    <h5 class="card-title text-center">name @i</h5> @*Нужно вставить название игры*@
+                                    <h5 class="card-title text-center">@game.Title</h5> @*Нужно вставить название игры*@
                                     <div class="row">
                                         <div class="col">
-                                            <p class="card-text year text-start">year @i</p> @*Нужно вставить год игры*@
+                                            <p class="card-text year text-start">@game.Release_date.Year</p> @*Нужно вставить год игры*@
                                         </div>
                                         <div class="col">
-                                            <p class="card-text rating text-end">rating @i★</p> @*Нужно вставить оценку игры*@
+                                            <p class="card-text rating text-end">rating</p> @*Нужно вставить оценку игры*@
                                         </div>
                                     </div>
                               </div>

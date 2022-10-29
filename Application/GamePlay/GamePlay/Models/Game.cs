@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace GamePlay.Models
 {
     /// <summary>
@@ -15,21 +17,37 @@ namespace GamePlay.Models
         /// <summary>
         /// Название игры.
         /// </summary>
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// Аннотация (описание) к игре.
         /// </summary>
-        public string Annotation { get; set; }
+        public string? Annotation { get; set; }
 
         /// <summary>
         /// Дата выпуска (релиза) игры.
         /// </summary>
         public DateTime Release_date    { get; set; }
 
-        /// <summary>
-        /// Возрасное ограничение (внешний ключ к таблице с ограничениями).
-        /// </summary>
-        public int Idage_restriction    { get; set; }
+        public List<Image> Images { get; set; } = new List<Image>();
+
+        public List<Genre> Genres { get; set; } = new List<Genre>();
+
+        public List<Platform> Platforms { get; set; } = new List<Platform>();
+
+        [ForeignKey("idminimum")]
+        public Requirements? Minimum { get; set; }
+
+        [ForeignKey("idrecommended")]
+        public Requirements? Recomended { get; set; }
+
+        [ForeignKey("idimg")]
+        public Image? Main_Image { get; set; }
+
+        [ForeignKey("idstudio")]
+        public Studio? Studio { get; set; }
+
+        [ForeignKey("idpublisher")]
+        public Studio? Publisher { get; set; }
     }
 }
