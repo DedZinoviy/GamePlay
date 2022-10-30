@@ -3,11 +3,27 @@
 }
 
 section.images {
-    padding-bottom:11.5%;
+}
+
+img.image {
+    max-height:100%;
+    max-width:100%;
+    height:100%;
+    width:auto;
+    margin:auto;
+    background: #000000;
+}
+.carousel-indicators {
+    position:relative;
+}
+
+.carousel-item {
+    max-height: 60vh;
+    background: #000000;
 }
 
 .description {
-    color:white;
+    color: white;
 }
 
 .card {

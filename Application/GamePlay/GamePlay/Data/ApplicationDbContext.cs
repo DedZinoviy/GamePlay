@@ -21,7 +21,7 @@ namespace GamePlay.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(
-                "",
+                "server=sql11.freesqldatabase.com;user=sql11528557;password=hA3bRIYxcE;database=sql11528557;port=3306;",
                 new MySqlServerVersion(new Version(8, 0, 11))
             );
         }
