@@ -1,10 +1,10 @@
 ﻿/*Изображение по умолчанию*/
 
 img.card-img-top {
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 100%;
     background-color: gray;
     border-radius: 15px 15px 0 0;
+    aspect-ratio: 10/16;
 }
 
 /* Тень кнопки*/
