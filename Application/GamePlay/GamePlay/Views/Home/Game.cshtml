@@ -85,23 +85,38 @@
                         <div class="tab-pane fade show active" id="nav-systemRequirements" role="tabpanel" aria-labelledby="nav-systemRequirements-tab">
                             <p class="text-white systemRequirementsTitle">Минимальные:</p> 
                             <p class="systemRequirements">
-                                <p class="systemRequirements">ОС: @Model.Minimum?.OS</p> 
-                                <p class="systemRequirements">Процессор: @Model.Minimum?.Processor</p>
-                                <p class="systemRequirements">ОЗУ: @Model.Minimum?.Memory</p>
-                                <p class="systemRequirements">Видеокарта: @Model.Minimum?.Graphics_Card</p>
-                                <p class="systemRequirements">Размер на жестком диске:@Model.Minimum?.HDD_Space</p>
+                                <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Minimum?.OS</span></p> 
+                                <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Minimum?.Processor</span></p>
+                                <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Minimum?.Memory</span></p>
+                                <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Minimum?.Graphics_Card</span></p>
+                                <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Minimum?.HDD_Space</span></p>
                             </p> @*Нужно вставить системные требования*@
                             <p class="text-white systemRequirementsTitle">Рекомендуемые:</p>
                             <p class="systemRequirements">
-                                <p class="systemRequirements">ОС: @Model.Recomended?.OS</p>
-                                <p class="systemRequirements">Процессор: @Model.Recomended?.Processor</p>
-                                <p class="systemRequirements">ОЗУ: @Model.Recomended?.Memory</p>
-                                <p class="systemRequirements">Видеокарта: @Model.Recomended?.Graphics_Card</p>
-                                <p class="systemRequirements">Размер на жестком диске:@Model.Recomended?.HDD_Space</p>
+                                <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Recomended?.OS</span></p>
+                                <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Recomended?.Processor</span></p>
+                                <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Recomended?.Memory</span></p>
+                                <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Recomended?.Graphics_Card</span></p>
+                                <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Recomended?.HDD_Space</span></p>
                             </p> @*Нужно вставить системные требования*@
                         </div>
                         <div class="tab-pane fade" id="nav-feedbacks" role="tabpanel" aria-labelledby="nav-feedbacks-tab">
-                            Отзывы @*Нужно вставить отзывы*@
+
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                <div class="card feedback">
+                                    <div class="card-body feedback">
+                                        <p class="userName">Имя пользователя</p> @*Нужно вставить имя пользователя*@
+                                        <p class="feedback">Сюжет: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку сюжета*@
+                                        <p class="feedback">Геймплей: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку геймплея*@
+                                        <p class="feedback">Графика: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку графики*@
+                                        <p class="feedback">Впечатление: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку впечатлений*@
+                                        <p class="commentTitle">Комментарий:
+                                            <p class="comment">Коментарий</p> @*Нужно вставить комментарий*@
+                                        </p>
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <div class="tab-pane fade" id="nav-stores" role="tabpanel" aria-labelledby="nav-stores-tab">
                             Магазины @*Нужно вставить магазины*@

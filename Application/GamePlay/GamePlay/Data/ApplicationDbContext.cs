@@ -21,7 +21,7 @@ namespace GamePlay.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(
-                "",
+                "server=localhost;user=root;password=root;database=game_play_db;",
                 new MySqlServerVersion(new Version(8, 0, 11))
             );
         }

@@ -35,11 +35,57 @@ img.indicators {
     border-radius: 0;
 }
 
-p.systemRequirements {
+div[id="nav-feedbacks"] {
+    overflow-y: auto;
+    max-height: 65vh;
+}
+
+div[id="nav-feedbacks"]::-webkit-scrollbar {
+    width:5px;
+}
+
+div[id="nav-feedbacks"]::-webkit-scrollbar-thumb {
+    background-color: #2D3B55;
+    border-radius:20px;
+}
+
+.card.feedback {
+    background: #242F43;
+    margin: 10px;
+    border: none;
+}
+p.feedback {
+    color:white;
+    margin:0;
+}
+span.feedback {
     color: #808080;
+}
+
+p.commentTitle {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+p.comment {
+    margin: 0;
+    color: #808080;
+}
+
+.card-body.feedback {
+    background: #2D3B55;
+    color: white;
+    border-radius: 10px;
+}
+
+span.systemRequirements {
+    color: #808080;
+}
+
+p.systemRequirements {
+    color: white;
     font-size: 16px;
     padding-left: 5px;
-    margin:0;
+    margin: 0;
 }
 
 p.systemRequirementsTitle {
