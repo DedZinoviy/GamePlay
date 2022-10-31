@@ -1,4 +1,5 @@
-USE sql11528557;
+CREATE DATABASE  IF NOT EXISTS `game_play_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `game_play_db`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: game_play_db
@@ -17,58 +18,6 @@ USE sql11528557;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `age_restrictions`
---
-
-DROP TABLE IF EXISTS `age_restrictions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `age_restrictions` (
-  `idage_restriction` int NOT NULL AUTO_INCREMENT,
-  `russion` enum('0+','6+','12+','16+','18+') DEFAULT NULL,
-  `motion_picture` enum('G','PG','PG-13','R','NC-17') DEFAULT NULL,
-  PRIMARY KEY (`idage_restriction`),
-  KEY `russion_idx` (`russion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `age_restrictions`
---
-
-LOCK TABLES `age_restrictions` WRITE;
-/*!40000 ALTER TABLE `age_restrictions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `age_restrictions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `critic_review`
---
-
-DROP TABLE IF EXISTS `critic_review`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `critic_review` (
-  `idcritic_review` int NOT NULL AUTO_INCREMENT,
-  `author` varchar(45) NOT NULL,
-  `sours` varchar(5000) NOT NULL,
-  `idgame` int NOT NULL,
-  PRIMARY KEY (`idcritic_review`),
-  KEY `idreview_to_film_idx` (`idgame`),
-  CONSTRAINT `fk_review_to_film` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
-) ENGINE=InnoDB AUTO_INCREMENT=2010 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `critic_review`
---
-
-LOCK TABLES `critic_review` WRITE;
-/*!40000 ALTER TABLE `critic_review` DISABLE KEYS */;
-/*!40000 ALTER TABLE `critic_review` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `games`
 --
 
@@ -77,14 +26,26 @@ DROP TABLE IF EXISTS `games`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `games` (
   `idgame` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) NOT NULL,
-  `annotation` varchar(200) DEFAULT NULL,
+  `title` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `annotation` longtext COLLATE utf8mb4_general_ci,
   `release_date` date NOT NULL,
-  `idage_restriction` int NOT NULL,
+  `idstudio` int NOT NULL,
+  `idpublisher` int NOT NULL,
+  `idminimum` int DEFAULT NULL,
+  `idrecommended` int DEFAULT NULL,
+  `idimg` int DEFAULT NULL,
   PRIMARY KEY (`idgame`),
-  KEY `fk_film_to_age_restriction_idx` (`idage_restriction`),
-  KEY `film_title_idx` (`title`),
-  CONSTRAINT `fk_film_to_age_restriction` FOREIGN KEY (`idage_restriction`) REFERENCES `age_restrictions` (`idage_restriction`)
+  KEY `film_title_idx` (`title`(191)),
+  KEY `fk_from_studio_idx` (`idstudio`),
+  KEY `fk_from_publisher_idx` (`idpublisher`),
+  KEY `fk_from_minimum_idx` (`idminimum`),
+  KEY `fk_from_recommened_idx` (`idrecommended`),
+  KEY `fk_from_img_to_game_idx` (`idimg`),
+  CONSTRAINT `fk_from_img_to_game` FOREIGN KEY (`idimg`) REFERENCES `images` (`idimg`),
+  CONSTRAINT `fk_from_minimum` FOREIGN KEY (`idminimum`) REFERENCES `requirements` (`idrequirement`),
+  CONSTRAINT `fk_from_publisher` FOREIGN KEY (`idpublisher`) REFERENCES `studios` (`idstudio`),
+  CONSTRAINT `fk_from_recommened` FOREIGN KEY (`idrecommended`) REFERENCES `requirements` (`idrequirement`),
+  CONSTRAINT `fk_from_studios` FOREIGN KEY (`idstudio`) REFERENCES `studios` (`idstudio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33843 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -94,6 +55,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
+INSERT INTO `games` VALUES (1,'The Witcher 3: Wild Hunt','«Ведьмак 3: Дикая Охота» — компьютерная игра от третьего лица в жанре action/RPG. Игрок играет за Геральта из Ривии, охотника на чудовищ, работающего по заказу. В игре существует очень большое количество разных видов чудовищ; при создании этого бестиария использовались мифология разных стран, восточноевропейский фольклор и эзотерика.','2015-05-18',1,1,1,2,1),(2,'Read Dead Redemption 2','Red Dead Redemption 2 представляет собой игру в жанре action-adventure с открытым миром; игрок управляет одним персонажем с возможностью переключения камеры на вид от первого или от третьего лица по своему выбору. Игра включает в себя как однопользовательский, так и многопользовательский режимы — последний носит название Red Dead Online. На протяжении большей части сюжетной кампании однопользовательского режима игрок управляет персонажем по имени Артур Морган, членом банды Ван дер Линде; сюжетная кампания включает в себя ряд миссий — линейных сценариев с чётко поставленной целью в каждом, которые игрок должен выполнить последовательно. Вне миссий даётся возможность свободно путешествовать по обширному миру игры, самостоятельно находя интересные места и побочные задания. Игрок может вступать в сражения с врагами, используя как приёмы и оружие для рукопашного боя, так и разнообразное огнестрельное оружие и взрывчатку.','2018-10-26',2,3,3,4,4);
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +68,7 @@ DROP TABLE IF EXISTS `genres`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `genres` (
   `idgenre` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idgenre`),
   UNIQUE KEY `genres_name_idx` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -118,6 +80,7 @@ CREATE TABLE `genres` (
 
 LOCK TABLES `genres` WRITE;
 /*!40000 ALTER TABLE `genres` DISABLE KEYS */;
+INSERT INTO `genres` VALUES (2,'Action'),(3,'Adventure'),(1,'RPG'),(4,'Western');
 /*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +107,35 @@ CREATE TABLE `genres_to_games` (
 
 LOCK TABLES `genres_to_games` WRITE;
 /*!40000 ALTER TABLE `genres_to_games` DISABLE KEYS */;
+INSERT INTO `genres_to_games` VALUES (1,1),(2,2),(3,2),(4,2);
 /*!40000 ALTER TABLE `genres_to_games` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `images` (
+  `idimg` int NOT NULL AUTO_INCREMENT,
+  `url` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `idgame` int DEFAULT NULL,
+  PRIMARY KEY (`idimg`) USING BTREE,
+  KEY `idgames` (`idgame`),
+  CONSTRAINT `fk_from_games_to_imgs` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (1,'http://gameplay.somee.com/imgs/TheWitcher3.jpeg',1),(2,'http://gameplay.somee.com/imgs/Witcher3Gameplay.jpeg',1),(3,'http://gameplay.somee.com/imgs/Griphon.jpeg',1),(4,'http://gameplay.somee.com/imgs/RDR2.jpeg',2);
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -156,9 +147,10 @@ DROP TABLE IF EXISTS `news`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(80) DEFAULT NULL,
-  `contain_text` varchar(10000) DEFAULT NULL,
-  `iduser` int DEFAULT NULL,
+  `title` varchar(80) COLLATE utf8mb4_general_ci NOT NULL,
+  `iduser` int NOT NULL,
+  `date` datetime NOT NULL,
+  `source` text COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_from_ver_users` (`iduser`),
   CONSTRAINT `fk_from_ver_users` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
@@ -184,7 +176,7 @@ DROP TABLE IF EXISTS `password_log`;
 CREATE TABLE `password_log` (
   `idpassword_log` int NOT NULL AUTO_INCREMENT,
   `iduser` int DEFAULT NULL,
-  `oldpassword` varchar(50) DEFAULT NULL,
+  `oldpassword` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idpassword_log`),
   KEY `fk_password_log_to_user` (`iduser`),
   CONSTRAINT `fk_password_log_to_user` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
@@ -201,6 +193,57 @@ LOCK TABLES `password_log` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `platform_to_game`
+--
+
+DROP TABLE IF EXISTS `platform_to_game`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `platform_to_game` (
+  `idplatform` int NOT NULL,
+  `idgame` int NOT NULL,
+  PRIMARY KEY (`idplatform`,`idgame`),
+  KEY `fk_from_games_to_m_idx` (`idgame`),
+  CONSTRAINT `fk_from_games_to_m` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
+  CONSTRAINT `fk_from_platforms` FOREIGN KEY (`idplatform`) REFERENCES `platforms` (`idplatform`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `platform_to_game`
+--
+
+LOCK TABLES `platform_to_game` WRITE;
+/*!40000 ALTER TABLE `platform_to_game` DISABLE KEYS */;
+INSERT INTO `platform_to_game` VALUES (4,1),(5,1),(8,1),(9,1),(10,1),(11,1);
+/*!40000 ALTER TABLE `platform_to_game` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `platforms`
+--
+
+DROP TABLE IF EXISTS `platforms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `platforms` (
+  `idplatform` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idplatform`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `platforms`
+--
+
+LOCK TABLES `platforms` WRITE;
+/*!40000 ALTER TABLE `platforms` DISABLE KEYS */;
+INSERT INTO `platforms` VALUES (1,'Sony PlayStation'),(2,'Sony PlayStation 2'),(3,'Sony PlayStation 3'),(4,'Sony PlayStation 4'),(5,'Sony PlayStation 5'),(6,'Xbox'),(7,'Xbox 360'),(8,'Xbox One'),(9,'Xbox Series X/s'),(10,'Windows'),(11,'Nintendo Switch');
+/*!40000 ALTER TABLE `platforms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ratings`
 --
 
@@ -211,9 +254,10 @@ CREATE TABLE `ratings` (
   `iduser` int NOT NULL,
   `idgame` int NOT NULL,
   `plot` int NOT NULL,
-  `action` int NOT NULL,
-  `actor_play` int NOT NULL,
-  `effects` int NOT NULL,
+  `gameplay` int NOT NULL,
+  `graphics` int NOT NULL,
+  `emotions` int NOT NULL,
+  `comment` text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`idgame`,`iduser`),
   KEY `idfilm_idx` (`idgame`),
   KEY `iduser_idy` (`iduser`),
@@ -232,29 +276,59 @@ LOCK TABLES `ratings` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `studio_to_games`
+-- Table structure for table `requirements`
 --
 
-DROP TABLE IF EXISTS `studio_to_games`;
+DROP TABLE IF EXISTS `requirements`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `studio_to_games` (
-  `idgame` int NOT NULL,
-  `idstudio` int NOT NULL,
-  PRIMARY KEY (`idgame`,`idstudio`),
-  KEY `fk_studio_to_film_idx` (`idstudio`),
-  CONSTRAINT `fk_film_to_studio` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`),
-  CONSTRAINT `fk_studio_to_film` FOREIGN KEY (`idstudio`) REFERENCES `studios` (`idstudio`)
+CREATE TABLE `requirements` (
+  `idrequirement` int NOT NULL,
+  `os` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `processor` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `memory` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `graphics_card` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `hdd_space` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`idrequirement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `studio_to_games`
+-- Dumping data for table `requirements`
 --
 
-LOCK TABLES `studio_to_games` WRITE;
-/*!40000 ALTER TABLE `studio_to_games` DISABLE KEYS */;
-/*!40000 ALTER TABLE `studio_to_games` ENABLE KEYS */;
+LOCK TABLES `requirements` WRITE;
+/*!40000 ALTER TABLE `requirements` DISABLE KEYS */;
+INSERT INTO `requirements` VALUES (1,'64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10','Intel CPU Core i5-2500K 3.3GHz / AMD CPU Phenom II X4 940','6 GB','Nvidia GPU GeForce GTX 660 / AMD GPU Radeon HD 7870','35 GB'),(2,'64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10',' Intel CPU Core i7 3770 3.4 GHz / AMD CPU AMD FX-8350 4','8 GB','Nvidia GPU GeForce GTX 770 / AMD GPU Radeon R9 290','35 GB'),(3,'Windows 10 - обновление от апреля 2018 (v1803)','Intel® Core™ i5-2500K / AMD FX-6300','8 ГБ','NVIDIA GeForce GTX 770 2 ГБ / AMD Radeon R9 280 3 ГБ','150 ГБ'),(4,'Windows 10 - обновление от апреля 2018 (v1803)','Intel® Core™ i7-4770K / AMD Ryzen 5 1500X','12 ГБ','NVIDIA GeForce GTX 1060 6 ГБ / AMD Radeon RX 480 4 ГБ','150 ГБ');
+/*!40000 ALTER TABLE `requirements` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shops`
+--
+
+DROP TABLE IF EXISTS `shops`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shops` (
+  `idshop` int NOT NULL,
+  `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `price` float DEFAULT NULL,
+  `idgame` int NOT NULL,
+  `source` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idshop`),
+  KEY `fk_from_shops_idx` (`idgame`),
+  CONSTRAINT `fk_from_shops` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shops`
+--
+
+LOCK TABLES `shops` WRITE;
+/*!40000 ALTER TABLE `shops` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shops` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -266,8 +340,8 @@ DROP TABLE IF EXISTS `studios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `studios` (
   `idstudio` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) NOT NULL,
-  `information` varchar(200) DEFAULT NULL,
+  `name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `information` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idstudio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -278,6 +352,7 @@ CREATE TABLE `studios` (
 
 LOCK TABLES `studios` WRITE;
 /*!40000 ALTER TABLE `studios` DISABLE KEYS */;
+INSERT INTO `studios` VALUES (1,'CD Project Red',NULL),(2,'Rockstar Studios',NULL),(3,'Rockstar Games',NULL);
 /*!40000 ALTER TABLE `studios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,11 +365,12 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `iduser` int NOT NULL AUTO_INCREMENT,
-  `login` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `login` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `birth_date` date DEFAULT '0001-01-01',
   `isVerificied` tinyint DEFAULT NULL,
+  `avatar` text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`iduser`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)
@@ -307,7 +383,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (14155,'aboba','12345','abob.net','2009-09-09',0);
+INSERT INTO `users` VALUES (14155,'aboba','12345','abob.net','2009-09-09',0,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -320,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-18  9:02:46
+-- Dump completed on 2022-10-31 10:23:14
