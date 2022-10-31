@@ -3,8 +3,8 @@
 @model List<GamePlay.Models.Game>
 @{
     ViewData["Title"] = "Home Page";
-    String[] FilterNames = { "Жанр", "Особенности", "Платформа" };
-    String[] FilterId = { "genre", "feature", "platform" };
+    String[] FilterNames = { "Жанр", "Студии", "Платформа", "Дата выхода" };
+    String[] FilterId = { "genre", "studio", "platform" };
 }
 
 
@@ -33,7 +33,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheck @j">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            @FilterNames[i] @j @*Нужно вставить название жанров, особенностей и платформ*@
+                                            @FilterNames[i] @j @*Нужно вставить название жанров, студий и платформ*@
                                         </label>
                                     </div>
                                 }

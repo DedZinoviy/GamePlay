@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+Application/GamePlay/GamePlay/bin/Debug/net6.0/GamePlay.dll
+Application/GamePlay/GamePlay/bin/Debug/net6.0/GamePlay.dll
+Application/GamePlay/GamePlay/bin/Debug/net6.0/GamePlay.pdb
+Application/GamePlay/GamePlay/bin/Debug/net6.0/GamePlay.staticwebassets.runtime.json
+Application/GamePlay/GamePlay/obj/Debug/net6.0/GamePlay.dll
+Application/GamePlay/GamePlay/obj/Debug/net6.0/GamePlay.pdb
+Application/GamePlay/GamePlay/obj/Debug/net6.0/staticwebassets.build.json
+Application/GamePlay/GamePlay/obj/Debug/net6.0/staticwebassets.development.json
+Application/GamePlay/GamePlay/obj/staticwebassets.pack.sentinel
