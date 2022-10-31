@@ -85,19 +85,19 @@
                         <div class="tab-pane fade show active" id="nav-systemRequirements" role="tabpanel" aria-labelledby="nav-systemRequirements-tab">
                             <p class="text-white systemRequirementsTitle">Минимальные:</p> 
                             <p class="systemRequirements">
-                                <p1>@Model.Minimum?.OS</p1> 
-                                <p1>@Model.Minimum?.Processor</p1>
-                                <p1>@Model.Minimum?.Memory</p1>
-                                <p1>@Model.Minimum?.Graphics_Card</p1>
-                                <p1>@Model.Minimum?.HDD_Space</p1>
+                                <p class="systemRequirements">ОС: @Model.Minimum?.OS</p> 
+                                <p class="systemRequirements">Процессор: @Model.Minimum?.Processor</p>
+                                <p class="systemRequirements">ОЗУ: @Model.Minimum?.Memory</p>
+                                <p class="systemRequirements">Видеокарта: @Model.Minimum?.Graphics_Card</p>
+                                <p class="systemRequirements">Размер на жестком диске:@Model.Minimum?.HDD_Space</p>
                             </p> @*Нужно вставить системные требования*@
                             <p class="text-white systemRequirementsTitle">Рекомендуемые:</p>
                             <p class="systemRequirements">
-                                <p1>@Model.Recomended?.OS</p1>
-                                <p1>@Model.Recomended?.Processor</p1>
-                                <p1>@Model.Recomended?.Memory</p1>
-                                <p1>@Model.Recomended?.Graphics_Card</p1>
-                                <p1>@Model.Recomended?.HDD_Space</p1>
+                                <p class="systemRequirements">ОС: @Model.Recomended?.OS</p>
+                                <p class="systemRequirements">Процессор: @Model.Recomended?.Processor</p>
+                                <p class="systemRequirements">ОЗУ: @Model.Recomended?.Memory</p>
+                                <p class="systemRequirements">Видеокарта: @Model.Recomended?.Graphics_Card</p>
+                                <p class="systemRequirements">Размер на жестком диске:@Model.Recomended?.HDD_Space</p>
                             </p> @*Нужно вставить системные требования*@
                         </div>
                         <div class="tab-pane fade" id="nav-feedbacks" role="tabpanel" aria-labelledby="nav-feedbacks-tab">

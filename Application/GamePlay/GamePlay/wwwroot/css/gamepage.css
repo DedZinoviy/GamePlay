@@ -2,9 +2,6 @@
     color:white;
 }
 
-section.images {
-}
-
 img.image {
     max-height:100%;
     max-width:100%;
@@ -13,6 +10,11 @@ img.image {
     margin:auto;
     background: #000000;
 }
+
+img.indicators {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
 .carousel-indicators {
     position:relative;
 }
@@ -20,6 +22,7 @@ img.image {
 .carousel-item {
     max-height: 60vh;
     background: #000000;
+    aspect-ratio: 16/9;
 }
 
 .description {
@@ -36,6 +39,7 @@ p.systemRequirements {
     color: #808080;
     font-size: 16px;
     padding-left: 5px;
+    margin:0;
 }
 
 p.systemRequirementsTitle {
