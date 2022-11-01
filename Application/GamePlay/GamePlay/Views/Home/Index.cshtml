@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Home Page";
     String[] FilterNames = { "Жанр", "Платформа", "Студии", "Дата выхода" };
-    String[] FilterId = { "genre", "studio", "platform" };
+    String[] FilterId = { "genre", "studio", "platform", "out-date" };
 }
 
 
@@ -85,6 +85,28 @@
                                         <input type="hidden" asp-for="@Model.Studios[j].Item.Name" />
                                     </div>
                                 }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="@FilterId[3]-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersPanel-collapse-3" aria-expanded="true" aria-controls="filtersPane-collapse-3">
+                                @FilterNames[3]
+                            </button>
+                        </h2>
+                    </div>
+
+                    @*Дата выхода*@
+                    <div id="filtersPanel-collapse-3" class="accordion-collapse collapse" aria-labelledby="@FilterId[3]-header">
+                        <div class="accordion-body">
+                            <div class="genre">
+                                        <div class="out-date">
+                                            Год с:
+                                            <input class="form-control" type="number" id="start-date" min="1999" max="2022"> @*Дата начала, нужно также вставить минимальный и максимальный год*@
+                                            Год по:
+                                            <input class="form-control" type="number" id="end-date" min="1999" max="2022"> @*Дата окончания, нужно также вставить минимальный и максимальный год*@
+                                        </div>
                             </div>
                         </div>
                     </div>
