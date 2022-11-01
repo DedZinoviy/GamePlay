@@ -33,6 +33,17 @@ img.card-img-top {
     border-radius: 15px;
 }
 
+.card-footer {
+    padding-top:0;
+    border: none;
+    background: #242F43;
+    border-radius: 15px;
+}
+
+.card-footer:last-child {
+    border-radius:15px;
+}
+
 /*Фильтры*/
 .accordion-button {
     background-color: #242F43;
