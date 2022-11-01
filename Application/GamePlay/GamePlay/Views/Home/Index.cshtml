@@ -1,9 +1,9 @@
 ﻿<link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true">
 
-@model List<GamePlay.Models.Game>
+@model IndexViewModel
 @{
     ViewData["Title"] = "Home Page";
-    String[] FilterNames = { "Жанр", "Студии", "Платформа", "Дата выхода" };
+    String[] FilterNames = { "Жанр", "Платформа", "Студии", "Дата выхода" };
     String[] FilterId = { "genre", "studio", "platform" };
 }
 
@@ -12,45 +12,93 @@
 
     <div class="col-3">
         @*Фильтры*@
-        
+        <form asp-controller="Home" asp-action="Index" method="get">
         <div class="card text-white filters">
             <p style="font-size: 20px; text-align:center">Фильтры</p>
             <div class="accordion accordion-flush" id="filtersPanel">
-                @for (int i = 0; i < 3; i++)
-                {
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="@FilterId[i]-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersPanel-collapse-@i" aria-expanded="true" aria-controls="filtersPane-collapse-@i">
-                                @FilterNames[i]
+                        <h2 class="accordion-header" id="@FilterId[0]-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersPanel-collapse-0" aria-expanded="true" aria-controls="filtersPane-collapse-0">
+                                @FilterNames[0]
                             </button>
                         </h2>
                     </div>
-                    <div id="filtersPanel-collapse-@i" class="accordion-collapse collapse" aria-labelledby="@FilterId[i]-header">
+                    <div id="filtersPanel-collapse-0" class="accordion-collapse collapse" aria-labelledby="@FilterId[0]-header">
                         <div class="accordion-body">
-                            <form class="genre">
-                                @for(int j=0; j<10; j++) @*Для каждого элемента (заменить на foreach)*@
+                            <div class="genre">
+                                @for (int j = 0; j < Model.Genres.Count; j++) @*Для каждого элемента (заменить на foreach)*@
                                 {
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheck @j">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            @FilterNames[i] @j @*Нужно вставить название жанров, студий и платформ*@
+                                        <input class="form-check-input" type="checkbox" asp-for="@Model.Genres[j].Selected">
+                                        <label class="form-check-label" asp-for="@Model.Genres[j].Selected">
+                                            @Model.Genres[j].Item?.Name @*Нужно вставить название жанров, студий и платформ*@
                                         </label>
+                                        <input type="hidden" asp-for="@Model.Genres[j].Item.Idgenre" />
+                                        <input type="hidden" asp-for="@Model.Genres[j].Item.Name" />
                                     </div>
                                 }
-                            </form>
+                            </div>
                         </div>
                     </div>
-                }
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="@FilterId[1]-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersPanel-collapse-1" aria-expanded="true" aria-controls="filtersPane-collapse-1">
+                                @FilterNames[1]
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="filtersPanel-collapse-1" class="accordion-collapse collapse" aria-labelledby="@FilterId[1]-header">
+                        <div class="accordion-body">
+                            <div class="genre">
+                                @for (int j = 0; j < Model.Platforms.Count; j++) @*Для каждого элемента (заменить на foreach)*@
+                                {
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" asp-for="@Model.Platforms[j].Selected">
+                                        <label class="form-check-label" asp-for="@Model.Platforms[j].Selected">
+                                            @Model.Platforms[j].Item?.Name @*Нужно вставить название жанров, студий и платформ*@
+                                        </label>
+                                        <input type="hidden" asp-for="@Model.Platforms[j].Item.Idplatform" />
+                                        <input type="hidden" asp-for="@Model.Platforms[j].Item.Name" />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="@FilterId[2]-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersPanel-collapse-2" aria-expanded="true" aria-controls="filtersPane-collapse-2">
+                                @FilterNames[2]
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="filtersPanel-collapse-2" class="accordion-collapse collapse" aria-labelledby="@FilterId[2]-header">
+                        <div class="accordion-body">
+                            <div class="genre">
+                                @for (int j = 0; j < Model.Studios.Count; j++) @*Для каждого элемента (заменить на foreach)*@
+                                {
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" asp-for="@Model.Studios[j].Selected">
+                                        <label class="form-check-label" asp-for="@Model.Studios[j].Selected">
+                                            @Model.Studios[j].Item?.Name @*Нужно вставить название жанров, студий и платформ*@
+                                        </label>
+                                        <input type="hidden" asp-for="@Model.Studios[j].Item.Idstudio" />
+                                        <input type="hidden" asp-for="@Model.Studios[j].Item.Name" />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
             </div>
             <input type="submit" class="btn btn-primary" value="Подтвердить" onclick="this.blur()"> @*Кнопка подтверждения*@
         </div>
+        </form>
     </div>
 
 
     <div class="col-9">
         @*Карточки*@
         <div class="row row-cols-1 row-cols-md-4 g-4">
-                    @foreach(var game in Model)
+                    @foreach(var game in Model.Games)
                     {
                     <a asp-action="Game" asp-controller="Home" asp-route-id="@game.Idgame" class="col btn"> @*Нужно вставить ссылку на страницу с игрой*@
                         <div class="card h-100 text-white">

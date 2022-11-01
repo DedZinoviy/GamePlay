@@ -6,6 +6,10 @@ using System.Linq;
 using HtmlAgilityPack;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Html;
+using Microsoft.DotNet.Scaffolding.Shared.Project;
+using System.Linq.Expressions;
 
 namespace GamePlay.Controllers
 {
@@ -17,20 +21,52 @@ namespace GamePlay.Controllers
         {
             _context = context;
         }
-
-        public IActionResult Index()
+               
+        [HttpGet]
+        public IActionResult Index(IndexViewModel model)
         {
-            List<Game> games = _context.games
-                .Select(g => new Game() {
+            if (model.Genres.Count == 0)
+                model.Set(_context.genres.ToList());
 
-                    Idgame = g.Idgame, 
+            if (model.Platforms.Count == 0)
+                model.Set(_context.platforms.ToList());
+
+            if (model.Studios.Count == 0)
+                model.Set(_context.studios.ToList());
+
+            List<Genre> genres = model.GetSelectedGenres();
+            List<Platform> platforms = model.GetSelectedPlatforms();
+            List<Studio> studios = model.GetSelectedStudios();
+
+            IQueryable<Game> games = _context.games
+                .Include(g => g.Genres)
+                .Include(g => g.Platforms)
+                .Include(g => g.Studio)
+                .Include(g => g.Publisher)
+                .Select(g => new Game()
+                {
+                    Idgame = g.Idgame,
                     Title = g.Title,
                     Release_date = g.Release_date,
-                    Main_Image = g.Main_Image
-                })
-                .Take(20).ToList();
+                    Main_Image = g.Main_Image,
+                    Genres = g.Genres,
+                    Platforms = g.Platforms,
+                    Studio = g.Studio,
+                    Publisher = g.Publisher
+                });
 
-            return View(games);
+            if (genres.Any(g => g != null))
+                games = games.Where(g => g.Genres.Any(g => genres.Contains(g)));
+            
+            if (platforms.Any(p => p != null))
+                games = games.Where(g => g.Platforms.Any(p => platforms.Contains(p)));
+            
+            if (studios.Any(s => s != null))
+                games = games.Where(g => studios.Contains(g.Studio) || studios.Contains(g.Publisher));
+
+            model.Games = games.ToList();
+
+            return View(model);
         }
 
         public IActionResult Privacy()
