@@ -55,7 +55,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
-INSERT INTO `games` VALUES (1,'The Witcher 3: Wild Hunt','«Ведьмак 3: Дикая Охота» — компьютерная игра от третьего лица в жанре action/RPG. Игрок играет за Геральта из Ривии, охотника на чудовищ, работающего по заказу. В игре существует очень большое количество разных видов чудовищ; при создании этого бестиария использовались мифология разных стран, восточноевропейский фольклор и эзотерика.','2015-05-18',1,1,1,2,1),(2,'Read Dead Redemption 2','Red Dead Redemption 2 представляет собой игру в жанре action-adventure с открытым миром; игрок управляет одним персонажем с возможностью переключения камеры на вид от первого или от третьего лица по своему выбору. Игра включает в себя как однопользовательский, так и многопользовательский режимы — последний носит название Red Dead Online. На протяжении большей части сюжетной кампании однопользовательского режима игрок управляет персонажем по имени Артур Морган, членом банды Ван дер Линде; сюжетная кампания включает в себя ряд миссий — линейных сценариев с чётко поставленной целью в каждом, которые игрок должен выполнить последовательно. Вне миссий даётся возможность свободно путешествовать по обширному миру игры, самостоятельно находя интересные места и побочные задания. Игрок может вступать в сражения с врагами, используя как приёмы и оружие для рукопашного боя, так и разнообразное огнестрельное оружие и взрывчатку.','2018-10-26',2,3,3,4,4);
+INSERT INTO `games` VALUES (1,'The Witcher 3: Wild Hunt','«Ведьмак 3: Дикая Охота» — компьютерная игра от третьего лица в жанре action/RPG. Игрок играет за Геральта из Ривии, охотника на чудовищ, работающего по заказу. В игре существует очень большое количество разных видов чудовищ; при создании этого бестиария использовались мифология разных стран, восточноевропейский фольклор и эзотерика.','2015-05-18',1,1,1,2,1),(2,'Read Dead Redemption 2','Red Dead Redemption 2 представляет собой игру в жанре action-adventure с открытым миром; игрок управляет одним персонажем с возможностью переключения камеры на вид от первого или от третьего лица по своему выбору. Игра включает в себя как однопользовательский, так и многопользовательский режимы — последний носит название Red Dead Online. На протяжении большей части сюжетной кампании однопользовательского режима игрок управляет персонажем по имени Артур Морган, членом банды Ван дер Линде; сюжетная кампания включает в себя ряд миссий — линейных сценариев с чётко поставленной целью в каждом, которые игрок должен выполнить последовательно. Вне миссий даётся возможность свободно путешествовать по обширному миру игры, самостоятельно находя интересные места и побочные задания. Игрок может вступать в сражения с врагами, используя как приёмы и оружие для рукопашного боя, так и разнообразное огнестрельное оружие и взрывчатку.','2018-10-26',2,3,3,4,4),(3,'The Elder Scrolls V: Skyrim','Skyrim сохраняет концепцию большого и открытого мира, характерную для серии The Elder Scrolls. Игрок может свободно странствовать по всей территории провинции Скайрим, включающей в себя девять крупных городов, множество мелких селений, а также обширные пространства диких земель и высоких гор. В городах игрок может предаваться таким занятиям, как приготовление пищи и зелий, зачарование предметов, фермерство, работа с рудой или кузнечное дело. При этом разработчики отмечали, что игровой процесс может занять около 500 часов.','2011-11-11',4,5,NULL,NULL,7);
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +107,7 @@ CREATE TABLE `genres_to_games` (
 
 LOCK TABLES `genres_to_games` WRITE;
 /*!40000 ALTER TABLE `genres_to_games` DISABLE KEYS */;
-INSERT INTO `genres_to_games` VALUES (1,1),(2,2),(3,2),(4,2);
+INSERT INTO `genres_to_games` VALUES (1,1),(2,2),(3,2),(4,2),(1,3);
 /*!40000 ALTER TABLE `genres_to_games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +125,7 @@ CREATE TABLE `images` (
   PRIMARY KEY (`idimg`) USING BTREE,
   KEY `idgames` (`idgame`),
   CONSTRAINT `fk_from_games_to_imgs` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +134,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'http://gameplay.somee.com/imgs/TheWitcher3.jpeg',1),(2,'http://gameplay.somee.com/imgs/Witcher3Gameplay.jpeg',1),(3,'http://gameplay.somee.com/imgs/Griphon.jpeg',1),(4,'http://gameplay.somee.com/imgs/RDR2.jpeg',2);
+INSERT INTO `images` VALUES (1,'http://gameplay.somee.com/imgs/TheWitcher3.jpeg',1),(2,'http://gameplay.somee.com/imgs/Witcher3Gameplay.jpeg',1),(3,'http://gameplay.somee.com/imgs/Griphon.jpeg',1),(4,'http://gameplay.somee.com/imgs/RDR2.jpeg',2),(5,'http://gameplay.somee.com/imgs/RDR2Cinematic.jpeg',2),(6,'http://gameplay.somee.com/imgs/RDR2Gameplay.jpeg',2),(7,'http://gameplay.somee.com/imgs/Skyrim.jpeg',3);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +215,7 @@ CREATE TABLE `platform_to_game` (
 
 LOCK TABLES `platform_to_game` WRITE;
 /*!40000 ALTER TABLE `platform_to_game` DISABLE KEYS */;
-INSERT INTO `platform_to_game` VALUES (4,1),(5,1),(8,1),(9,1),(10,1),(11,1);
+INSERT INTO `platform_to_game` VALUES (4,1),(5,1),(8,1),(9,1),(10,1),(11,1),(4,2),(8,2),(10,2),(3,3),(4,3),(5,3),(7,3),(8,3),(9,3),(10,3),(11,3);
 /*!40000 ALTER TABLE `platform_to_game` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,6 +328,7 @@ CREATE TABLE `shops` (
 
 LOCK TABLES `shops` WRITE;
 /*!40000 ALTER TABLE `shops` DISABLE KEYS */;
+INSERT INTO `shops` VALUES (1,'Steam',499.99,1,'https://steamdb.info/app/292030/');
 /*!40000 ALTER TABLE `shops` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +353,7 @@ CREATE TABLE `studios` (
 
 LOCK TABLES `studios` WRITE;
 /*!40000 ALTER TABLE `studios` DISABLE KEYS */;
-INSERT INTO `studios` VALUES (1,'CD Project Red',NULL),(2,'Rockstar Studios',NULL),(3,'Rockstar Games',NULL);
+INSERT INTO `studios` VALUES (1,'CD Project Red',NULL),(2,'Rockstar Studios',NULL),(3,'Rockstar Games',NULL),(4,'Bethesda Game Studios',NULL),(5,'Bethesda Softworks',NULL);
 /*!40000 ALTER TABLE `studios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +397,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-31 10:23:14
+-- Dump completed on 2022-11-01  8:36:31
