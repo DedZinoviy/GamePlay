@@ -55,7 +55,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
-INSERT INTO `games` VALUES (1,'The Witcher 3: Wild Hunt','«Ведьмак 3: Дикая Охота» — компьютерная игра от третьего лица в жанре action/RPG. Игрок играет за Геральта из Ривии, охотника на чудовищ, работающего по заказу. В игре существует очень большое количество разных видов чудовищ; при создании этого бестиария использовались мифология разных стран, восточноевропейский фольклор и эзотерика.','2015-05-18',1,1,1,2,1),(2,'Read Dead Redemption 2','Red Dead Redemption 2 представляет собой игру в жанре action-adventure с открытым миром; игрок управляет одним персонажем с возможностью переключения камеры на вид от первого или от третьего лица по своему выбору. Игра включает в себя как однопользовательский, так и многопользовательский режимы — последний носит название Red Dead Online. На протяжении большей части сюжетной кампании однопользовательского режима игрок управляет персонажем по имени Артур Морган, членом банды Ван дер Линде; сюжетная кампания включает в себя ряд миссий — линейных сценариев с чётко поставленной целью в каждом, которые игрок должен выполнить последовательно. Вне миссий даётся возможность свободно путешествовать по обширному миру игры, самостоятельно находя интересные места и побочные задания. Игрок может вступать в сражения с врагами, используя как приёмы и оружие для рукопашного боя, так и разнообразное огнестрельное оружие и взрывчатку.','2018-10-26',2,3,3,4,4),(3,'The Elder Scrolls V: Skyrim','Skyrim сохраняет концепцию большого и открытого мира, характерную для серии The Elder Scrolls. Игрок может свободно странствовать по всей территории провинции Скайрим, включающей в себя девять крупных городов, множество мелких селений, а также обширные пространства диких земель и высоких гор. В городах игрок может предаваться таким занятиям, как приготовление пищи и зелий, зачарование предметов, фермерство, работа с рудой или кузнечное дело. При этом разработчики отмечали, что игровой процесс может занять около 500 часов.','2011-11-11',4,5,NULL,NULL,7);
+INSERT INTO `games` VALUES (1,'The Witcher 3: Wild Hunt','«Ведьмак 3: Дикая Охота» — компьютерная игра от третьего лица в жанре action/RPG. Игрок играет за Геральта из Ривии, охотника на чудовищ, работающего по заказу. В игре существует очень большое количество разных видов чудовищ; при создании этого бестиария использовались мифология разных стран, восточноевропейский фольклор и эзотерика.','2015-05-18',1,1,1,2,1),(2,'Read Dead Redemption 2','Red Dead Redemption 2 представляет собой игру в жанре action-adventure с открытым миром; игрок управляет одним персонажем с возможностью переключения камеры на вид от первого или от третьего лица по своему выбору. Игра включает в себя как однопользовательский, так и многопользовательский режимы — последний носит название Red Dead Online. На протяжении большей части сюжетной кампании однопользовательского режима игрок управляет персонажем по имени Артур Морган, членом банды Ван дер Линде; сюжетная кампания включает в себя ряд миссий — линейных сценариев с чётко поставленной целью в каждом, которые игрок должен выполнить последовательно. Вне миссий даётся возможность свободно путешествовать по обширному миру игры, самостоятельно находя интересные места и побочные задания. Игрок может вступать в сражения с врагами, используя как приёмы и оружие для рукопашного боя, так и разнообразное огнестрельное оружие и взрывчатку.','2018-10-26',2,3,3,4,4),(3,'The Elder Scrolls V: Skyrim','Skyrim сохраняет концепцию большого и открытого мира, характерную для серии The Elder Scrolls. Игрок может свободно странствовать по всей территории провинции Скайрим, включающей в себя девять крупных городов, множество мелких селений, а также обширные пространства диких земель и высоких гор. В городах игрок может предаваться таким занятиям, как приготовление пищи и зелий, зачарование предметов, фермерство, работа с рудой или кузнечное дело. При этом разработчики отмечали, что игровой процесс может занять около 500 часов.','2011-11-11',4,5,5,6,7),(4,'God Of War (2005)',' видеоигра с видом от третьего лица в жанре action-adventure, разработанная компанией SIE Santa Monica и изданная Sony Computer Entertainment. Это первая игра из одноимённой серии игр, она была выпущена 22 марта 2005 года для игровой приставки PlayStation 2.','2005-03-22',6,7,NULL,NULL,10);
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +80,7 @@ CREATE TABLE `genres` (
 
 LOCK TABLES `genres` WRITE;
 /*!40000 ALTER TABLE `genres` DISABLE KEYS */;
-INSERT INTO `genres` VALUES (2,'Action'),(3,'Adventure'),(1,'RPG'),(4,'Western');
+INSERT INTO `genres` VALUES (2,'Action'),(3,'Adventure'),(5,'Hack-&-Slash'),(1,'RPG'),(4,'Western');
 /*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +107,7 @@ CREATE TABLE `genres_to_games` (
 
 LOCK TABLES `genres_to_games` WRITE;
 /*!40000 ALTER TABLE `genres_to_games` DISABLE KEYS */;
-INSERT INTO `genres_to_games` VALUES (1,1),(2,2),(3,2),(4,2),(1,3);
+INSERT INTO `genres_to_games` VALUES (1,1),(2,2),(3,2),(4,2),(1,3),(3,4),(5,4);
 /*!40000 ALTER TABLE `genres_to_games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +125,7 @@ CREATE TABLE `images` (
   PRIMARY KEY (`idimg`) USING BTREE,
   KEY `idgames` (`idgame`),
   CONSTRAINT `fk_from_games_to_imgs` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +134,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'http://gameplay.somee.com/imgs/TheWitcher3.jpeg',1),(2,'http://gameplay.somee.com/imgs/Witcher3Gameplay.jpeg',1),(3,'http://gameplay.somee.com/imgs/Griphon.jpeg',1),(4,'http://gameplay.somee.com/imgs/RDR2.jpeg',2),(5,'http://gameplay.somee.com/imgs/RDR2Cinematic.jpeg',2),(6,'http://gameplay.somee.com/imgs/RDR2Gameplay.jpeg',2),(7,'http://gameplay.somee.com/imgs/Skyrim.jpeg',3);
+INSERT INTO `images` VALUES (1,'http://gameplay.somee.com/imgs/TheWitcher3.jpeg',1),(2,'http://gameplay.somee.com/imgs/Witcher3Gameplay.jpeg',1),(3,'http://gameplay.somee.com/imgs/Griphon.jpeg',1),(4,'http://gameplay.somee.com/imgs/RDR2.jpeg',2),(5,'http://gameplay.somee.com/imgs/RDR2Cinematic.jpeg',2),(6,'http://gameplay.somee.com/imgs/RDR2Gameplay.jpeg',2),(7,'http://gameplay.somee.com/imgs/Skyrim.jpeg',3),(8,'http://gameplay.somee.com/imgs/TheElderScrollsVSkyrimGameplay.jpg',3),(9,'http://gameplay.somee.com/imgs/SkyrimOrk.jpeg',3),(10,'http://gameplay.somee.com/imgs/Gow.jpeg',4),(11,'http://gameplay.somee.com/imgs/God_of_War_gameplay.jpg',4),(12,'http://gameplay.somee.com/imgs/Kratos.jpeg',4);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +215,7 @@ CREATE TABLE `platform_to_game` (
 
 LOCK TABLES `platform_to_game` WRITE;
 /*!40000 ALTER TABLE `platform_to_game` DISABLE KEYS */;
-INSERT INTO `platform_to_game` VALUES (4,1),(5,1),(8,1),(9,1),(10,1),(11,1),(4,2),(8,2),(10,2),(3,3),(4,3),(5,3),(7,3),(8,3),(9,3),(10,3),(11,3);
+INSERT INTO `platform_to_game` VALUES (4,1),(5,1),(8,1),(9,1),(10,1),(11,1),(4,2),(8,2),(10,2),(3,3),(4,3),(5,3),(7,3),(8,3),(9,3),(10,3),(11,3),(2,4),(3,4),(12,4);
 /*!40000 ALTER TABLE `platform_to_game` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `platforms` (
   `idplatform` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idplatform`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +239,7 @@ CREATE TABLE `platforms` (
 
 LOCK TABLES `platforms` WRITE;
 /*!40000 ALTER TABLE `platforms` DISABLE KEYS */;
-INSERT INTO `platforms` VALUES (1,'Sony PlayStation'),(2,'Sony PlayStation 2'),(3,'Sony PlayStation 3'),(4,'Sony PlayStation 4'),(5,'Sony PlayStation 5'),(6,'Xbox'),(7,'Xbox 360'),(8,'Xbox One'),(9,'Xbox Series X/s'),(10,'Windows'),(11,'Nintendo Switch');
+INSERT INTO `platforms` VALUES (1,'Sony PlayStation'),(2,'Sony PlayStation 2'),(3,'Sony PlayStation 3'),(4,'Sony PlayStation 4'),(5,'Sony PlayStation 5'),(6,'Xbox'),(7,'Xbox 360'),(8,'Xbox One'),(9,'Xbox Series X/s'),(10,'Windows'),(11,'Nintendo Switch'),(12,'Sony PlayStation Vita');
 /*!40000 ALTER TABLE `platforms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +299,7 @@ CREATE TABLE `requirements` (
 
 LOCK TABLES `requirements` WRITE;
 /*!40000 ALTER TABLE `requirements` DISABLE KEYS */;
-INSERT INTO `requirements` VALUES (1,'64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10','Intel CPU Core i5-2500K 3.3GHz / AMD CPU Phenom II X4 940','6 GB','Nvidia GPU GeForce GTX 660 / AMD GPU Radeon HD 7870','35 GB'),(2,'64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10',' Intel CPU Core i7 3770 3.4 GHz / AMD CPU AMD FX-8350 4','8 GB','Nvidia GPU GeForce GTX 770 / AMD GPU Radeon R9 290','35 GB'),(3,'Windows 10 - обновление от апреля 2018 (v1803)','Intel® Core™ i5-2500K / AMD FX-6300','8 ГБ','NVIDIA GeForce GTX 770 2 ГБ / AMD Radeon R9 280 3 ГБ','150 ГБ'),(4,'Windows 10 - обновление от апреля 2018 (v1803)','Intel® Core™ i7-4770K / AMD Ryzen 5 1500X','12 ГБ','NVIDIA GeForce GTX 1060 6 ГБ / AMD Radeon RX 480 4 ГБ','150 ГБ');
+INSERT INTO `requirements` VALUES (1,'64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10','Intel CPU Core i5-2500K 3.3GHz / AMD CPU Phenom II X4 940','6 GB','Nvidia GPU GeForce GTX 660 / AMD GPU Radeon HD 7870','35 GB'),(2,'64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10',' Intel CPU Core i7 3770 3.4 GHz / AMD CPU AMD FX-8350 4','8 GB','Nvidia GPU GeForce GTX 770 / AMD GPU Radeon R9 290','35 GB'),(3,'Windows 10 - обновление от апреля 2018 (v1803)','Intel® Core™ i5-2500K / AMD FX-6300','8 ГБ','NVIDIA GeForce GTX 770 2 ГБ / AMD Radeon R9 280 3 ГБ','150 ГБ'),(4,'Windows 10 - обновление от апреля 2018 (v1803)','Intel® Core™ i7-4770K / AMD Ryzen 5 1500X','12 ГБ','NVIDIA GeForce GTX 1060 6 ГБ / AMD Radeon RX 480 4 ГБ','150 ГБ'),(5,'Windows XP/Vista/7','Intel Core 2 Duo 2.0 Ghz / AMD Athlon 64 X2 4200+','2 Gb','nVidia GeForce 8800 / ATI Radeon HD 3850 с 512 Mb памяти','6 GB'),(6,'Windows XP/Vista/7','Intel Core 2 Quad 2.66 GHz / AMD Phenom II X4 2.8 GHz','4 Gb','nVidia GeForce GTX 260 / ATI Radeon HD 4890 с 1 Gb памяти','6 GB');
 /*!40000 ALTER TABLE `requirements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +328,7 @@ CREATE TABLE `shops` (
 
 LOCK TABLES `shops` WRITE;
 /*!40000 ALTER TABLE `shops` DISABLE KEYS */;
-INSERT INTO `shops` VALUES (1,'Steam',499.99,1,'https://steamdb.info/app/292030/');
+INSERT INTO `shops` VALUES (1,'Steam',499.99,1,'https://steamdb.info/app/292030/'),(2,'SteamBuy',599,3,'https://steambuy.com/steam/the-elder-scrolls-v-skyrim/');
 /*!40000 ALTER TABLE `shops` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -353,7 +353,7 @@ CREATE TABLE `studios` (
 
 LOCK TABLES `studios` WRITE;
 /*!40000 ALTER TABLE `studios` DISABLE KEYS */;
-INSERT INTO `studios` VALUES (1,'CD Project Red',NULL),(2,'Rockstar Studios',NULL),(3,'Rockstar Games',NULL),(4,'Bethesda Game Studios',NULL),(5,'Bethesda Softworks',NULL);
+INSERT INTO `studios` VALUES (1,'CD Project Red',NULL),(2,'Rockstar Studios',NULL),(3,'Rockstar Games',NULL),(4,'Bethesda Game Studios',NULL),(5,'Bethesda Softworks',NULL),(6,'SCE Santa Monica Studio',NULL),(7,'Sony Computer Entertainment',NULL);
 /*!40000 ALTER TABLE `studios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,4 +397,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-01  8:36:31
+-- Dump completed on 2022-11-01  9:16:57
