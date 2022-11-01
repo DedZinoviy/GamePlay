@@ -122,3 +122,30 @@ p.systemRequirementsTitle {
 .nav-link:not(.active) {
     border:none;
 }
+
+button.addFeedback {
+    background: #273E68;
+    border-radius: 15px;
+    border: none;
+    margin: auto;
+    width: 80%;
+    margin-top: 10px;
+    align-items: center;
+    padding:0;
+}
+
+button.addFeedback:active {
+    box-shadow:none;
+    background: #273E68;
+}
+
+button.addFeedback:focus {
+    box-shadow:none;
+    background: #273E68;
+}
+
+button.addFeedback:hover > button.addFeedback:focus {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}

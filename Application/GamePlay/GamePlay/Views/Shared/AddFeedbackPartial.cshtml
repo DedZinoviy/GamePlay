@@ -1,0 +1,75 @@
+﻿<link rel="stylesheet" href="~/css/addFeedback.css">
+
+
+<div class="modal fade" id="add-feedback-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addFeedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container-fluid header">
+                    <h5 class="modal-title">Новый отзыв</h5>
+                    <h5 class="modal-title" id="game-name">Игра: Название игры</h5> @*Нужно вставить название игры*@
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="rating">
+                        Оценки:
+                        <div class="rating-part row" id="plot">
+                            <div class="col-4">Сюжет:</div>
+                            <div class="col-8">
+                                @for (int i=1; i<=5; i++)
+                                {
+                                    <input type="radio" class="btn-check" name="plot" id="plotRadio-@i" autocomplete="off"> @*Оценка сюжета*@
+                                    <label class="btn btn-primary" for="plotRadio-@i" id="plot-@i" style="box-shadow:none;">@i</label>
+                                }
+                            </div>
+                        </div>
+                        <div class="rating-part row" id="gameplay">
+                            <div class="col-4">Геймплей:</div>
+                            <div class="col-8">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <input type="radio" class="btn-check" name="gameplay" id="gameplayRadio-@i" autocomplete="off" value="@i"> @*Оценка геймплея*@
+                                    <label class="btn btn-primary" for="gameplayRadio-@i" id="gameplay-@i" style="box-shadow:none;">@i</label>
+                                }
+                            </div>
+                        </div>
+                        <div class="rating-part row" id="graphics">
+                            <div class="col-4">Графика:</div>
+                            <div class="col-8">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <input type="radio" class="btn-check" name="graphics" id="graphicsRadio-@i" autocomplete="off" value="@i"> @*Оценка графики*@
+                                    <label class="btn btn-primary" for="graphicsRadio-@i" id="graphics-@i" style="box-shadow:none;">@i</label>
+                                }
+                            </div>
+                        </div>
+                        <div class="rating-part row" id="emotions">
+                            <div class="col-4">Впечатления:</div>
+                            <div class="col-8">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <input type="radio" class="btn-check" name="emotions" id="emotionsRadio-@i" autocomplete="off" value="@i"> @*Оценка впечатлений*@
+                                    <label class="btn btn-primary" for="emotionsRadio-@i" id="emotions-@i" style="box-shadow:none;">@i</label>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @*Комментарий*@
+                    <div class="comment-text-block">
+                        <label for="comment-text" class="col-form-label">Комментарий:</label>
+                        <textarea class="form-control" id="comment-text"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary send" data-bs-dismiss="modal">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
