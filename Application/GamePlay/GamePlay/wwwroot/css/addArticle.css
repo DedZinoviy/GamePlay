@@ -1,0 +1,55 @@
+﻿/*Бэкграунд*/
+.modal-content {
+    background: #242F43;
+}
+
+/*Заголовок*/
+div.container-fluid.header {
+    text-align: center;
+    padding-left: 0;
+}
+
+/*Название статьи*/
+label[for="article-title-input"] {
+    margin: 0;
+}
+
+#article-title-input {
+    margin:0;
+    border-radius: 5px;
+    outline: none;
+}
+
+/*Источник*/
+label[for="article-source-input"] {
+    margin: 0;
+}
+
+#article-source-input {
+    margin: 0;
+    border-radius: 5px;
+    outline:none;
+}
+
+/*Кнопка добавления статьи*/
+button.add-button {
+    margin: auto;
+    background: #273E68;
+    border: none;
+    border-radius: 15px;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+button.btn-close.btn-close-white {
+    margin: 0;
+}
+
+button.btn-close.btn-close-white:focus {
+    box-shadow:none;
+}
+
+/*Выравнивание кнопки закрытия*/
+.modal-header {
+    align-items: start;
+}

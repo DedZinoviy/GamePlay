@@ -1,0 +1,274 @@
+﻿.nav-link {
+    color: white;
+    outline: none;
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    background: none;
+    color: white;
+    border: none;
+    border-bottom: solid;
+    outline: none;
+}
+
+.nav-link:hover {
+    color: #495057;
+    border: none;
+    outline: none;
+}
+
+.nav-link:focus {
+    color: #495057;
+    border: none;
+    outline: none;
+}
+
+.nav-link:not(.active) {
+    border: none;
+}
+
+.nav-tabs {
+    border:none;
+}
+
+.tab-pane {
+    color:white;
+}
+
+.navigation {
+    background: #242F43;
+    padding: 5px;
+    border-radius: 15px;
+    block-size: fit-content;
+}
+
+.card {
+    background: #242F43;
+    padding: 10px;
+    border-radius: 15px;
+    text-indent: 5px;
+}
+
+
+img.img-fluid {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: gray;
+    padding-bottom: 5%;
+    border-radius:5px;
+}
+
+div.image {
+    display:block;
+    content: '';
+    aspect-ratio: 1/1; /*Соотношение сторон картинки (1:1)*/
+}
+
+div.image {
+    position:relative;
+}
+
+div.userName {
+    color: white;
+    text-align: end;
+    font-size: calc( (100vw - 480px)/(1280 - 480) * (24 - 16) + 16px);
+    padding-bottom: 3%
+}
+
+div.userType {
+    text-align: end;
+    font-size: calc( (100vw - 480px)/(1280 - 480) * (15 - 8) + 8px);
+    padding-bottom:3%;
+}
+
+input.btn-primary {
+    background-color: #314364;
+    border-color: #314364;
+}
+
+input.btn-primary:hover {
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+div.lastActivity {
+    text-align: end;
+    font-size: calc( (100vw - 480px)/(1280 - 480) * (15 - 8) + 8px);
+}
+
+/*Личные данные*/
+.form-floating > .form-control {
+    height: calc(2rem + 2px);
+    text-indent: 8px;
+    margin-top: 5px;
+}
+
+button.change {
+    background: url(/Images/edit-2.png) no-repeat;
+    border: none;
+    outline: none;
+    margin-left: 15px;
+}
+
+button.btn-outline-primary {
+    margin-top:5%;
+    color: white;
+    border-color: white;
+}
+
+button.btn-outline-primary:hover {
+    color:gray;
+    border-color:gray;
+    background: none;
+}
+
+button.btn-outline-primary:focus, button.btn-outline-primary:active, button.btn-outline-primary:active:focus {
+    box-shadow:none;
+    outline:none;
+}
+
+/*Статьи*/
+img.article {
+    position:relative;
+    min-width:100%;
+    min-height:100%;
+    background-color: gray;
+    border-radius:15px 0 0 0;
+    margin:0;
+}
+
+p.author, p.source {
+    margin: 0;
+}
+
+div.article {
+    border-radius: 15px;
+    background: #2F3E58;
+    padding:0;
+}
+
+.btn.article:hover {
+    box-shadow: rgba(51, 64, 90, 0.7) 10px 10px 10px 10px inset;
+    border-radius: 15px;
+}
+
+.btn.article:focus {
+    box-shadow: none;
+}
+
+.btn.article {
+    margin:0;
+}
+
+button.addArticle::before {
+    background: url(/Images/plus-circle.png) no-repeat 50% 50%;
+    border: none;
+    outline: none;
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align:middle;
+    margin-bottom:2px;
+}
+
+
+button.addArticle {
+    color: #868686;
+    font-size: 24px;
+    text-align:center;
+    height:32px;
+    margin-bottom:8px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+button.addArticle:focus {
+    box-shadow:none;
+}
+
+button.addArticle {
+    background: #273E68;
+    border-radius: 15px;
+    border: none;
+    margin: auto;
+    width: 80%;
+    margin-top: 10px;
+    align-items: center;
+    padding: 0;
+    height:fit-content;
+    margin-bottom:10px;
+}
+
+button.addArticle:active {
+    box-shadow:none;
+    background: #273E68;
+}
+
+button.addArticle:focus {
+    box-shadow:none;
+    background: #273E68;
+}
+
+button.addArticle:hover > button.addArticle:focus {
+    color: #868686;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+button.addArticle.btn-primary {
+    color: #868686
+}
+
+div.addArticle {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/*Мои отзывы*/
+.card.feedback {
+    background: #242F43;
+    margin: 10px;
+    border: none;
+}
+
+p.feedback {
+    color: white;
+    margin: 0;
+}
+
+span.feedback {
+    color: #808080;
+}
+
+p.commentTitle {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+p.comment {
+    margin: 0;
+    color: #808080;
+}
+
+.card-body.feedback {
+    background: #2D3B55;
+    color: white;
+    border-radius: 10px;
+}
+
+div[id="nav-myFeedbacks"] {
+    overflow-y: auto;
+    max-height: 65vh;
+}
+
+div[id="nav-myFeedbacks"]::-webkit-scrollbar {
+    width:5px;
+}
+
+div[id="nav-myFeedbacks"]::-webkit-scrollbar-thumb {
+    background-color: #2D3B55;
+    border-radius:20px;
+}

@@ -1,0 +1,135 @@
+﻿<link rel="stylesheet" href="~/css/profilepage.css" asp-append-version="true"/>
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="row">
+    <nav class="col-3 navigation"> @*Кнопки навигации*@
+        <div class="nav flex-column nav-tabs" id="nav-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="nav-personalData-tab" data-bs-toggle="tab" data-bs-target="#nav-personalData" type="button" aria-controls="nav-personalData" aria-selected="true">Личные данные</button>
+            <button class="nav-link" id="nav-myFeedbacks-tab" data-bs-toggle="tab" data-bs-target="#nav-myFeedbacks" type="button" aria-controls="nav-myFeedbacks" aria-selected="false">Мои отзывы</button>
+            <button class="nav-link" id="nav-myArticles-tab" data-bs-toggle="tab" data-bs-target="#nav-myArticles" type="button" aria-controls="nav-myArticles" aria-selected="false">Мои статьи</button>
+            <button class="nav-link" id="nav-favoriteGenres-tab" data-bs-toggle="tab" data-bs-target="#nav-favoriteGenres" type="button" aria-controls="nav-favoriteGenres" aria-selected="false">Любимые жанры</button>
+        </div>
+    </nav>
+
+    <div class="col-6"> @*Контент вкладок*@
+        <div class="tab-content card card-body " id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-personalData" role="tabpanel" aria-labelledby="nav-personalData-tab">
+                @*Личные данные*@
+                <div class="personalData">
+                    <form>
+                        <div class="form-floating">
+                            Логин:
+                            <div class="d-flex">
+                                <input type="text" class="form-control" readonly value="Login" style="padding:0;"> @*Нужно в value установить логин*@
+                                <button class="btn change"></button> @*Кнопка изменения*@
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            e-mail:
+                            <div class="d-flex">
+                                <input type="text" class="form-control" readonly value="e-mail" style="padding:0;"> @*Нужно в value установить e-mail*@
+                                <button class="btn change"></button> @*Кнопка изменения*@
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            Имя:
+                            <div class="d-flex">
+                                <input type="text" class="form-control" readonly value="Name" style="padding:0;"> @*Нужно в value установить имя*@
+                                <button class="btn change"></button> @*Кнопка изменения*@
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            Пароль:
+                            <div class="d-flex">
+                                <input type="password" class="form-control" readonly value="Password" style="padding:0;"> @*Нужно в value установить пароль*@
+                                <button class="btn change"></button> @*Кнопка изменения*@
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            <button class="btn btn-outline-primary">Изменить фото</button> @*Кнопка изменения фото*@
+                        </div>
+                        <div class="form-floating">
+                            <button class="btn btn-outline-primary" hidden>Сохранить изменения</button> @*Кнопка сохранения изменений, нужно делать видимой*@
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-myFeedbacks" role="tabpanel" aria-labelledby="nav-myFeedbacks-tab">
+                @*Мои отзывы*@
+                @for (int i = 0; i < 5; i++)
+                {
+                    <div class="card feedback">
+                        <div class="card-body feedback">
+                            <p class="userName">Название игры</p> @*Нужно вставить название игры*@
+                            <p class="feedback">Сюжет: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку сюжета*@
+                            <p class="feedback">Геймплей: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку геймплея*@
+                            <p class="feedback">Графика: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку графики*@
+                            <p class="feedback">Впечатление: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку впечатлений*@
+                            <p class="commentTitle">Комментарий:
+                                <p class="comment">Коментарий</p> @*Нужно вставить комментарий*@
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="tab-pane fade" id="nav-myArticles" role="tabpanel" aria-labelledby="nav-myArticles-tab">
+                @*Мои статьи*@
+                <div class="addArticle">
+                    <button type="button" class="btn btn-primary addArticle" data-bs-toggle="modal" data-bs-target="#add-article-modal">
+                        Добавить статью
+                    </button> @*Кнопка добавления статьи*@
+                    @Html.Partial("AddArticlePartial")
+                </div>
+
+                <div class="row">
+                    @for(int i=0; i<3; i++)
+                    {
+                        <a href="#" class="row btn article"> @*Нужно вставить ссылку на новость*@
+                            <div class="card article text-white">
+                                <div class="row">
+                                    <div class="col-6" style="padding-left: 6px;">
+                                        <img src="" class="img-fluid article"> @*Нужно вставить изображение*@
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <p class="author">Автор: name</p> @*Нужно вставить автора*@
+                                        <p class="source text-truncate">Источник: source</p> @*Нужно вставить источник*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="card-title text center text-truncate">name</h5> @*Нужно вставить название статьи*@
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-favoriteGenres" role="tabpanel" aria-labelledby="nav-favoriteGenres-tab">
+                @*Любимые жанры*@
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3 text-white">
+        <div class="image">
+            <img src="" class="img-fluid"/> @*Нужно вставить фото профиля*@
+        </div>
+        <div class="userName">
+            FirstName SecondName @*Нужно вставить имя и фамилию*@
+        </div>
+        <div class="userType">
+            Тип пользователя: обычный @*Нужно вставить тип пользователя*@
+            <input type="button" class="verification  btn btn-primary" value="Подать на верификацию"  onclick="this.blur()"> @*Кнопка подачи на верификацию*@
+        </div>
+        <div class="lastActivity">
+            Последняя активность: 00.00.0000 @*Нужно вставить последнюю активность*@
+        </div>
+    </div>
+ </div>
+
+
