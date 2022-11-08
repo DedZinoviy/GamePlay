@@ -1,5 +1,7 @@
 ﻿<link rel="stylesheet" href="~/css/profilepage.css" asp-append-version="true"/>
 
+@model UserViewModel;
+
 @{
     ViewData["Title"] = "Profile";
 }
@@ -23,14 +25,14 @@
                         <div class="form-floating">
                             Логин:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="Login" style="padding:0;"> @*Нужно в value установить логин*@
+                                <input type="text" class="form-control" readonly value="@Model.User.Login" style="padding:0;"> @*Нужно в value установить логин*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
                         <div class="form-floating">
                             e-mail:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="e-mail" style="padding:0;"> @*Нужно в value установить e-mail*@
+                                <input type="text" class="form-control" readonly value="@Model.User.Email" style="padding:0;"> @*Нужно в value установить e-mail*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
@@ -44,7 +46,7 @@
                         <div class="form-floating">
                             Пароль:
                             <div class="d-flex">
-                                <input type="password" class="form-control" readonly value="Password" style="padding:0;"> @*Нужно в value установить пароль*@
+                                <input type="password" class="form-control" readonly value="@Model.User.Password" style="padding:0;"> @*Нужно в value установить пароль*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>

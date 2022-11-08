@@ -1,7 +1,8 @@
 ﻿<link rel="stylesheet" href="/css/gamepage.css" asp-append-version="true">
-@model Game
+@model GamePlay.Models.GameViewModel
 @{
-    ViewData["Title"] = "Game";
+    ViewData["Title"] = "Page";
+    Context.Request.Cookies.TryGetValue("iduser", out string? iduser);
 }
 
 <div class="gameContent">
@@ -11,15 +12,15 @@
             
             
             <div class="col-6">
-                <h1 class="gameName d-inline-block row-cols-1">@Model.Title</h1> @*Нужно вставить название игры*@    
+                <h1 class="gameName d-inline-block row-cols-1">@Model.Game.Title</h1> @*Нужно вставить название игры*@    
                 @*Изображения*@
                 <section class="images">
                     <div id="imagesCarousel" class="carousel slide container" data-bs-ride="carousel" style="padding:0;">
                         
                         <div class="carousel-inner">
-                            @foreach(var img in Model.Images)
+                        @foreach (var img in Model.Game.Images)
                             {
-                                @if (img == Model.Images.First())
+                            @if (img == Model.Game.Images.First())
                                 {
                                     <div class="carousel-item active">
                                         <img src="@img.Source" alt="/Images/defImg.png" class="d-block image"> @*Нужно вставить ссылки на изображения*@
@@ -46,18 +47,18 @@
                         
 
                         <div class="carousel-indicators" style="margin-bottom: 0;">
-                            @for(int i=0; i<Model.Images.Count(); i++)
+                        @for (int i = 0; i < Model.Game.Images.Count(); i++)
                             {
                                 @if (i == 0)
                                 {
                                     <button type="button" class="active" data-bs-target="#imagesCarousel" data-bs-slide-to="@i" aria-current="true" aria-label="Slide @i" style="width: 100px; height:auto;">
-                                        <img class="d-block w-100 img-fluid indicators" src="@Model.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
+                                    <img class="d-block w-100 img-fluid indicators" src="@Model.Game.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
                                     </button>
                                 }
                                 else
                                 {
                                     <button type="button" data-bs-target="#imagesCarousel" data-bs-slide-to="@i" aria-current="true" aria-label="Slide @i" style="width: 100px; height:auto;">
-                                        <img class="d-block w-100 img-fluid indicators" src="@Model.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
+                                    <img class="d-block w-100 img-fluid indicators" src="@Model.Game.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
                                     </button>
                                 }
                             }
@@ -67,7 +68,7 @@
 
                 @*Описание*@
                 <div class="description">
-                    <p>@Model.Annotation</p> @*Нужно вставить описание игры*@
+                <p>@Model.Game.Annotation</p> @*Нужно вставить описание игры*@
                 </div>
             </div>
 
@@ -85,40 +86,45 @@
                         <div class="tab-pane fade show active" id="nav-systemRequirements" role="tabpanel" aria-labelledby="nav-systemRequirements-tab">
                             <p class="text-white systemRequirementsTitle">Минимальные:</p> 
                             <p class="systemRequirements">
-                                <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Minimum?.OS</span></p> 
-                                <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Minimum?.Processor</span></p>
-                                <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Minimum?.Memory</span></p>
-                                <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Minimum?.Graphics_Card</span></p>
-                                <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Minimum?.HDD_Space</span></p>
+                        <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Game.Minimum?.OS</span></p>
+                        <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Game.Minimum?.Processor</span></p>
+                        <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Game.Minimum?.Memory</span></p>
+                        <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Game.Minimum?.Graphics_Card</span></p>
+                        <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Game.Minimum?.HDD_Space</span></p>
                             </p> @*Нужно вставить системные требования*@
                             <p class="text-white systemRequirementsTitle">Рекомендуемые:</p>
                             <p class="systemRequirements">
-                                <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Recomended?.OS</span></p>
-                                <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Recomended?.Processor</span></p>
-                                <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Recomended?.Memory</span></p>
-                                <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Recomended?.Graphics_Card</span></p>
-                                <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Recomended?.HDD_Space</span></p>
+                        <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Game.Recomended?.OS</span></p>
+                        <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Game.Recomended?.Processor</span></p>
+                        <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Game.Recomended?.Memory</span></p>
+                        <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Game.Recomended?.Graphics_Card</span></p>
+                        <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Game.Recomended?.HDD_Space</span></p>
                             </p> @*Нужно вставить системные требования*@
                         </div>
                         <div class="tab-pane fade" id="nav-feedbacks" role="tabpanel" aria-labelledby="nav-feedbacks-tab">
+                           @if (iduser != null && !Model.Game.Ratings.Any(r => r.User.Iduser == int.Parse(iduser)))
+                           {
                             <button type="button" class="btn btn-primary addFeedback card" data-bs-toggle="modal" data-bs-target="#add-feedback-modal">
                                 Добавить отзыв
                             </button>
-                               
-
                             @Html.Partial("AddFeedbackPartial")
-                            @for (int i = 0; i < 5; i++)
+                           }
+
+                        @foreach (var rating in Model.Game.Ratings)
                             {
                                 <div class="card feedback">
                                     <div class="card-body feedback">
-                                        <p class="userName">Имя пользователя</p> @*Нужно вставить имя пользователя*@
-                                        <p class="feedback">Сюжет: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку сюжета*@
-                                        <p class="feedback">Геймплей: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку геймплея*@
-                                        <p class="feedback">Графика: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку графики*@
-                                        <p class="feedback">Впечатление: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку впечатлений*@
-                                        <p class="commentTitle">Комментарий:
-                                            <p class="comment">Коментарий</p> @*Нужно вставить комментарий*@
-                                        </p>
+                                        <p class="userName">@rating.User.Login</p> @*Нужно вставить имя пользователя*@
+                                        <p class="feedback">Сюжет: <span class="feedback">@rating.Plot ☆</span></p> @*Нужно вставить оценку сюжета*@
+                                        <p class="feedback">Геймплей: <span class="feedback">@rating.Gameplay ☆</span></p> @*Нужно вставить оценку геймплея*@
+                                        <p class="feedback">Графика: <span class="feedback">@rating.Graphics ☆</span></p> @*Нужно вставить оценку графики*@
+                                        <p class="feedback">Впечатление: <span class="feedback">@rating.Emotions ☆</span></p> @*Нужно вставить оценку впечатлений*@
+                                        @if (rating.Comment != null)
+                                        {
+                                            <p class="commentTitle">Комментарий:
+                                                <p class="comment">@rating.Comment</p> @*Нужно вставить комментарий*@
+                                            </p>
+                                        }
                                     </div>
                                 </div>
                             }

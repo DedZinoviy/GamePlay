@@ -1,4 +1,6 @@
-﻿namespace GamePlay.Models
+﻿using GamePlay.Models.BbModels;
+
+namespace GamePlay.Models
 {
     public class IndexViewModel
     {

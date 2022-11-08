@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GamePlay.Models
+namespace GamePlay.Models.BbModels
 {
     /// <summary>
     /// Класс, описывающий модель жанра в БД.

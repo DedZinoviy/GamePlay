@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Scaffolding.Shared.Project;
 using System.Linq.Expressions;
+using GamePlay.Models.BbModels;
 
 namespace GamePlay.Controllers
 {
@@ -21,7 +22,7 @@ namespace GamePlay.Controllers
         {
             _context = context;
         }
-               
+
         [HttpGet]
         public IActionResult Index(IndexViewModel model)
         {
@@ -34,9 +35,9 @@ namespace GamePlay.Controllers
             if (model.Studios.Count == 0)
                 model.Set(_context.studios.ToList());
 
-            List<Genre> genres = model.GetSelectedGenres();
-            List<Platform> platforms = model.GetSelectedPlatforms();
-            List<Studio> studios = model.GetSelectedStudios();
+            List<Genre> genres = model.GetSelectedGenres().FindAll(g => g != null);
+            List<Platform> platforms = model.GetSelectedPlatforms().FindAll(p => p != null);
+            List<Studio> studios = model.GetSelectedStudios().FindAll(s => s != null);
 
             IQueryable<Game> games = _context.games
                 .Include(g => g.Genres)
@@ -55,13 +56,13 @@ namespace GamePlay.Controllers
                     Publisher = g.Publisher
                 });
 
-            if (genres.Any(g => g != null))
+            if (genres.Count != 0)
                 games = games.Where(g => g.Genres.Any(g => genres.Contains(g)));
             
-            if (platforms.Any(p => p != null))
+            if (platforms.Count != 0)
                 games = games.Where(g => g.Platforms.Any(p => platforms.Contains(p)));
             
-            if (studios.Any(s => s != null))
+            if (studios.Count != 0)
                 games = games.Where(g => studios.Contains(g.Studio) || studios.Contains(g.Publisher));
 
             model.Games = games.ToList();
@@ -73,21 +74,7 @@ namespace GamePlay.Controllers
         {
             return View();
         }
-        public IActionResult Game(int id)
-        {
-            Game game = _context.games
-                        .Include(g => g.Images)
-                        .Include(g => g.Genres)
-                        .Include(g => g.Platforms)
-                        .Include(g => g.Minimum)
-                        .Include(g => g.Recomended)
-                        .Include(g => g.Studio)
-                        .Include(g => g.Publisher)
-                        .First(x => x.Idgame == id);
-
-            return View(game);
-        }
-
+        
         public async Task<IActionResult> News()
         {
             News news = new News();
@@ -110,7 +97,7 @@ namespace GamePlay.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Profile()
+        public IActionResult Login()
         {
             return View();
         }

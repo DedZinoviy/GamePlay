@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GamePlay.Models
+namespace GamePlay.Models.BbModels
 {
     public class News
     {

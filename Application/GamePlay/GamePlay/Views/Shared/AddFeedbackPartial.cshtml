@@ -1,19 +1,19 @@
 ﻿<link rel="stylesheet" href="~/css/addFeedback.css">
-
+@model GameViewModel;
 
 <div class="modal fade" id="add-feedback-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addFeedbackModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+            <form asp-action="AddRating" asp-controller="Games" method="post">
             <div class="modal-header">
                 <div class="container-fluid header">
                     <h5 class="modal-title">Новый отзыв</h5>
-                    <h5 class="modal-title" id="game-name">Игра: Название игры</h5> @*Нужно вставить название игры*@
+                    <h5 class="modal-title" id="game-name">Игра: @Model.Game.Title</h5> @*Нужно вставить название игры*@
                 </div>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
             </div>
-
+            
             <div class="modal-body">
-                <form>
                     <div class="rating">
                         Оценки:
                         <div class="rating-part row" id="plot">
@@ -21,7 +21,7 @@
                             <div class="col-8">
                                 @for (int i=1; i<=5; i++)
                                 {
-                                    <input type="radio" class="btn-check" name="plot" id="plotRadio-@i" autocomplete="off"> @*Оценка сюжета*@
+                                    <input type="radio" class="btn-check" id="plotRadio-@i" autocomplete="off" asp-for="@Model.Rating.Plot" value="@i"> @*Оценка сюжета*@
                                     <label class="btn btn-primary" for="plotRadio-@i" id="plot-@i" style="box-shadow:none;">@i</label>
                                 }
                             </div>
@@ -31,7 +31,7 @@
                             <div class="col-8">
                                 @for (int i = 1; i <= 5; i++)
                                 {
-                                    <input type="radio" class="btn-check" name="gameplay" id="gameplayRadio-@i" autocomplete="off" value="@i"> @*Оценка геймплея*@
+                                    <input type="radio" class="btn-check" id="gameplayRadio-@i" autocomplete="off" asp-for="@Model.Rating.Gameplay" value="@i"> @*Оценка геймплея*@
                                     <label class="btn btn-primary" for="gameplayRadio-@i" id="gameplay-@i" style="box-shadow:none;">@i</label>
                                 }
                             </div>
@@ -41,7 +41,7 @@
                             <div class="col-8">
                                 @for (int i = 1; i <= 5; i++)
                                 {
-                                    <input type="radio" class="btn-check" name="graphics" id="graphicsRadio-@i" autocomplete="off" value="@i"> @*Оценка графики*@
+                                    <input type="radio" class="btn-check" id="graphicsRadio-@i" autocomplete="off" asp-for="@Model.Rating.Graphics" value="@i"> @*Оценка графики*@
                                     <label class="btn btn-primary" for="graphicsRadio-@i" id="graphics-@i" style="box-shadow:none;">@i</label>
                                 }
                             </div>
@@ -51,7 +51,7 @@
                             <div class="col-8">
                                 @for (int i = 1; i <= 5; i++)
                                 {
-                                    <input type="radio" class="btn-check" name="emotions" id="emotionsRadio-@i" autocomplete="off" value="@i"> @*Оценка впечатлений*@
+                                    <input type="radio" class="btn-check" id="emotionsRadio-@i" autocomplete="off" asp-for="@Model.Rating.Emotions" value="@i"> @*Оценка впечатлений*@
                                     <label class="btn btn-primary" for="emotionsRadio-@i" id="emotions-@i" style="box-shadow:none;">@i</label>
                                 }
                             </div>
@@ -62,14 +62,15 @@
                     @*Комментарий*@
                     <div class="comment-text-block">
                         <label for="comment-text" class="col-form-label">Комментарий:</label>
-                        <textarea class="form-control" id="comment-text"></textarea>
+                        <textarea class="form-control" id="comment-text" asp-for="@Model.Rating.Comment"></textarea>
+                        <input type="hidden" asp-for="@Model.Game.Idgame" value="@Model.Game.Idgame">
                     </div>
-                </form>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary send" data-bs-dismiss="modal">Отправить</button>
+                <button type="submit" class="btn btn-primary send" data-bs-dismiss="modal">Отправить</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

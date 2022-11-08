@@ -1,0 +1,59 @@
+﻿<link rel="stylesheet" href="/css/registerpage.css" asp-append-version="true">
+<link rel="import" href="../Areas/Identity/Pages/Account/Register.cshtml">
+
+@model GamePlay.Models.UserViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+
+<div class="card col-lg-4 col-12 col-md-6">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link registerLoginSwitch" asp-action="Login" asp-controller="Profile">Вход</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active registerLoginSwitch" aria-current="true">Регистрация</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="text-white">
+            <section>
+                <form id="registerForm" method="post">
+                    <p>Создание нового аккаунта</p>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating">
+                        Логин
+                        <input asp-for="User.Login" class="form-control" autocomplete="username" aria-required="true" style="padding:0;" />
+                        <span asp-validation-for="User.Login" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating">
+                        Почта
+                        <input asp-for="User.Email" class="form-control" autocomplete="email" aria-required="true" style="padding:0;" />
+                        <span asp-validation-for="User.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating">
+                        Пароль
+                        <input asp-for="User.Password" class="form-control" autocomplete="new-password" aria-required="true" style="padding:0;" />
+                        <span asp-validation-for="User.Password" class="text-danger"></span>
+                    </div>
+                    @if (Model.ErrorMessage != null)
+                    {
+                        <p>@Model.ErrorMessage</p>
+                    }
+                    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary register">Зарегистрироваться</button>
+                    <div>
+                        <p>
+                            <a class="loginLink" asp-action="Login" asp-controller="Profile">Войти?</a>
+                        </p>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

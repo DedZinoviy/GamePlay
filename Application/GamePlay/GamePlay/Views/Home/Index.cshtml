@@ -125,9 +125,9 @@
     <div class="col-9">
         @*Карточки*@
         <div class="row row-cols-1 row-cols-md-4 g-4">
-                    @foreach(var game in Model.Games)
+            @foreach(var game in Model.Games)
                     {
-                    <a asp-action="Game" asp-controller="Home" asp-route-id="@game.Idgame" class="col btn"> @*Нужно вставить ссылку на страницу с игрой*@
+                    <a asp-action="Page" asp-controller="Games" asp-route-id="@game.Idgame" class="col btn"> @*Нужно вставить ссылку на страницу с игрой*@
                         <div class="card h-100 text-white">
                               <img class="card-img-top" src="@game.Main_Image?.Source">@*Нужно всавить ссылку на картинку*@
                               <div class="card-body">

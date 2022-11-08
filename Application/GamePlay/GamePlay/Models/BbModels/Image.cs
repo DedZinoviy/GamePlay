@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GamePlay.Models
+namespace GamePlay.Models.BbModels
 {
     [Table("images")]
     public class Image

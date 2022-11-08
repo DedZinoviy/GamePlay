@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GamePlay.Models
+namespace GamePlay.Models.BbModels
 {
     /// <summary>
     /// Класс, опиывающий модель записи об игре.
@@ -27,13 +27,15 @@ namespace GamePlay.Models
         /// <summary>
         /// Дата выпуска (релиза) игры.
         /// </summary>
-        public DateTime Release_date    { get; set; }
+        public DateTime Release_date { get; set; }
 
         public List<Image> Images { get; set; } = new List<Image>();
 
         public List<Genre> Genres { get; set; } = new List<Genre>();
 
         public List<Platform> Platforms { get; set; } = new List<Platform>();
+
+        public List<Rating> Ratings { get; set; } = new List<Rating>();
 
         [ForeignKey("idminimum")]
         public Requirements? Minimum { get; set; }

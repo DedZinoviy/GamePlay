@@ -1,4 +1,4 @@
-﻿using GamePlay.Models;
+﻿using GamePlay.Models.BbModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +25,7 @@ namespace GamePlay.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(
-                "",
+                "server=localhost;user=root;password=0000;database=game_play_db;",
                 new MySqlServerVersion(new Version(8, 0, 11))
             );
         }
@@ -37,9 +37,11 @@ namespace GamePlay.Data
             modelBuilder.Entity<Requirements>().ToTable("requirements");
             modelBuilder.Entity<Studio>().ToTable("studios");
             modelBuilder.Entity<Platform>().ToTable("platforms");
+            modelBuilder.Entity<Rating>().ToTable("ratings");
 
             modelBuilder.Entity<GenreGames>().HasKey(gg => new { gg.IdGenre, gg.IdGame });
             modelBuilder.Entity<PlatformGames>().HasKey(pg => new { pg.Idplatform, pg.Idgame });
+            modelBuilder.Entity<Rating>().HasKey(r => new { r.Iduser, r.Idgame });
 
             modelBuilder.Entity<Game>()
                 .HasMany(g => g.Images)
@@ -55,6 +57,16 @@ namespace GamePlay.Data
                 .HasMany(g => g.Platforms)
                 .WithMany(p => p.Games)
                 .UsingEntity<PlatformGames>();
+
+            modelBuilder.Entity<Game>()
+                .HasMany(g => g.Ratings)
+                .WithOne(r => r.Game)
+                .HasForeignKey(r => r.Idgame);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Ratings)
+                .WithOne(r => r.User)
+                .HasForeignKey(r => r.Iduser);
         }
     }
 }

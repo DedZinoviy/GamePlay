@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GamePlay.Models
+namespace GamePlay.Models.BbModels
 {
     /// <summary>
     /// Класс, описывающий модель пользователя приложения.
@@ -23,7 +23,7 @@ namespace GamePlay.Models
         /// Пароль пользователя для входа в систему.
         /// </summary>
         public string Password { get; set; }
-        
+
         /// <summary>
         /// Электронная почта пользователя прилошения.
         /// </summary>
@@ -38,6 +38,8 @@ namespace GamePlay.Models
         /// Флаг, обозначающий верифицированных пользователей.
         /// </summary>
         public int isVerificied { get; set; }
+
+        public List<Rating> Ratings { get; set; } = new List<Rating>();
 
     }
 }
