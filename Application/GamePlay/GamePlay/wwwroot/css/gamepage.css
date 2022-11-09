@@ -32,7 +32,7 @@ img.indicators {
 .card {
     background: #242F43;
     color: white;
-    border-radius: 0;
+    border-radius: 5px;
 }
 
 div[id="nav-feedbacks"] {
@@ -149,3 +149,55 @@ button.addFeedback:hover > button.addFeedback:focus {
     background-color: #0b5ed7;
     border-color: #0a58ca;
 }
+
+/*Имя пользователя*/
+p.userName {
+    font-size:24px;
+}
+
+/*Средняя оценка*/
+span.rating {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #808080;
+}
+
+/*Навигация меню справа*/
+nav.navigation {
+    background: #242F43;
+    block-size:fit-content;
+    border:none;
+    padding: 5px;
+    border-radius:5px;
+}
+
+.nav-tabs {
+    border:none;
+}
+
+/*Карточка общего меню справа*/
+.right-menu-card {
+    border:  solid #293244;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+div.col-8.info {
+    padding-left: 0;
+}
+
+/*Основная информация*/
+p.main-info {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span.main-info {
+    color: #808080;
+}
+
+/*Выравнивание текста на навигационном меню справа*/
+button.nav-link {
+    text-align:end;
+}
+
