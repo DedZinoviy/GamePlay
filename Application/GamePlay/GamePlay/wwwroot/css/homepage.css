@@ -93,3 +93,19 @@ input.btn-primary:hover {
 .filters {
     margin-top: 6px;
 }
+
+/*Скролбар для фильтров*/
+
+div[id="filtersPanel"] {
+    overflow-y:auto;
+    max-height:65vh;
+}
+
+div[id="filtersPanel"]::-webkit-scrollbar {
+    width: 5px;
+}
+
+div[id="filtersPanel"]::-webkit-scrollbar-thumb {
+    background-color: #2D3B55;
+    border-radius: 20px;
+}
