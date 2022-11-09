@@ -2,6 +2,10 @@
     color:white;
 }
 
+h1.gameName {
+    margin-bottom: 1rem;
+}
+
 img.image {
     max-height:100%;
     max-width:100%;
@@ -27,6 +31,8 @@ img.indicators {
 
 .description {
     color: white;
+    margin-top: 1rem;
+    text-align: justify;
 }
 
 .card {
@@ -164,7 +170,6 @@ span.rating {
 
 /*Навигация меню справа*/
 nav.navigation {
-    background: #242F43;
     block-size:fit-content;
     border:none;
     padding: 5px;
@@ -177,7 +182,6 @@ nav.navigation {
 
 /*Карточка общего меню справа*/
 .right-menu-card {
-    border:  solid #293244;
     padding: 5px;
     border-radius: 8px;
 }
@@ -198,6 +202,7 @@ span.main-info {
 
 /*Выравнивание текста на навигационном меню справа*/
 button.nav-link {
-    text-align:end;
+    text-align: left;
+    padding-left: 0;
 }
 

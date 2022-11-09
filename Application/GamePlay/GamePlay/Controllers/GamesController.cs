@@ -52,7 +52,7 @@ namespace GamePlay.Controllers
                 _context.games.First(g => g.Idgame == gameView.Game.Idgame).Ratings.Add(rating);
                 _context.SaveChanges();
                 
-                return Redirect($"./Page?id={gameView.Game.Idgame}");
+                return Redirect($"./Page/{gameView.Game.Idgame}");
             }
             return RedirectToAction(actionName: "Login", controllerName: "Profile");
             
