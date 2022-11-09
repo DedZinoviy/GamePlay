@@ -29,7 +29,7 @@ input[type="search"] {
     text-indent: 8px;
 }
 
-button[type="submit"] {
+button[id="search-button"] {
     border: none;
     outline: none;
     width: 38px;
@@ -40,7 +40,7 @@ button[type="submit"] {
     border-radius: 0 10px 10px 0
 }
 
-button[type="submit"]:hover, button[type="submit"]:active {
+button[id="search-button"]:hover, button[id="search-button"]:active {
     background-color: #222B3D;
     outline: none;
     box-shadow: none;
@@ -48,7 +48,7 @@ button[type="submit"]:hover, button[type="submit"]:active {
     border-radius: 0 10px 10px 0
 }
 
-button[type="submit"]:focus, input[type="search"]:focus {
+button[id="search-button"]:focus, input[type="search"]:focus {
         outline: none !important;
         box-shadow: none !important;
         border: none !important ;
