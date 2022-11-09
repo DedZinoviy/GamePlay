@@ -24,5 +24,11 @@ namespace GamePlay.Models.BbModels
         public int Emotions { get; set; } = 5;
 
         public string? Comment { get; set; }
+
+        [NotMapped]
+        public float Middle 
+        {
+            get { return (Plot + Gameplay + Graphics + Emotions) / 4f; }
+        }
     }
 }

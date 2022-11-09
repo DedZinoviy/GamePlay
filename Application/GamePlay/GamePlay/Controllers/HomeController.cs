@@ -44,6 +44,7 @@ namespace GamePlay.Controllers
                 .Include(g => g.Platforms)
                 .Include(g => g.Studio)
                 .Include(g => g.Publisher)
+                .Include(g => g.Ratings)
                 .Select(g => new Game()
                 {
                     Idgame = g.Idgame,
@@ -53,8 +54,11 @@ namespace GamePlay.Controllers
                     Genres = g.Genres,
                     Platforms = g.Platforms,
                     Studio = g.Studio,
-                    Publisher = g.Publisher
-                });
+                    Publisher = g.Publisher,
+                    Ratings = g.Ratings
+
+                })
+                .Where(g => g.Release_date.Year >= model.MinimumYear && g.Release_date.Year <= model.MaximumYear);
 
             if (genres.Count != 0)
                 games = games.Where(g => g.Genres.Any(g => genres.Contains(g)));
@@ -65,7 +69,7 @@ namespace GamePlay.Controllers
             if (studios.Count != 0)
                 games = games.Where(g => studios.Contains(g.Studio) || studios.Contains(g.Publisher));
 
-            model.Games = games.ToList();
+            model.Games = games.ToList().FindAll(g => g.MiddleRate >= model.MinimumRate && g.MiddleRate <= model.MaximumRate);
 
             return View(model);
         }

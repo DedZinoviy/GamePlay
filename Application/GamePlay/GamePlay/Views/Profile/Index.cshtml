@@ -61,20 +61,26 @@
             </div>
             <div class="tab-pane fade" id="nav-myFeedbacks" role="tabpanel" aria-labelledby="nav-myFeedbacks-tab">
                 @*Мои отзывы*@
-                @for (int i = 0; i < 5; i++)
+                @foreach(var rating in Model.User.Ratings)
                 {
+                <a asp-action="Page" asp-controller="Games" asp-route-id="@rating.Idgame">
                     <div class="card feedback">
                         <div class="card-body feedback">
-                            <p class="userName">Название игры</p> @*Нужно вставить название игры*@
-                            <p class="feedback">Сюжет: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку сюжета*@
-                            <p class="feedback">Геймплей: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку геймплея*@
-                            <p class="feedback">Графика: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку графики*@
-                            <p class="feedback">Впечатление: <span class="feedback">Оценка ☆</span></p> @*Нужно вставить оценку впечатлений*@
-                            <p class="commentTitle">Комментарий:
-                                <p class="comment">Коментарий</p> @*Нужно вставить комментарий*@
-                            </p>
+                            <p class="userName">@rating.Game.Title</p> @*Нужно вставить название игры*@
+                            <p class="feedback">Средняя <span class="feedback">@rating.Middle ☆</span></p>
+                            <p class="feedback">Сюжет: <span class="feedback">@rating.Plot ☆</span></p> @*Нужно вставить оценку сюжета*@
+                            <p class="feedback">Геймплей: <span class="feedback">@rating.Gameplay ☆</span></p> @*Нужно вставить оценку геймплея*@
+                            <p class="feedback">Графика: <span class="feedback">@rating.Graphics ☆</span></p> @*Нужно вставить оценку графики*@
+                            <p class="feedback">Впечатление: <span class="feedback">@rating.Emotions ☆</span></p> @*Нужно вставить оценку впечатлений*@
+                            @if (rating.Comment != null)
+                            {
+                                <p class="commentTitle">Комментарий:
+                                    <p class="comment">@rating.Comment</p> @*Нужно вставить комментарий*@
+                                </p>
+                            }
                         </div>
                     </div>
+                </a>
                 }
 
             </div>

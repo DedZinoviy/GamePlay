@@ -51,5 +51,23 @@ namespace GamePlay.Models.BbModels
 
         [ForeignKey("idpublisher")]
         public Studio? Publisher { get; set; }
+
+        [NotMapped]
+        public bool HasSystemRequirments 
+        {
+            get { return Minimum != null; }
+        }
+
+        [NotMapped]
+        public float MiddleRate
+        {
+            get
+            {
+                float rate = 0;
+                if (Ratings.Count != 0)
+                    rate = Ratings.Sum(r => r.Middle) / Ratings.Count;
+                return rate;
+            }
+        }
     }
 }

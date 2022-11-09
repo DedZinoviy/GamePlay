@@ -18,6 +18,29 @@ USE `game_play_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `__efmigrationshistory`
+--
+
+DROP TABLE IF EXISTS `__efmigrationshistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `__efmigrationshistory` (
+  `MigrationId` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ProductVersion` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MigrationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `__efmigrationshistory`
+--
+
+LOCK TABLES `__efmigrationshistory` WRITE;
+/*!40000 ALTER TABLE `__efmigrationshistory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `__efmigrationshistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `games`
 --
 
@@ -26,8 +49,8 @@ DROP TABLE IF EXISTS `games`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `games` (
   `idgame` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `annotation` longtext COLLATE utf8mb4_general_ci,
+  `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `annotation` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `release_date` date NOT NULL,
   `idstudio` int NOT NULL,
   `idpublisher` int NOT NULL,
@@ -68,7 +91,7 @@ DROP TABLE IF EXISTS `genres`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `genres` (
   `idgenre` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idgenre`),
   UNIQUE KEY `genres_name_idx` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -147,10 +170,10 @@ DROP TABLE IF EXISTS `news`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(80) COLLATE utf8mb4_general_ci NOT NULL,
+  `title` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `iduser` int NOT NULL,
   `date` datetime NOT NULL,
-  `source` text COLLATE utf8mb4_general_ci NOT NULL,
+  `source` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_from_ver_users` (`iduser`),
   CONSTRAINT `fk_from_ver_users` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
@@ -176,7 +199,7 @@ DROP TABLE IF EXISTS `password_log`;
 CREATE TABLE `password_log` (
   `idpassword_log` int NOT NULL AUTO_INCREMENT,
   `iduser` int DEFAULT NULL,
-  `oldpassword` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `oldpassword` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idpassword_log`),
   KEY `fk_password_log_to_user` (`iduser`),
   CONSTRAINT `fk_password_log_to_user` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
@@ -257,7 +280,7 @@ CREATE TABLE `ratings` (
   `gameplay` int NOT NULL,
   `graphics` int NOT NULL,
   `emotions` int NOT NULL,
-  `comment` text COLLATE utf8mb4_general_ci,
+  `comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`idgame`,`iduser`),
   KEY `idfilm_idx` (`idgame`),
   KEY `iduser_idy` (`iduser`),
@@ -272,6 +295,7 @@ CREATE TABLE `ratings` (
 
 LOCK TABLES `ratings` WRITE;
 /*!40000 ALTER TABLE `ratings` DISABLE KEYS */;
+INSERT INTO `ratings` VALUES (14156,1,5,5,5,5,'Puska!!!!'),(14155,2,5,5,5,5,NULL),(14155,3,2,2,2,2,NULL),(14156,3,4,5,4,5,NULL),(14155,4,3,5,2,4,NULL),(14155,7,5,5,5,5,NULL),(14155,14,1,1,1,1,'НЕТ НА ПК!!!!');
 /*!40000 ALTER TABLE `ratings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,8 +365,8 @@ DROP TABLE IF EXISTS `studios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `studios` (
   `idstudio` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-  `information` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `information` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idstudio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -366,16 +390,16 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `iduser` int NOT NULL AUTO_INCREMENT,
-  `login` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `login` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `birth_date` date DEFAULT '0001-01-01',
   `isVerificied` tinyint DEFAULT NULL,
-  `avatar` text COLLATE utf8mb4_general_ci,
+  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`iduser`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14158 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -384,7 +408,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (14155,'aboba','12345','abob.net','2009-09-09',0,NULL);
+INSERT INTO `users` VALUES (14155,'aboba','12345','abob.net','2009-09-09',0,NULL),(14156,'dimon','222','dimon@Mail.com','0001-01-01',0,NULL),(14157,'dedzinoviy','dedperded','12345.ded','0001-01-01',0,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -397,4 +421,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-06 19:56:01
+-- Dump completed on 2022-11-09 14:33:40

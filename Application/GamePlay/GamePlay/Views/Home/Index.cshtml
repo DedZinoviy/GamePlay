@@ -3,8 +3,8 @@
 @model IndexViewModel
 @{
     ViewData["Title"] = "Home Page";
-    String[] FilterNames = { "Жанр", "Платформа", "Студии", "Дата выхода" };
-    String[] FilterId = { "genre", "studio", "platform", "out-date" };
+    String[] FilterNames = { "Жанр", "Платформа", "Студии", "Дата выхода", "Оценка игроков" };
+    String[] FilterId = { "genre", "studio", "platform", "out-date", "user-rate" };
 }
 
 
@@ -106,12 +106,34 @@
                     <div id="filtersPanel-collapse-3" class="accordion-collapse collapse" aria-labelledby="@FilterId[3]-header">
                         <div class="accordion-body">
                             <div class="genre">
-                                        <div class="out-date">
-                                            Год с:
-                                            <input class="form-control" type="number" id="start-date" min="1999" max="2022"> @*Дата начала, нужно также вставить минимальный и максимальный год*@
-                                            Год по:
-                                            <input class="form-control" type="number" id="end-date" min="1999" max="2022"> @*Дата окончания, нужно также вставить минимальный и максимальный год*@
-                                        </div>
+                                <div class="out-date">
+                                    Год с:
+                                    <input asp-for="@Model.MinimumYear" class="form-control" type="number" id="start-date" min="1900" max="2100"> @*Дата начала, нужно также вставить минимальный и максимальный год*@
+                                    Год по:
+                                    <input asp-for="@Model.MaximumYear" class="form-control" type="number" id="end-date" min="1900" max="2100"> @*Дата окончания, нужно также вставить минимальный и максимальный год*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*Оценка*@
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="@FilterId[4]-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersPanel-collapse-4" aria-expanded="true" aria-controls="filtersPane-collapse-4">
+                                @FilterNames[4]
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="filtersPanel-collapse-4" class="accordion-collapse collapse" aria-labelledby="@FilterId[4]-header">
+                        <div class="accordion-body">
+                            <div class="genre">
+                                <div class="user-rate">
+                                    Минимум
+                                    <input asp-for="@Model.MinimumRate" class="form-control" type="number" id="start-date" min="0" max="5"> @*Дата начала, нужно также вставить минимальный и максимальный год*@
+                                    Максимум
+                                    <input asp-for="@Model.MaximumRate" class="form-control" type="number" id="end-date" min="0" max="5"> @*Дата окончания, нужно также вставить минимальный и максимальный год*@
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,7 +161,7 @@
                                             <p class="card-text year text-start">@game.Release_date.Year</p> @*Нужно вставить год игры*@
                                         </div>
                                         <div class="col">
-                                            <p class="card-text rating text-end">rating</p> @*Нужно вставить оценку игры*@
+                                            <p class="card-text rating text-end">@game.MiddleRate ☆</p> @*Нужно вставить оценку игры*@
                                         </div>
                                   </div>
                               </div>

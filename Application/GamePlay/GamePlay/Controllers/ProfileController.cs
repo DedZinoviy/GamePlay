@@ -65,7 +65,12 @@ namespace GamePlay.Controllers
             if (Request.Cookies.TryGetValue("iduser", out string? iduser))
             {
                 int id = int.Parse(iduser);
-                User user = _context.users.First(u => u.Iduser == id);
+                
+                User user = _context.users
+                    .Include(u => u.Ratings)
+                        .ThenInclude(r => r.Game)
+                    .First(u => u.Iduser == id);
+                
                 UserViewModel userView = new UserViewModel();
                 userView.User = user;
                 return View(userView);

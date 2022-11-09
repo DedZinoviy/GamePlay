@@ -19,6 +19,14 @@ namespace GamePlay.Models
 
         public List<Filter<Studio>> Studios { get; private set; } = new List<Filter<Studio>>();
 
+        public int MinimumRate { get; set; } = 0;
+
+        public int MaximumRate { get; set; } = 5;
+
+        public int MinimumYear { get; set; } = 1900;
+
+        public int MaximumYear { get; set; } = 2100;
+        
         public void Set<T>(List<T> items)
         {
             List<Filter<T>> filters = new List<Filter<T>>();
@@ -31,10 +39,10 @@ namespace GamePlay.Models
 
             if (typeof(T) == typeof(Genre))
                 Genres = filters.ConvertAll(new Converter<Filter<T>, Filter<Genre>>(ToFilterGenre));
-            
+
             else if (typeof(T) == typeof(Platform))
                 Platforms = filters.ConvertAll(new Converter<Filter<T>, Filter<Platform>>(ToFilterPlatform));
-            
+
             else if (typeof(T) == typeof(Studio))
                 Studios = filters.ConvertAll(new Converter<Filter<T>, Filter<Studio>>(ToFilterStudio));
         }
@@ -53,6 +61,7 @@ namespace GamePlay.Models
         {
             return Studios.ConvertAll(new Converter<Filter<Studio>, Studio>(ToStudio));
         }
+
 
         private Filter<Genre> ToFilterGenre<T>(Filter<T> item)
         {

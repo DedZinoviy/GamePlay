@@ -77,30 +77,62 @@
                 <div class="card">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-systemRequirements-tab" data-bs-toggle="tab" data-bs-target="#nav-systemRequirements" type="button" aria-controls="nav-systemRequirements" aria-selected="true">Системные требования</button>
+                            <button class="nav-link active" id="nav-information-tab" data-bs-toggle="tab" data-bs-target="#nav-information" type="button" aria-controls="nav-information" aria-selected="true">Общая информация</button>
+                            @if (Model.Game.HasSystemRequirments)
+                            {
+                                <button class="nav-link" id="nav-systemRequirements-tab" data-bs-toggle="tab" data-bs-target="#nav-systemRequirements" type="button" aria-controls="nav-systemRequirements" aria-selected="true">Системные требования</button>
+                            }
                             <button class="nav-link" id="nav-feedbacks-tab" data-bs-toggle="tab" data-bs-target="#nav-feedbacks" type="button" aria-controls="nav-feedbacks" aria-selected="false">Отзывы</button>
                             <button class="nav-link" id="nav-stores-tab" data-bs-toggle="tab" data-bs-target="#nav-stores" type="button" aria-controls="nav-stores" aria-selected="false">Магазины</button>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-systemRequirements" role="tabpanel" aria-labelledby="nav-systemRequirements-tab">
+                        <div class="tab-pane fade show active" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
+                            <p>Жанры: 
+                            @foreach(var genre in Model.Game.Genres)
+                            {
+                                @if(genre != Model.Game.Genres.Last())
+                                {
+                                    genre.Name += ", "; 
+                                }
+                                <span>@genre.Name</span>
+                            }
+                            </p>
+                            <p>Разработчик: @Model.Game.Studio?.Name</p>
+                            <p>Издатель: @Model.Game.Publisher?.Name</p>
+                            <p>Дата выхода: @Model.Game.Release_date.ToString("dd MMMM yyyy")</p>
+                            <p>Платформы: 
+                            @foreach(var platform in Model.Game.Platforms)
+                            {
+                                @if (platform != Model.Game.Platforms.Last())
+                                {
+                                    platform.Name += ", ";
+                                }
+                                <span>@platform.Name</span>
+                            }
+                            </p>
+                        </div>
+                        @if (Model.Game.HasSystemRequirments)
+                        {
+                        <div class="tab-pane fade" id="nav-systemRequirements" role="tabpanel" aria-labelledby="nav-systemRequirements-tab">
                             <p class="text-white systemRequirementsTitle">Минимальные:</p> 
                             <p class="systemRequirements">
-                        <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Game.Minimum?.OS</span></p>
-                        <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Game.Minimum?.Processor</span></p>
-                        <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Game.Minimum?.Memory</span></p>
-                        <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Game.Minimum?.Graphics_Card</span></p>
-                        <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Game.Minimum?.HDD_Space</span></p>
+                            <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Game.Minimum?.OS</span></p>
+                            <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Game.Minimum?.Processor</span></p>
+                            <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Game.Minimum?.Memory</span></p>
+                            <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Game.Minimum?.Graphics_Card</span></p>
+                            <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Game.Minimum?.HDD_Space</span></p>
                             </p> @*Нужно вставить системные требования*@
                             <p class="text-white systemRequirementsTitle">Рекомендуемые:</p>
                             <p class="systemRequirements">
-                        <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Game.Recomended?.OS</span></p>
-                        <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Game.Recomended?.Processor</span></p>
-                        <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Game.Recomended?.Memory</span></p>
-                        <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Game.Recomended?.Graphics_Card</span></p>
-                        <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Game.Recomended?.HDD_Space</span></p>
+                            <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Game.Recomended?.OS</span></p>
+                            <p class="systemRequirements">Процессор: <span class="systemRequirements">@Model.Game.Recomended?.Processor</span></p>
+                            <p class="systemRequirements">ОЗУ: <span class="systemRequirements">@Model.Game.Recomended?.Memory</span></p>
+                            <p class="systemRequirements">Видеокарта: <span class="systemRequirements">@Model.Game.Recomended?.Graphics_Card</span></p>
+                            <p class="systemRequirements">Размер на жестком диске: <span class="systemRequirements">@Model.Game.Recomended?.HDD_Space</span></p>
                             </p> @*Нужно вставить системные требования*@
                         </div>
+                        }
                         <div class="tab-pane fade" id="nav-feedbacks" role="tabpanel" aria-labelledby="nav-feedbacks-tab">
                            @if (iduser != null && !Model.Game.Ratings.Any(r => r.User.Iduser == int.Parse(iduser)))
                            {
@@ -115,6 +147,7 @@
                                 <div class="card feedback">
                                     <div class="card-body feedback">
                                         <p class="userName">@rating.User.Login</p> @*Нужно вставить имя пользователя*@
+                                        <p class="feedback">Средняя: <span class="feedback">@rating.Middle ☆</span></p>
                                         <p class="feedback">Сюжет: <span class="feedback">@rating.Plot ☆</span></p> @*Нужно вставить оценку сюжета*@
                                         <p class="feedback">Геймплей: <span class="feedback">@rating.Gameplay ☆</span></p> @*Нужно вставить оценку геймплея*@
                                         <p class="feedback">Графика: <span class="feedback">@rating.Graphics ☆</span></p> @*Нужно вставить оценку графики*@
