@@ -47,7 +47,6 @@
     background: #242F43;
     padding: 10px;
     border-radius: 15px;
-    text-indent: 5px;
 }
 
 
@@ -104,16 +103,27 @@ div.lastActivity {
     text-indent: 8px;
     margin-top: 5px;
 }
+.form-floating-personal { /*Блок с полем и лейблом*/
+    margin-bottom: 3%;
+    text-indent:5px;
+}
+
+input.form-control-personal { /*Отступ между лейблом и полем*/
+    margin-top: 1%;
+}
+.form-floating-btn { /*Отступ после кнопки изменить фото*/
+    margin-bottom:3%;
+}
 
 button.change {
     background: url(/Images/edit-2.png) no-repeat;
     border: none;
     outline: none;
     margin-left: 15px;
+    margin-top: 1%;
 }
 
 button.btn-outline-primary {
-    margin-top:5%;
     color: white;
     border-color: white;
 }

@@ -24,35 +24,35 @@
                 @*Личные данные*@
                 <div class="personalData">
                     <form>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             Логин:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="@Model.User.Login" style="padding:0;"> @*Нужно в value установить логин*@
+                                <input type="text" class="form-control form-control-personal" readonly value="@Model.User.Login" style="padding:0;"> @*Нужно в value установить логин*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             e-mail:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="@Model.User.Email" style="padding:0;"> @*Нужно в value установить e-mail*@
+                                <input type="text" class="form-control form-control-personal" readonly value="@Model.User.Email" style="padding:0;"> @*Нужно в value установить e-mail*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             Имя:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="Name" style="padding:0;"> @*Нужно в value установить имя*@
+                                <input type="text" class="form-control form-control-personal" readonly value="Name" style="padding:0;"> @*Нужно в value установить имя*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             Пароль:
                             <div class="d-flex">
-                                <input type="password" class="form-control" readonly value="@Model.User.Password" style="padding:0;"> @*Нужно в value установить пароль*@
+                                <input type="password" class="form-control form-control-personal" readonly value="@Model.User.Password" style="padding:0;"> @*Нужно в value установить пароль*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-btn">
                             <button class="btn btn-outline-primary">Изменить фото</button> @*Кнопка изменения фото*@
                         </div>
                         <div class="form-floating">
