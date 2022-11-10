@@ -1,0 +1,54 @@
+﻿/*Заголовок*/
+h5#accept-exit-question {
+    color:white;
+    margin:0;
+    vertical-align:middle;
+    text-align:center;
+}
+
+/*Выравнивание header*/
+div.modal-header {
+    align-items:center;
+}
+
+/*Выравнивание текста заголовка*/
+div.container-fluid.header {
+    text-align: center;
+}
+
+div#accept-exit-dialog {
+    max-width: 370px;
+}
+
+button#exit {
+    margin-right: 16px;
+    border-radius: 15px;
+    color: #ff6262;
+    border-color: #ff6262;
+}
+
+button#exit:hover {
+    color: white;
+    background-color:  #ff6262;
+}
+
+button#cancel {
+    margin-left: 16px;
+    border-radius: 15px;
+    color: #28d685;
+    border-color: #28d685;
+}
+
+button#cancel:hover {
+    color: white;
+    background-color: #28d685;
+}
+
+form#accept-exit-form {
+    display: inline-flex;
+}
+
+/*Выравнивание кнопок*/
+div.modal-footer {
+    justify-content: center;
+}

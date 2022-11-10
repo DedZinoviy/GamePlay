@@ -12,6 +12,10 @@
     <li class="nav-item">
         <a class="nav-link" asp-action="Index" asp-controller="Profile">Личный кабинет</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#accept-exit-modal">Выйти</a>
+        @Html.Partial("AcceptExitPartial")
+    </li>
 }
 else
 {
