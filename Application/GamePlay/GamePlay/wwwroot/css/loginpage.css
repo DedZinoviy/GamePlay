@@ -4,17 +4,17 @@
 }
 
 button.login {
-    background: #242F43;
+    background: #2c559f;
     border-radius: 15px;
-    text-align:center;
+    text-align: center;
     vertical-align: middle;
-    padding:0;
-    margin-top:10px;
+    padding: 0;
+    margin-top: 10px;
 }
 
 button.login:hover {
     border-radius: 15px;
-    background: #33405A;
+    background: #6788cc;
 }
 
 .card {

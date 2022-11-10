@@ -4,7 +4,7 @@
 }
 
 button.register {
-    background: #242F43;
+    background: #2c559f;
     border-radius: 15px;
     text-align: center;
     vertical-align: middle;
@@ -14,7 +14,7 @@ button.register {
 
 button.register:hover {
     border-radius: 15px;
-    background: #33405A;
+    background: #6788cc;
 }
 
 .card {
