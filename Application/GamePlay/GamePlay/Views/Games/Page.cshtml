@@ -14,7 +14,7 @@
         <div class="col-6">
             <h1 class="gameName d-inline-block row-cols-1">@Model.Game.Title</h1> @*Нужно вставить название игры*@
             @*Изображения*@
-            <section class="images">
+            <section class="images" id="images">
                 <div id="imagesCarousel" class="carousel slide container" data-bs-ride="carousel" style="padding:0;">
 
                     <div class="carousel-inner">
@@ -74,7 +74,7 @@
             <h1 class="row-cols-1"> </h1>
             <div class="row right-menu-card">
                 <div class="col-8 info">
-                    <div class="tab-content card" id="nav-tabContent">
+                    <div class="tab-content tab-content-info card" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
                             <p class="text-white systemRequirementsTitle">Общая информация</p>
                             <p class="main-info">
@@ -170,6 +170,18 @@
                         <button class="nav-link" id="nav-stores-tab" data-bs-toggle="tab" data-bs-target="#nav-stores" type="button" aria-controls="nav-stores" aria-selected="false">Магазины</button>
                     </div>
                 </nav>
+
+                @*Скрипт изменения высоты правой менюшки*@
+                <script>
+                    changeRightMenuHeight(); @*Вызов при загрузке страницы*@
+                    window.onresize = changeRightMenuHeight; @*Добавление вызова при изменении размера окна*@
+
+                    function changeRightMenuHeight() {
+                        let img = document.getElementById('images'); @*блок с изображениями*@
+                        let rightMenu = document.getElementById('nav-tabContent'); @*блок правой меню*@
+                        rightMenu.style.maxHeight = img.clientHeight-3+'px'; @*Изменение размера*@
+                    }
+                </script>
             </div>
 
 
