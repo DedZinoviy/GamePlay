@@ -7,8 +7,8 @@ h5#accept-exit-question {
 }
 
 /*Выравнивание header*/
-div.modal-header {
-    align-items:center;
+div#accept-exit-modal {
+    align-items: center;
 }
 
 /*Выравнивание текста заголовка*/
@@ -30,6 +30,7 @@ button#exit {
 button#exit:hover {
     color: white;
     background-color:  #ff6262;
+    box-shadow:none;
 }
 
 button#cancel {
@@ -42,6 +43,7 @@ button#cancel {
 button#cancel:hover {
     color: white;
     background-color: #28d685;
+    box-shadow:none;
 }
 
 form#accept-exit-form {
@@ -49,6 +51,11 @@ form#accept-exit-form {
 }
 
 /*Выравнивание кнопок*/
-div.modal-footer {
+div#accept-exit-footer {
     justify-content: center;
+}
+
+/*Контент*/
+div#accept-exit-content {
+    background: #242F43;
 }

@@ -1,17 +1,17 @@
-﻿<link rel="stylesheet" href="./css/acceptExit.css"/>
+﻿<link rel="stylesheet" href="./css/acceptExit.css" asp-append-version="true">
 
 
 <div class="modal fade" id="accept-exit-modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="acceptExitModalLabel" aria-hidden="true">
     <div class="modal-dialog" id="accept-exit-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" id="accept-exit-content">
+            <div class="modal-header" id="accept-exit-header">
                 <div class="container-fluid header">
                     <h5 id="accept-exit-question">Действиельно хочешь выйти?</h5> @*Вопрос*@
                 </div>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
             </div>
 
-            <div class="modal-footer">
+            <div class="modal-footer" id="accept-exit-footer">
                 <form id="accept-exit-form">
                     <button type="submit" class="btn btn-outline-danger" id="exit" data-bs-dismiss="modal">Выйти</button> @*Кнопка выхода*@
                     <button type="submit" class="btn btn-outline-success" id="cancel" data-bs-dismiss="modal">Остаться</button> @*Кнопка остаться*@
