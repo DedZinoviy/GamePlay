@@ -63,11 +63,11 @@
             </div>
             <div class="tab-pane fade" id="nav-myFeedbacks" role="tabpanel" aria-labelledby="nav-myFeedbacks-tab">
                 @*Мои отзывы*@
+                <div class="row">
                 @foreach (var rating in Model.User.Ratings)
                 {
-                    <a asp-action="Page" asp-controller="Games" asp-route-id="@rating.Idgame">
-                        <div class="card feedback">
-                            <div class="card-body feedback">
+                    <a asp-action="Page" asp-controller="Games" asp-route-id="@rating.Idgame" class="btn btn-feedback">
+                            <div class="card card-body feedback">
                                 <p class="userName">@rating.Game.Title</p> @*Нужно вставить название игры*@
                                 <p class="feedback">Средняя <span class="feedback">@rating.Middle ☆</span></p>
                                 <p class="feedback">Сюжет: <span class="feedback">@rating.Plot ☆</span></p> @*Нужно вставить оценку сюжета*@
@@ -81,9 +81,9 @@
                                     </p>
                                 }
                             </div>
-                        </div>
                     </a>
                 }
+                </div>
 
             </div>
             <div class="tab-pane fade" id="nav-myArticles" role="tabpanel" aria-labelledby="nav-myArticles-tab">
