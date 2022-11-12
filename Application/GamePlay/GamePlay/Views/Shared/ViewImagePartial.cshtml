@@ -1,0 +1,68 @@
+﻿<link rel="stylesheet" href="/css/viewImages.css" asp-append-version="true">
+
+@model GamePlay.Models.GameViewModel
+
+<div class="modal fade" id="view-images-modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="viewImagesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-centered" id="view-images-dialog">
+        <div class="modal-content" id="view-images-content">
+            <div class="modal-header" id="view-images-header">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
+            </div>
+
+            <div class="modal-body" id="view-images-body">
+                <section class="images" id="images">
+                <div id="imagesCarouselView" class="carousel slide container" data-bs-ride="carousel" style="padding:0;">
+
+                    <div class="carousel-inner">
+                            @foreach (var img in Model.Game.Images)
+                            {
+
+                                @if (img == Model.Game.Images.First())
+                                {
+                                    <div class="carousel-item active carousel-item-modal">
+                                        <img src="@img.Source" alt="/Images/defImg.png" class="d-block image"> @*Нужно вставить ссылки на изображения*@
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="carousel-item carousel-item-modal">
+                                        <img src="@img.Source" alt="/Images/defImg.png" class="d-block image">  @*Нужно вставить ссылки на изображения*@
+                                    </div>
+                                }
+                            }
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#imagesCarouselView" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Предыдущий</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#imagesCarouselView" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Следующий</span>
+                        </button>
+                    </div>
+
+
+
+                    <div class="carousel-indicators" style="margin-bottom: 0;">
+                            @for (int i = 0; i < Model.Game.Images.Count(); i++)
+                            {
+                                @if (i == 0)
+                                {
+                                        <button type="button" class="active" data-bs-target="#imagesCarouselView" data-bs-slide-to="@i" aria-current="true" aria-label="Slide @i" style="width: 100px; height:auto;">
+                                            <img class="d-block w-100 img-fluid indicators" src="@Model.Game.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
+                                        </button>
+                                }
+                                else
+                                {
+                                        <button type="button" data-bs-target="#imagesCarouselView" data-bs-slide-to="@i" aria-current="true" aria-label="Slide @i" style="width: 100px; height:auto;">
+                                            <img class="d-block w-100 img-fluid indicators" src="@Model.Game.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
+                                        </button>
+                                }
+                            }
+                    </div>
+                </div>
+            </section>
+            </div>
+        </div>
+    </div>
+</div>

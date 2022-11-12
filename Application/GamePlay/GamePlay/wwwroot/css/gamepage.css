@@ -219,3 +219,8 @@ h5.right-menu-title-pane {
     text-align:center;
 }
 
+/*Кнопка открытия просмотра изображения*/
+a#view-images-open {
+    cursor:pointer;
+}
+

@@ -15,25 +15,28 @@
             <h1 class="gameName d-inline-block row-cols-1">@Model.Game.Title</h1> @*Нужно вставить название игры*@
             @*Изображения*@
             <section class="images" id="images">
+                @Html.Partial("ViewImagePartial", Model)
                 <div id="imagesCarousel" class="carousel slide container" data-bs-ride="carousel" style="padding:0;">
 
                     <div class="carousel-inner">
-                        @foreach (var img in Model.Game.Images)
-                        {
-                            @if (img == Model.Game.Images.First())
+                        <a id="view-images-open" data-bs-toggle="modal" data-bs-target="#view-images-modal" >
+                            @foreach (var img in Model.Game.Images)
                             {
-                                <div class="carousel-item active">
-                                    <img src="@img.Source" alt="/Images/defImg.png" class="d-block image"> @*Нужно вставить ссылки на изображения*@
-                                </div>
+                                @if (img == Model.Game.Images.First())
+                                {
+                                    <div class="carousel-item active">
+                                        <img src="@img.Source" alt="/Images/defImg.png" class="d-block image" data-bs-target="#imagesCarouselView" data-bs-slide-to="@Model.Game.Images.IndexOf(img)"> @*Нужно вставить ссылки на изображения*@
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="carousel-item">
+                                        <img src="@img.Source" alt="/Images/defImg.png" class="d-block image" data-bs-target="#imagesCarouselView" data-bs-slide-to="@Model.Game.Images.IndexOf(img)">  @*Нужно вставить ссылки на изображения*@
+                                    </div>
+                                }
                             }
-                            else
-                            {
-                                <div class="carousel-item">
-                                    <img src="@img.Source" alt="/Images/defImg.png" class="d-block image">  @*Нужно вставить ссылки на изображения*@
-                                </div>
-                            }
-                        }
-
+                        </a>
+                                                                       
                         <button class="carousel-control-prev" type="button" data-bs-target="#imagesCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Предыдущий</span>
@@ -51,13 +54,13 @@
                         {
                             @if (i == 0)
                             {
-                                <button type="button" class="active" data-bs-target="#imagesCarousel" data-bs-slide-to="@i" aria-current="true" aria-label="Slide @i" style="width: 100px; height:auto;">
+                                <button type="button" class="active" data-bs-target="#imagesCarousel" data-bs-slide-to="@i" aria-current="true" aria-label="Slide to @i" style="width: 100px; height:auto;">
                                     <img class="d-block w-100 img-fluid indicators" src="@Model.Game.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
                                 </button>
                             }
                             else
                             {
-                                <button type="button" data-bs-target="#imagesCarousel" data-bs-slide-to="@i" aria-current="true" aria-label="Slide @i" style="width: 100px; height:auto;">
+                                        <button type="button" data-bs-target="#imagesCarousel" data-bs-slide-to="@i" aria-current="true" aria-label="Slide to @i" style="width: 100px; height:auto;">
                                     <img class="d-block w-100 img-fluid indicators" src="@Model.Game.Images[i].Source" /> @*Нужно вставить ссылки на изображения*@
                                 </button>
                             }
