@@ -76,7 +76,7 @@
                 <div class="col-8 info">
                     <div class="tab-content tab-content-info card" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
-                            <p class="text-white systemRequirementsTitle">Общая информация</p>
+                            <h5 class="right-menu-title-pane">Общая информация</h5>
                             <p class="main-info">
                                 Жанры:
                                 @foreach (var genre in Model.Game.Genres)
@@ -106,6 +106,7 @@
                         @if (Model.Game.HasSystemRequirments)
                         {
                             <div class="tab-pane fade" id="nav-systemRequirements" role="tabpanel" aria-labelledby="nav-systemRequirements-tab">
+                                <h5 class="right-menu-title-pane">Системные требования</h5>
                                 <p class="text-white systemRequirementsTitle">Минимальные</p>
                                 <p class="systemRequirements">
                                 <p class="systemRequirements">ОС: <span class="systemRequirements">@Model.Game.Minimum?.OS</span></p>
@@ -125,12 +126,26 @@
                             </div>
                         }
                         <div class="tab-pane fade" id="nav-feedbacks" role="tabpanel" aria-labelledby="nav-feedbacks-tab">
+                            <h5 class="right-menu-title-pane">Отзывы</h5>
+
+                            @if (Model.Game.Ratings.Count == 0)
+                            { @*Ещё никто не оставил отзыв*@
+                                <p class="info-feedback-message">Ещё никто не оставил отзыв</p>
+                            }
                             @if (iduser != null && !Model.Game.Ratings.Any(r => r.User.Iduser == int.Parse(iduser)))
                             {
                                 <button type="button" class="btn btn-primary addFeedback card" data-bs-toggle="modal" data-bs-target="#add-feedback-modal">
                                     Добавить отзыв
                                 </button>
                                 @Html.Partial("AddFeedbackPartial")
+                            }
+                            else if(iduser == null)
+                            { @*Пользователь не зашёл*@
+                                <p class="info-feedback-message">Для добавления отзыва вы должны зайти в аккаунт</p>
+                            }
+                            else if(Model.Game.Ratings.Any(r => r.User.Iduser == int.Parse(iduser)))
+                            { @*Пользователь уже оставил отзыв на эту игру*@
+                                <p class="info-feedback-message">Вы уже оставили отзыв на данную игру</p>
                             }
 
                             @foreach (var rating in Model.Game.Ratings)
@@ -153,7 +168,8 @@
                             }
                         </div>
                         <div class="tab-pane fade" id="nav-stores" role="tabpanel" aria-labelledby="nav-stores-tab">
-                            Магазины @*Нужно вставить магазины*@
+                            <h5 class="right-menu-title-pane">Магазины</h5>
+                            @*Нужно вставить магазины*@
                         </div>
 
                     </div>
