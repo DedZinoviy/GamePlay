@@ -72,4 +72,9 @@ body::-webkit-scrollbar-thumb:hover {
     border-radius: 20px;
 }
 
+button.nav-link {
+    background: #33405A;
+    border: none;
+}
+
 
