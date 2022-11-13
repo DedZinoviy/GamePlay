@@ -77,5 +77,15 @@ namespace GamePlay.Controllers
             }
             return RedirectToAction(actionName: "Login", controllerName: "Profile");
         }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            if (Request.Cookies.ContainsKey("iduser"))
+            {
+                Response.Cookies.Delete("iduser");
+            }
+            return RedirectToAction(actionName: "Index", controllerName: "Home");
+        }
     }
 }

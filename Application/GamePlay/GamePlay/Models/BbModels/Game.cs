@@ -59,13 +59,14 @@ namespace GamePlay.Models.BbModels
         }
 
         [NotMapped]
-        public float MiddleRate
+        public double MiddleRate
         {
             get
             {
-                float rate = 0;
+                double rate = 0;
                 if (Ratings.Count != 0)
                     rate = Ratings.Sum(r => r.Middle) / Ratings.Count;
+                rate = Math.Round(rate, 1);
                 return rate;
             }
         }

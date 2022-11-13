@@ -27,13 +27,13 @@ namespace GamePlay.Controllers
         public IActionResult Index(IndexViewModel model)
         {
             if (model.Genres.Count == 0)
-                model.Set(_context.genres.ToList());
+                model.Set(_context.genres.OrderBy(g => g.Name).ToList());
 
             if (model.Platforms.Count == 0)
-                model.Set(_context.platforms.ToList());
+                model.Set(_context.platforms.OrderBy(p => p.Name).ToList());
 
             if (model.Studios.Count == 0)
-                model.Set(_context.studios.ToList());
+                model.Set(_context.studios.OrderBy(s => s.Name).ToList());
 
             List<Genre> genres = model.GetSelectedGenres().FindAll(g => g != null);
             List<Platform> platforms = model.GetSelectedPlatforms().FindAll(p => p != null);
