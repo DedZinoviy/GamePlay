@@ -208,3 +208,19 @@ div.tab-content-info {
     width:auto;
 }
 
+/*Сообщения в отзывах (войдите чтобы оставить отзыв, вы уже оставили отзыв, ещё никто не оставил отзыв)*/
+p.info-feedback-message {
+    text-align:center;
+    color:#808080;
+}
+
+/*Заголовок содержимого вкладок правого меню*/
+h5.right-menu-title-pane {
+    text-align:center;
+}
+
+/*Кнопка открытия просмотра изображения*/
+a#view-images-open {
+    cursor:pointer;
+}
+

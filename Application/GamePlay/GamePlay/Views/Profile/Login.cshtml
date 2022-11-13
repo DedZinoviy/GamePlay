@@ -28,14 +28,14 @@
                         <input asp-for="User.Login" class="form-control" autocomplete="username" aria-required="true" style="padding:0;" />
                         <span asp-validation-for="User.Login" class="text-danger"></span>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating password">
                         Пароль
-                        <input asp-for="User.Password" class="form-control" autocomplete="current-password" aria-required="true" style="padding:0;" />
+                        <input type="password" asp-for="User.Password" class="form-control" autocomplete="current-password" aria-required="true" style="padding:0;" />
                         <span asp-validation-for="User.Password" class="text-danger"></span>
                     </div>
                     @if (Model.ErrorMessage != null)
                     {
-                        <p>@Model.ErrorMessage</p>
+                        <p id="error-message">@Model.ErrorMessage</p>
                     }
                     <div>
                         <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary login">Войти</button>

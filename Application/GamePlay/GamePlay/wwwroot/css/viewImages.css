@@ -1,0 +1,15 @@
+﻿/*Элемент карусели*/
+.carousel-item-modal {
+    max-height: 70vh;
+}
+
+div#view-images-dialog {
+    width:90vw;
+    height:auto;
+    margin:auto;
+    margin-top:10px;
+}
+
+div#view-images-content {
+    background: #242F43;
+}

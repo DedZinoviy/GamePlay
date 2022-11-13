@@ -24,35 +24,35 @@
                 @*Личные данные*@
                 <div class="personalData">
                     <form>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             Логин:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="@Model.User.Login" style="padding:0;"> @*Нужно в value установить логин*@
+                                <input type="text" class="form-control form-control-personal" readonly value="@Model.User.Login" style="padding:0;"> @*Нужно в value установить логин*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             e-mail:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="@Model.User.Email" style="padding:0;"> @*Нужно в value установить e-mail*@
+                                <input type="text" class="form-control form-control-personal" readonly value="@Model.User.Email" style="padding:0;"> @*Нужно в value установить e-mail*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             Имя:
                             <div class="d-flex">
-                                <input type="text" class="form-control" readonly value="Name" style="padding:0;"> @*Нужно в value установить имя*@
+                                <input type="text" class="form-control form-control-personal" readonly value="Name" style="padding:0;"> @*Нужно в value установить имя*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-personal">
                             Пароль:
                             <div class="d-flex">
-                                <input type="password" class="form-control" readonly value="@Model.User.Password" style="padding:0;"> @*Нужно в value установить пароль*@
+                                <input type="password" class="form-control form-control-personal" readonly value="@Model.User.Password" style="padding:0;"> @*Нужно в value установить пароль*@
                                 <button class="btn change"></button> @*Кнопка изменения*@
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating form-floating-btn">
                             <button class="btn btn-outline-primary">Изменить фото</button> @*Кнопка изменения фото*@
                         </div>
                         <div class="form-floating">
@@ -63,11 +63,11 @@
             </div>
             <div class="tab-pane fade" id="nav-myFeedbacks" role="tabpanel" aria-labelledby="nav-myFeedbacks-tab">
                 @*Мои отзывы*@
+                <div class="row">
                 @foreach (var rating in Model.User.Ratings)
                 {
-                    <a asp-action="Page" asp-controller="Games" asp-route-id="@rating.Idgame">
-                        <div class="card feedback">
-                            <div class="card-body feedback">
+                    <a asp-action="Page" asp-controller="Games" asp-route-id="@rating.Idgame" class="btn btn-feedback">
+                            <div class="card card-body feedback">
                                 <p class="userName">@rating.Game.Title</p> @*Нужно вставить название игры*@
                                 <p class="feedback">Средняя <span class="feedback">@rating.Middle ☆</span></p>
                                 <p class="feedback">Сюжет: <span class="feedback">@rating.Plot ☆</span></p> @*Нужно вставить оценку сюжета*@
@@ -81,9 +81,9 @@
                                     </p>
                                 }
                             </div>
-                        </div>
                     </a>
                 }
+                </div>
 
             </div>
             <div class="tab-pane fade" id="nav-myArticles" role="tabpanel" aria-labelledby="nav-myArticles-tab">

@@ -60,3 +60,15 @@ form[id="registerForm"] {
 .nav-link:not(.active) {
     border: none;
 }
+
+/*Сообщение об ошибке*/
+p#error-message {
+    color: red;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/*Отступ между логином, почтой и паролем*/
+div.form-floating.login, div.form-floating.e-mail {
+    margin-bottom: 10px;
+}
