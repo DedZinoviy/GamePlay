@@ -4,8 +4,8 @@
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
-CREATE DATABASE game_play_db;
-USE game_play_db;
+Create database gameplay;
+use gameplay;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;

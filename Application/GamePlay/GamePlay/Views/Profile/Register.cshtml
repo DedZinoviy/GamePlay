@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-floating e-mail">
                         Почта
-                        <input asp-for="User.Email" class="form-control" autocomplete="email" aria-required="true" style="padding:0;" />
+                        <input type="email" asp-for="User.Email" class="form-control" autocomplete="email" aria-required="true" style="padding:0;" />
                         <span asp-validation-for="User.Email" class="text-danger"></span>
                     </div>
                     <div class="form-floating password">
