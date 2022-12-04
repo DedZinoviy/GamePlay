@@ -54,6 +54,10 @@
                                 <button type="button" class="btn change" onclick="setInputActive('passwordField')"></button> @*Кнопка изменения*@
                             </div>
                         </div>
+                        @if (Model.ErrorMessage != null)
+                        {
+                            <p id="error-message">@Model.ErrorMessage</p>
+                        }
                         <div class="form-floating form-floating-btn">
                             <button class="btn btn-outline-primary">Изменить фото</button> @*Кнопка изменения фото*@
                         </div>

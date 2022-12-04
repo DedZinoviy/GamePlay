@@ -84,7 +84,15 @@ namespace GamePlay.Controllers
             if (userView.User != null)
             {
                 _context.users.Update(userView.User);
-                _context.SaveChanges();
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch
+                {
+                    userView.ErrorMessage = "Данный пользователь уже существует";
+                    return View("Index", userView);
+                }
             }
             
             return RedirectToAction(actionName: "Index", controllerName: "Profile");
