@@ -78,6 +78,18 @@ namespace GamePlay.Controllers
             return RedirectToAction(actionName: "Login", controllerName: "Profile");
         }
 
+        [HttpPost]
+        public IActionResult Update(UserViewModel userView)
+        {
+            if (userView.User != null)
+            {
+                _context.users.Update(userView.User);
+                _context.SaveChanges();
+            }
+            
+            return RedirectToAction(actionName: "Index", controllerName: "Profile");
+        }
+
         [HttpGet]
         public IActionResult Logout()
         {
