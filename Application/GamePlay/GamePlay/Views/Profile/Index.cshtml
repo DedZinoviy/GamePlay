@@ -109,22 +109,22 @@
                 </div>
 
                 <div class="row">
-                    @for (int i = 0; i < 3; i++)
+                    @foreach (var News in Model.User.News)
                     {
-                        <a href="#" class="row btn article">
+                        <a href="@News.Url" class="row btn article">
                             @*Нужно вставить ссылку на новость*@
                             <div class="card article text-white">
                                 <div class="row">
                                     <div class="col-6" style="padding-left: 6px;">
-                                        <img src="" class="img-fluid article"> @*Нужно вставить изображение*@
+                                        <img src="@News.Img" class="img-fluid article"> @*Нужно вставить изображение*@
                                     </div>
                                     <div class="col-6 text-start">
-                                        <p class="author">Автор: name</p> @*Нужно вставить автора*@
-                                        <p class="source text-truncate">Источник: source</p> @*Нужно вставить источник*@
+                                        <p class="author">Автор: @Model.User.Login</p> @*Нужно вставить автора*@
+                                        <p class="source text-truncate">Источник: @News.Source</p> @*Нужно вставить источник*@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <h5 class="card-title text center text-truncate">name</h5> @*Нужно вставить название статьи*@
+                                    <h5 class="card-title text center text-truncate">@News.Title</h5> @*Нужно вставить название статьи*@
                                 </div>
                             </div>
                         </a>

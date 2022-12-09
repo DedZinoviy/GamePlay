@@ -71,6 +71,7 @@ namespace GamePlay.Controllers
                 User user = _context.users
                     .Include(u => u.Ratings)
                         .ThenInclude(r => r.Game)
+                    .Include(u => u.News)
                     .First(u => u.Iduser == id);
                 
                 UserViewModel userView = new UserViewModel();
@@ -116,9 +117,7 @@ namespace GamePlay.Controllers
                 string fileExtention = Path.GetExtension(uploadedFile.FileName);
                 if (!validFileTypes.Any(t => t == fileExtention)) { return RedirectToAction("Index"); }
 
-                // путь к папке Avatars
                 string path = "/Avatars/" + user.Login + fileExtention;
-                // сохраняем файл в папку Images в каталоге wwwroot
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await uploadedFile.CopyToAsync(fileStream);
@@ -130,6 +129,37 @@ namespace GamePlay.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNews(UserViewModel userView, IFormFile uploadedFile)
+        {
+            if (!Request.Cookies.TryGetValue("iduser", out string? iduser))
+                return RedirectToAction(actionName: "Index", controllerName: "Home");
+
+            int id = int.Parse(iduser);
+
+            User user = _context.users.First(u => u.Iduser == id);
+
+            if (uploadedFile != null)
+            {
+                List<string> validFileTypes = new List<string>() { ".jpeg", ".jpg", ".png" };
+                string fileExtention = Path.GetExtension(uploadedFile.FileName);
+                if (!validFileTypes.Any(t => t == fileExtention)) { return RedirectToAction("Index"); }
+
+                string path = "/News/" + uploadedFile.FileName;
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                userView.NewNews.Img = path;
+                userView.NewNews.Iduser = id;
+                _context.news.Add(userView.NewNews);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
         [HttpGet]
         public IActionResult Logout()

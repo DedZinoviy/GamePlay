@@ -16,6 +16,8 @@ namespace GamePlay.Data
 
         public DbSet<Studio> studios { get; set; }
 
+        public DbSet<News> news { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -67,6 +69,11 @@ namespace GamePlay.Data
                 .HasMany(u => u.Ratings)
                 .WithOne(r => r.User)
                 .HasForeignKey(r => r.Iduser);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.News)
+                .WithOne(n => n.User)
+                .HasForeignKey(n => n.Iduser);
         }
     }
 }

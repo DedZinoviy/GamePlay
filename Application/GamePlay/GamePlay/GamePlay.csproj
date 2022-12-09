@@ -27,6 +27,7 @@
   <ItemGroup>
     <Folder Include="Views\Images\" />
     <Folder Include="wwwroot\Avatars\" />
+    <Folder Include="wwwroot\News\" />
   </ItemGroup>
 
 </Project>

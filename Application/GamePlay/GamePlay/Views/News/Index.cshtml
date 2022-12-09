@@ -1,6 +1,6 @@
 ﻿<link rel="stylesheet" href="/css/newspage.css" asp-append-version="true" />
 
-@model GamePlay.Models.BbModels.News;
+@model NewsViewModel
 
 @{
     ViewData["Title"] = "News";
@@ -49,24 +49,24 @@
     @*Карточки с новостями*@
     <div class="col-9">
         <div class="row">
-            @for (int i = 0; i < 10; i++)
+            @foreach (var news in Model.News)
             {
-                <a href="@Model.Source" class="row btn">
+                <a href="@news.Url" class="row btn">
                     @*Нужно вставить ссылку на новость*@
                     <div class="card text-white">
                         <div class="row">
                             <div class="col-2" style="padding-left:0;">
-                                <img src="@Model.Img" class="img-fluid"> @*Нужно вставить ссылку на изображение*@
+                                <img src="@news.Img" class="img-fluid"> @*Нужно вставить ссылку на изображение*@
                             </div>
                             <div class="col-10">
                                 <div class="card-body">
-                                    <h5 class="card-title text center text-truncate">@Model.Title</h5> @*Нужно вставить название статьи*@
+                                    <h5 class="card-title text center text-truncate">@news.Title</h5> @*Нужно вставить название статьи*@
                                     <div class="row">
                                         <div class="col">
-                                            <p class="card-text text-start">Автор: autor @i</p> @*Нужно вставить автора статьи*@
+                                            <p class="card-text text-start">Автор: @news.User.Login</p> @*Нужно вставить автора статьи*@
                                         </div>
                                         <div class="col " style="max-width:200px;">
-                                            <p class="card-text text-end text-truncate">Источник: source @i</p> @*Нужно вставить источник*@
+                                            <p class="card-text text-end text-truncate">Источник: @news.Source</p> @*Нужно вставить источник*@
                                         </div>
                                     </div>
                                 </div>

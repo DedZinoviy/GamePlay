@@ -6,6 +6,8 @@ namespace GamePlay.Models
     {
         public User? User { get; set; }
 
+        public News? NewNews { get; set; }
+
         public string? ErrorMessage { get; set; }
     }
 }

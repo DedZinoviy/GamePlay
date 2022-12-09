@@ -82,10 +82,10 @@ namespace GamePlay.Controllers
         public async Task<IActionResult> News()
         {
             News news = new News();
-            news.Source = @"https://www.igromania.ru/news/120203/V_set_utyok_spoylernyy_geympleynyy_fragment_God_of_War_Ragnarok.html?from=mpp";
+            news.Url = @"https://www.igromania.ru/news/120203/V_set_utyok_spoylernyy_geympleynyy_fragment_God_of_War_Ragnarok.html?from=mpp";
             
             HtmlDocument source = new HtmlDocument();
-            source.LoadHtml(await new HttpClient().GetStringAsync(news.Source));
+            source.LoadHtml(await new HttpClient().GetStringAsync(news.Url));
 
             var Node = source.DocumentNode.SelectSingleNode("//head");
 

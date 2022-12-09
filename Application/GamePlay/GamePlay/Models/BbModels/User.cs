@@ -43,5 +43,7 @@ namespace GamePlay.Models.BbModels
 
         public List<Rating> Ratings { get; set; } = new List<Rating>();
 
+        public List<News> News { get; set; } = new List<News>();
+
     }
 }
