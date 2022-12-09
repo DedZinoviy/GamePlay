@@ -39,6 +39,8 @@ namespace GamePlay.Models.BbModels
         /// </summary>
         public int isVerificied { get; set; }
 
+        public string? Avatar { get; set; }
+
         public List<Rating> Ratings { get; set; } = new List<Rating>();
 
     }

@@ -34,6 +34,11 @@
                         <input type="email" asp-for="User.Email" class="form-control" autocomplete="email" aria-required="true" style="padding:0;" />
                         <span asp-validation-for="User.Email" class="text-danger"></span>
                     </div>
+                    <div class="form-floating date">
+                        Почта
+                        <input type="date" asp-for="User.Birth_Date" class="form-control" autocomplete="email" aria-required="true" style="padding:0;" />
+                        <span asp-validation-for="User.Birth_Date" class="text-danger"></span>
+                    </div>
                     <div class="form-floating password">
                         Пароль
                         <input type="password" asp-for="User.Password" class="form-control" autocomplete="new-password" aria-required="true" style="padding:0;" />

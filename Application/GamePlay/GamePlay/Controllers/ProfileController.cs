@@ -14,10 +14,12 @@ namespace GamePlay.Controllers
     public class ProfileController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _appEnvironment;
 
-        public ProfileController(ApplicationDbContext context)
+        public ProfileController(ApplicationDbContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
 
         [HttpGet]
@@ -96,6 +98,37 @@ namespace GamePlay.Controllers
             }
             
             return RedirectToAction(actionName: "Index", controllerName: "Profile");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPhoto(IFormFile uploadedFile)
+        {
+            if (!Request.Cookies.TryGetValue("iduser", out string? iduser)) 
+                return RedirectToAction(actionName: "Index", controllerName: "Home");
+
+            int id = int.Parse(iduser);
+
+            User user = _context.users.First(u => u.Iduser == id);
+
+            if (uploadedFile != null)
+            {
+                List<string> validFileTypes = new List<string>(){ ".jpeg", ".jpg", ".png" };
+                string fileExtention = Path.GetExtension(uploadedFile.FileName);
+                if (!validFileTypes.Any(t => t == fileExtention)) { return RedirectToAction("Index"); }
+
+                // путь к папке Avatars
+                string path = "/Avatars/" + user.Login + fileExtention;
+                // сохраняем файл в папку Images в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                user.Avatar = path;
+                _context.users.Update(user);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]

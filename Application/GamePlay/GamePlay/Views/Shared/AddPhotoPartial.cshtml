@@ -1,0 +1,27 @@
+﻿<link rel="stylesheet" href="~/css/addArticle.css">
+
+<div class="modal fade" id="add-article-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addArticleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container-fluid header">
+                    <h5 class="modal-title">Новая статья</h5>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
+            </div>
+            <form>
+                <div class="modal-body">
+                        <div class="article-source">
+                            @*Источник статьи*@
+                            <label for="article-source-input" class="row">Фото:</label>
+                            <input type="file" name="uploadedFile" id="article-source-input" class="row col-12" placeholder="Введите url источника...">
+                        </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary add-button" data-bs-dismiss="modal">Добавить</button> @*Кнопка добавления статьи*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

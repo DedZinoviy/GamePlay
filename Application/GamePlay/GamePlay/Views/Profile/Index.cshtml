@@ -26,6 +26,7 @@
                 <div class="personalData">
                     <form method="post" asp-action="Update" asp-controller="Profile">
                         <input type="text" asp-for="@Model.User.Iduser" hidden />
+                        <input type="text" asp-for="@Model.User.Avatar" hidden />
                         <div class="form-floating form-floating-personal">
                             Логин:
                             <div class="d-flex">
@@ -36,15 +37,15 @@
                         <div class="form-floating form-floating-personal">
                             e-mail:
                             <div class="d-flex">
-                                <input type="text" id="emailField" class="form-control form-control-personal" readonly asp-for="@Model.User.Email" style="padding:0;"> @*Нужно в value установить e-mail*@
+                                <input type="email" id="emailField" class="form-control form-control-personal" readonly asp-for="@Model.User.Email" style="padding:0;"> @*Нужно в value установить e-mail*@
                                 <button type="button" class="btn change" onclick="setInputActive('emailField')"></button> @*Кнопка изменения*@
                             </div>
                         </div>
                         <div class="form-floating form-floating-personal">
-                            Имя:
+                            Дата рождения:
                             <div class="d-flex">
-                                <input type="text" class="form-control form-control-personal" readonly value="Name" style="padding:0;"> @*Нужно в value установить имя*@
-                                <button class="btn change"></button> @*Кнопка изменения*@
+                                <input type="date" id="dateField" class="form-control form-control-personal" readonly asp-for="@Model.User.Birth_Date" style="padding:0;"> @*Нужно в value установить имя*@
+                                <button type="button" class="btn change" onclick="setInputActive('dateField')"></button> @*Кнопка изменения*@
                             </div>
                         </div>
                         <div class="form-floating form-floating-personal">
@@ -66,6 +67,12 @@
                         </div>
                     </form>
                 </div>
+                <form asp-action="AddPhoto" asp-controller="Profile" method="post" enctype="multipart/form-data">
+                    <div class="addPhoto">
+                        <input type="file" name="uploadedFile" accept=".png, .jpg, .jpeg"/><br>
+                        <input type="submit" value="Загрузить" />
+                    </div>
+                </form>
             </div>
             <div class="tab-pane fade" id="nav-myFeedbacks" role="tabpanel" aria-labelledby="nav-myFeedbacks-tab">
                 @*Мои отзывы*@
@@ -134,7 +141,7 @@
 
     <div class="col-3 text-white">
         <div class="image">
-            <img src="" class="img-fluid" /> @*Нужно вставить фото профиля*@
+            <img src="@Model.User.Avatar" class="img-fluid" /> @*Нужно вставить фото профиля*@
         </div>
         <div class="userName">
             FirstName SecondName @*Нужно вставить имя и фамилию*@
