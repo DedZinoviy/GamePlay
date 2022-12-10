@@ -52,6 +52,10 @@ namespace GamePlay.Models.BbModels
         [ForeignKey("idpublisher")]
         public Studio? Publisher { get; set; }
 
+        public List<Shop> Shops { get; set; } = new List<Shop>();
+
+        public List<Topic> Topics { get; set; } = new List<Topic>();
+
         [NotMapped]
         public bool HasSystemRequirments 
         {

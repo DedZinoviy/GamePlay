@@ -30,6 +30,7 @@ namespace GamePlay.Controllers
                         .Include(g => g.Recomended)
                         .Include(g => g.Studio)
                         .Include(g => g.Publisher)
+                        .Include(g => g.Shops)
                         .Include(g => g.Ratings)
                             .ThenInclude(r => r.User)
                         .First(x => x.Idgame == id);

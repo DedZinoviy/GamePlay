@@ -18,6 +18,8 @@ namespace GamePlay.Data
 
         public DbSet<News> news { get; set; }
 
+        public DbSet<Topic> topics { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -40,10 +42,12 @@ namespace GamePlay.Data
             modelBuilder.Entity<Studio>().ToTable("studios");
             modelBuilder.Entity<Platform>().ToTable("platforms");
             modelBuilder.Entity<Rating>().ToTable("ratings");
+            modelBuilder.Entity<Shop>().ToTable("shops");
 
             modelBuilder.Entity<GenreGames>().HasKey(gg => new { gg.IdGenre, gg.IdGame });
             modelBuilder.Entity<PlatformGames>().HasKey(pg => new { pg.Idplatform, pg.Idgame });
             modelBuilder.Entity<Rating>().HasKey(r => new { r.Iduser, r.Idgame });
+            modelBuilder.Entity<TopicsToGames>().HasKey(r => new { r.IdTopic, r.IdGame });
 
             modelBuilder.Entity<Game>()
                 .HasMany(g => g.Images)
@@ -65,6 +69,11 @@ namespace GamePlay.Data
                 .WithOne(r => r.Game)
                 .HasForeignKey(r => r.Idgame);
 
+            modelBuilder.Entity<Game>()
+                .HasMany(g => g.Shops)
+                .WithOne(s => s.Game)
+                .HasForeignKey(s => s.Idgame);
+
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Ratings)
                 .WithOne(r => r.User)
@@ -74,6 +83,11 @@ namespace GamePlay.Data
                 .HasMany(u => u.News)
                 .WithOne(n => n.User)
                 .HasForeignKey(n => n.Iduser);
+
+            modelBuilder.Entity<Topic>()
+                .HasMany(t => t.Games)
+                .WithMany(g => g.Topics)
+                .UsingEntity<TopicsToGames>();
         }
     }
 }

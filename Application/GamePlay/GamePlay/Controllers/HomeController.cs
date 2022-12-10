@@ -74,25 +74,16 @@ namespace GamePlay.Controllers
             return View(model);
         }
 
+        public IActionResult ResetFilters()
+        {
+            IndexViewModel model = new IndexViewModel();
+
+            return RedirectToAction(actionName : "Index", controllerName: "Home", routeValues: model);
+        }
+
         public IActionResult Privacy()
         {
             return View();
-        }
-        
-        public async Task<IActionResult> News()
-        {
-            News news = new News();
-            news.Url = @"https://www.igromania.ru/news/120203/V_set_utyok_spoylernyy_geympleynyy_fragment_God_of_War_Ragnarok.html?from=mpp";
-            
-            HtmlDocument source = new HtmlDocument();
-            source.LoadHtml(await new HttpClient().GetStringAsync(news.Url));
-
-            var Node = source.DocumentNode.SelectSingleNode("//head");
-
-            news.Title = source.DocumentNode.SelectSingleNode("//h1").InnerHtml;
-            news.Img = source.DocumentNode.SelectSingleNode("//img").Attributes["src"].Value;
-
-            return View(news);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
