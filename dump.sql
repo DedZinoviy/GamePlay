@@ -384,6 +384,58 @@ INSERT INTO `studios` VALUES (1,'CD Project Red',NULL),(2,'Rockstar Studios',NUL
 UNLOCK TABLES;
 
 --
+-- Table structure for table `topics`
+--
+
+DROP TABLE IF EXISTS `topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topics` (
+  `idtopic` int NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `img` text,
+  PRIMARY KEY (`idtopic`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics`
+--
+
+LOCK TABLES `topics` WRITE;
+/*!40000 ALTER TABLE `topics` DISABLE KEYS */;
+INSERT INTO `topics` VALUES (1,'Мультиплеерные игры','/Topics/onlinegames.jpeg'),(2,'В сревековом сеттинге','/Topics/middleages.jpeg'),(3,'Приставочные экслюзивы','/Topics/sonyBOIII.jpg'),(4,'Шутерок на вечерок','/Topics/shooters.jpg'),(5,'\"Just Like The Simulations\"','/Topics/simulation.jpg'),(6,'Боль и страдания','/Topics/soulselike.jpg');
+/*!40000 ALTER TABLE `topics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `topics_to_games`
+--
+
+DROP TABLE IF EXISTS `topics_to_games`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topics_to_games` (
+  `idtopic` int NOT NULL,
+  `idgame` int NOT NULL,
+  PRIMARY KEY (`idtopic`,`idgame`),
+  KEY `fk_from_topic_to_game_idx` (`idgame`),
+  CONSTRAINT `fk_from_game_to_topic` FOREIGN KEY (`idtopic`) REFERENCES `topics` (`idtopic`),
+  CONSTRAINT `fk_from_topic_to_game` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics_to_games`
+--
+
+LOCK TABLES `topics_to_games` WRITE;
+/*!40000 ALTER TABLE `topics_to_games` DISABLE KEYS */;
+INSERT INTO `topics_to_games` VALUES (2,1),(1,2),(2,3),(1,4),(2,4),(3,4),(5,5),(1,6),(5,6),(1,7),(5,7),(1,8),(2,8),(1,9),(5,9),(1,10),(4,10),(1,11),(4,11),(1,12),(2,13),(6,13),(3,14),(6,14),(3,15),(5,16),(2,18),(3,18),(3,19),(3,20);
+/*!40000 ALTER TABLE `topics_to_games` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -423,4 +475,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-10 13:29:34
+-- Dump completed on 2022-12-10 20:17:23
