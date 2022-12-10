@@ -1,0 +1,51 @@
+﻿/*Изображение по умолчанию*/
+
+img.card-img-top {
+    min-width: 100%;
+    background-color: gray;
+    border-radius: 15px 15px 0 0;
+    aspect-ratio: 2/3;
+}
+
+/* Тень кнопки*/
+.btn:hover {
+    box-shadow: rgba(51, 64, 90, 0.7) 10px 10px 10px 10px inset;
+    border-radius: 15px;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+/*Текст года*/
+.year {
+    color: #bcbcbc;
+}
+
+/*Текст рейтинга*/
+.rating {
+    color: #bcbcbc;
+}
+
+/*Цвет катрочки*/
+.card {
+    background: #242F43;
+    border-radius: 15px;
+}
+
+.card-footer {
+    padding-top: 0;
+    border: none;
+    background: #242F43;
+    border-radius: 15px;
+}
+
+    .card-footer:last-child {
+        border-radius: 15px;
+    }
+
+
+div#topic {
+    display:flex;
+    justify-content:center;
+}

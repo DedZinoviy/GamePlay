@@ -1,0 +1,34 @@
+﻿<link rel="stylesheet" href="~/css/topic.css" asp-append-version="true">
+@{
+    ViewData["Title"] = "Topic";
+}
+
+<div id="topic">
+    <div class="col-9">
+    @*Карточки*@
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach (var game in Model.Games)
+        {
+                    <a asp-action="Page" asp-controller="Games" asp-route-id="@game.Idgame" class="col btn"> @*Нужно вставить ссылку на страницу с игрой*@
+                
+                        <div class="card h-100 text-white">
+                            <img class="card-img-top" src="@game.Main_Image?.Source">@*Нужно всавить ссылку на картинку*@
+                            <div class="card-body">
+                                <h5 class="card-title text-center">@game.Title</h5> @*Нужно вставить название игры*@
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text year text-start">@game.Release_date.Year</p> @*Нужно вставить год игры*@
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text rating text-end">@game.MiddleRate ☆</p> @*Нужно вставить оценку игры*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+        }
+        </div>
+    </div>
+</div>

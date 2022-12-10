@@ -1,0 +1,26 @@
+﻿<link rel="stylesheet" href="~/css/topicsIndex.css" asp-append-version="true"/>
+
+
+@{
+    ViewData["Title"] = "Topics";
+}
+
+<div id="topics">
+    <div class="col-9">
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+            @for(int i = 0; i<6; i++)
+            {
+                <a class="col btn topic-link"> @*Нужно вставить ссылку на содержимое подборки*@
+                    <div class="card h-100 text-white">
+                        <img class="card-img-top" src=""> @*Нужно вставить ссылку на изображение*@
+                        <div class="card-body">
+                            <h5 class="card-title text-center">topic @i</h5> @*Нужно вставить название подборки*@
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+
