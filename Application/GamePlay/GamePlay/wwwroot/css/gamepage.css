@@ -224,3 +224,28 @@ a#view-images-open {
     cursor:pointer;
 }
 
+/*Магазины*/
+
+/*Карточка*/
+.card.store {
+    margin:10px;
+    border:none;
+}
+
+.card-body.store {
+    background: #2D3B55;
+    border-radius:10px;
+}
+
+a.store-link {
+    text-decoration:none;
+}
+
+p.store-name {
+    margin : 0;
+}
+
+p.price {
+    margin : 0;
+    text-align:end;
+}
