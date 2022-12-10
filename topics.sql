@@ -28,7 +28,7 @@ CREATE TABLE `topics` (
   `idtopic` int NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`idtopic`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES (1,'Мультиплеерные игры'),(2,'В сревековом сеттинге'),(3,'Приставочные экслюзивы');
+INSERT INTO `topics` VALUES (1,'Мультиплеерные игры'),(2,'В сревековом сеттинге'),(3,'Приставочные экслюзивы'),(4,'Шутерок на вечерок'),(5,'\"Just Like The Simulations\"'),(6,'Боль и страдания');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +64,7 @@ CREATE TABLE `topics_to_games` (
 
 LOCK TABLES `topics_to_games` WRITE;
 /*!40000 ALTER TABLE `topics_to_games` DISABLE KEYS */;
-INSERT INTO `topics_to_games` VALUES (2,1),(1,2),(2,3),(1,4),(2,4),(3,4),(1,6),(1,7),(1,8),(2,8),(1,9),(1,10),(1,11),(1,12),(2,13),(3,14),(3,15),(2,18),(3,18),(3,19),(3,20);
+INSERT INTO `topics_to_games` VALUES (2,1),(1,2),(2,3),(1,4),(2,4),(3,4),(5,5),(1,6),(5,6),(1,7),(5,7),(1,8),(2,8),(1,9),(5,9),(1,10),(4,10),(1,11),(4,11),(1,12),(2,13),(6,13),(3,14),(6,14),(3,15),(5,16),(2,18),(3,18),(3,19),(3,20);
 /*!40000 ALTER TABLE `topics_to_games` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -77,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-10 14:51:50
+-- Dump completed on 2022-12-10 15:18:32
