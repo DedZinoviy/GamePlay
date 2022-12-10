@@ -10,6 +10,8 @@ namespace GamePlay.Models.BbModels
 
         public string? Name { get; set; }
 
+        public string? Img { get; set; }
+
         public List<Game> Games { get; set; } = new List<Game>();
     }
 }

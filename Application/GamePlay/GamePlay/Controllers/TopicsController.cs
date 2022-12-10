@@ -22,11 +22,12 @@ namespace GamePlay.Controllers
             return View(topicsView);
         }
 
-        public IActionResult Topic(int idtopic)
+        public IActionResult Topic(int id)
         {
             Topic topic = _context.topics
-                                  .Include(t => t.Games)
-                                  .First(t => t.Idtopic == idtopic);
+                                  .Include(t => t.Games).ThenInclude(g => g.Main_Image)
+                                  .Include(t => t.Games).ThenInclude(g => g.Ratings)
+                                  .First(t => t.Idtopic == id);
             return View(topic);
         }
     }

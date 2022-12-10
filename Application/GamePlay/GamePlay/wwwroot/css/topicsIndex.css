@@ -4,6 +4,7 @@ img.card-img-top {
     background-color: gray;
     border-radius: 15px 15px 0 0;
     aspect-ratio: 3/2;
+    object-fit:cover;
 }
 
 /* Тень кнопки*/

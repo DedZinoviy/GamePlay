@@ -393,6 +393,7 @@ DROP TABLE IF EXISTS `topics`;
 CREATE TABLE `topics` (
   `idtopic` int NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
+  `img` text,
   PRIMARY KEY (`idtopic`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -403,7 +404,7 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES (1,'Мультиплеерные игры'),(2,'В сревековом сеттинге'),(3,'Приставочные экслюзивы'),(4,'Шутерок на вечерок'),(5,'\"Just Like The Simulations\"'),(6,'Боль и страдания');
+INSERT INTO `topics` VALUES (1,'Мультиплеерные игры','/Topics/onlinegames.jpeg'),(2,'В сревековом сеттинге','/Topics/middleages.jpeg'),(3,'Приставочные экслюзивы','/Topics/sonyBOIII.jpg'),(4,'Шутерок на вечерок','/Topics/shooters.jpg'),(5,'\"Just Like The Simulations\"','/Topics/simulation.jpg'),(6,'Боль и страдания','/Topics/soulselike.jpg');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
 
