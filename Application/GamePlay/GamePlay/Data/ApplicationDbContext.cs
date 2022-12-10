@@ -18,6 +18,8 @@ namespace GamePlay.Data
 
         public DbSet<News> news { get; set; }
 
+        public DbSet<Topic> topics { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -44,6 +46,7 @@ namespace GamePlay.Data
             modelBuilder.Entity<GenreGames>().HasKey(gg => new { gg.IdGenre, gg.IdGame });
             modelBuilder.Entity<PlatformGames>().HasKey(pg => new { pg.Idplatform, pg.Idgame });
             modelBuilder.Entity<Rating>().HasKey(r => new { r.Iduser, r.Idgame });
+            modelBuilder.Entity<TopicsToGames>().HasKey(r => new { r.IdTopic, r.IdGame });
 
             modelBuilder.Entity<Game>()
                 .HasMany(g => g.Images)
@@ -74,6 +77,11 @@ namespace GamePlay.Data
                 .HasMany(u => u.News)
                 .WithOne(n => n.User)
                 .HasForeignKey(n => n.Iduser);
+
+            modelBuilder.Entity<Topic>()
+                .HasMany(t => t.Games)
+                .WithMany(g => g.Topics)
+                .UsingEntity<TopicsToGames>();
         }
     }
 }

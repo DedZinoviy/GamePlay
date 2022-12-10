@@ -139,7 +139,11 @@
                     </div>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Подтвердить" onclick="this.blur()"> @*Кнопка подтверждения*@
-                <input type="submit" class="btn btn-primary" value="Сбросить" onclick="this.blur()" id="reset"/> @*Кнопка сброса фильтров*@
+            </div>
+        </form>
+        <form method="get" asp-controller="Home" asp-action="ResetFilters">
+            <div class="card text-white filters">
+                <input type="submit" class="btn btn-primary" value="Сбросить" onclick="this.blur()" id="reset" /> @*Кнопка сброса фильтров*@
             </div>
         </form>
     </div>
