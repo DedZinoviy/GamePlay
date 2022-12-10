@@ -337,7 +337,7 @@ DROP TABLE IF EXISTS `shops`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `shops` (
-  `idshop` int NOT NULL,
+  `idshop` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price` float DEFAULT NULL,
   `idgame` int NOT NULL,
@@ -345,7 +345,7 @@ CREATE TABLE `shops` (
   PRIMARY KEY (`idshop`),
   KEY `fk_from_shops_idx` (`idgame`),
   CONSTRAINT `fk_from_shops` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,7 +354,7 @@ CREATE TABLE `shops` (
 
 LOCK TABLES `shops` WRITE;
 /*!40000 ALTER TABLE `shops` DISABLE KEYS */;
-INSERT INTO `shops` VALUES (1,'Steam',499.99,1,'https://steamdb.info/app/292030/'),(2,'SteamBuy',599,3,'https://steambuy.com/steam/the-elder-scrolls-v-skyrim/');
+INSERT INTO `shops` VALUES (2,'SteamBuy',599,3,'https://steambuy.com/steam/the-elder-scrolls-v-skyrim/'),(3,'Zaka-Zaka',669,3,'https://zaka-zaka.com/game/the-elder-scrolls-v-skyrim-legendary-edition'),(4,'SteamPay',665,3,'https://steampay.com/game/the-elder-scrolls-v-skyrim-legendary-edition'),(5,'SteamBuy',999,1,'https://steambuy.com/good/the-witcher-3-wild-hunt/'),(6,'Zaka-Zaka',1289,1,'https://zaka-zaka.com/game/the-witcher-3-wild-hunt-game-of-the-year-edition'),(7,'SteamPay',1299,1,'https://steampay.com/game/the-witcher-3-wild-hunt-game-of-the-year-edition'),(8,'SteamBuy',1799,2,'https://steambuy.com/steam/red-dead-online-russia/'),(9,'SteamPay',1695,2,'https://steampay.com/game/red-dead-redemption-2'),(10,'SteamBuy',1999,13,'https://steambuy.com/steam/dark-souls-iii/'),(11,'SteamPay',1989,13,'https://steampay.com/game/dark-souls-iii'),(12,'GabeStore',2199,13,'https://gabestore.ru/game/dark-souls-3'),(13,'SteamBuy',1599,6,'https://steambuy.com/origin/fifa-22/'),(14,'SteamPay',1995,6,'https://steampay.com/game/fifa-22'),(15,'Zaka-Zaka',1997,6,'https://zaka-zaka.com/game/fifa-22'),(16,'SteamBuy',599,9,'https://steambuy.com/steam/sid-meier-s-civilization-6/'),(17,'SteamPay',275,9,'https://steampay.com/game/sid-meiers-civilization-vi-epic'),(18,'GabeStore',799,9,'https://gabestore.ru/game/sid-meiers-civilization-vi'),(19,'SteamPay',1595,12,'https://steampay.com/game/grand-theft-auto-v-and-great-white-shark-cash-card'),(20,'Steam',99,17,'https://store.steampowered.com/app/113200/The_Binding_of_Isaac/'),(21,'Steam',465,16,'https://store.steampowered.com/app/1190000/Car_Mechanic_Simulator_2021/'),(22,'SteamBuy',399,16,'https://steambuy.com/steam/car-mechanic-simulator-2018/');
 /*!40000 ALTER TABLE `shops` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-09 13:08:10
+-- Dump completed on 2022-12-10 10:35:07
