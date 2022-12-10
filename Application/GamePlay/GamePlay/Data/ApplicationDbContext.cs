@@ -42,6 +42,7 @@ namespace GamePlay.Data
             modelBuilder.Entity<Studio>().ToTable("studios");
             modelBuilder.Entity<Platform>().ToTable("platforms");
             modelBuilder.Entity<Rating>().ToTable("ratings");
+            modelBuilder.Entity<Shop>().ToTable("shops");
 
             modelBuilder.Entity<GenreGames>().HasKey(gg => new { gg.IdGenre, gg.IdGame });
             modelBuilder.Entity<PlatformGames>().HasKey(pg => new { pg.Idplatform, pg.Idgame });
@@ -67,6 +68,11 @@ namespace GamePlay.Data
                 .HasMany(g => g.Ratings)
                 .WithOne(r => r.Game)
                 .HasForeignKey(r => r.Idgame);
+
+            modelBuilder.Entity<Game>()
+                .HasMany(g => g.Shops)
+                .WithOne(s => s.Game)
+                .HasForeignKey(s => s.Idgame);
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Ratings)
