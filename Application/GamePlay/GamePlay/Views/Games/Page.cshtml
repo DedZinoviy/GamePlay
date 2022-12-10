@@ -173,17 +173,17 @@
                         <div class="tab-pane fade" id="nav-stores" role="tabpanel" aria-labelledby="nav-stores-tab">
                             <h5 class="right-menu-title-pane">Магазины</h5>
                             
-                                @for (int i=0; i<5; i++) 
+                                @foreach (var shop in Model.Game.Shops) 
                                 {
-                                    <a href="" class="store-link">@*Нужно всавить ссылки*@
+                                    <a href="@shop.Source" class="store-link">@*Нужно всавить ссылки*@
                                        <div class="card store">
                                            <div class="card-body store">
                                                <div class="row">
                                                    <div class="col">
-                                                        <p class="store-name">name @i</p> @*Нужно вставить название магазина*@
+                                                        <p class="store-name">@shop.Name</p> @*Нужно вставить название магазина*@
                                                    </div>
                                                    <div class="col">
-                                                        <p class="price">price @i</p> @*Нужно вставить цену*@
+                                                        <p class="price">@shop.Price руб.</p> @*Нужно вставить цену*@
                                                    </div>
                                                </div>
                                             </div>
@@ -203,7 +203,10 @@
                             <button class="nav-link" id="nav-systemRequirements-tab" data-bs-toggle="tab" data-bs-target="#nav-systemRequirements" type="button" aria-controls="nav-systemRequirements" aria-selected="true">Системные требования</button>
                         }
                         <button class="nav-link" id="nav-feedbacks-tab" data-bs-toggle="tab" data-bs-target="#nav-feedbacks" type="button" aria-controls="nav-feedbacks" aria-selected="false">Отзывы</button>
-                        <button class="nav-link" id="nav-stores-tab" data-bs-toggle="tab" data-bs-target="#nav-stores" type="button" aria-controls="nav-stores" aria-selected="false">Магазины</button>
+                        @if (Model.Game.Shops.Count > 0)
+                        {
+                            <button class="nav-link" id="nav-stores-tab" data-bs-toggle="tab" data-bs-target="#nav-stores" type="button" aria-controls="nav-stores" aria-selected="false">Магазины</button>
+                        }
                     </div>
                 </nav>
 
