@@ -53,3 +53,12 @@ button.btn-close.btn-close-white:focus {
 .modal-header {
     align-items: start;
 }
+
+/*Название label для фото*/
+label[for="article-photo-input"] {
+    margin:0;
+}
+
+label.row {
+    margin-top:5px;
+}

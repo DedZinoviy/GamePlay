@@ -24,13 +24,12 @@ button.register:hover {
 }
 
 form[id="registerForm"] {
-    background: #2D3B55;
     padding: 5px;
     border-radius: 0 0 15px 15px;
 }
 
 .loginLink {
-    color: #8F8F8F;
+    color: #979797;
 }
 
 .loginLink:hover {
@@ -49,6 +48,7 @@ form[id="registerForm"] {
     background: none;
     border: none;
     border-bottom: solid;
+    cursor:default;
 }
 
 .nav-link.registerLoginSwitch {
@@ -71,4 +71,8 @@ p#error-message {
 /*Отступ между логином, почтой и паролем*/
 div.form-floating.login, div.form-floating.e-mail {
     margin-bottom: 10px;
+}
+
+input#User_Birth_Date {
+    text-indent:4px;
 }

@@ -4,7 +4,7 @@ img.card-img-top {
     min-width: 100%;
     background-color: gray;
     border-radius: 15px 15px 0 0;
-    aspect-ratio: 10/16;
+    aspect-ratio: 2/3;
 }
 
 /* Тень кнопки*/
@@ -108,4 +108,9 @@ div[id="filtersPanel"]::-webkit-scrollbar {
 div[id="filtersPanel"]::-webkit-scrollbar-thumb {
     background-color: #2D3B55;
     border-radius: 20px;
+}
+
+/*Кнопка сброса фильтров*/
+input#reset {
+    margin-top: 5px;
 }

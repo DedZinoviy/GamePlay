@@ -55,7 +55,6 @@ img.img-fluid {
     min-width: 100%;
     min-height: 100%;
     background-color: gray;
-    padding-bottom: 5%;
     border-radius:5px;
 }
 
@@ -149,6 +148,10 @@ img.article {
     margin:0;
 }
 
+h5#news-name {
+    margin-top:8px;
+}
+
 p.author, p.source {
     margin: 0;
 }
@@ -228,7 +231,7 @@ button.addArticle:hover > button.addArticle:focus {
 }
 
 button.addArticle.btn-primary {
-    color: #868686
+    color: #8b8b8b
 }
 
 div.addArticle {
@@ -269,7 +272,7 @@ p.feedback {
 }
 
 span.feedback {
-    color: #808080;
+    color: #a6a6a6;
 }
 
 p.commentTitle {
@@ -279,7 +282,7 @@ p.commentTitle {
 
 p.comment {
     margin: 0;
-    color: #808080;
+    color: #a6a6a6;
 }
 
 .card-body.feedback {

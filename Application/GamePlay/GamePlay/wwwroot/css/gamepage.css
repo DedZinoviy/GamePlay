@@ -61,7 +61,7 @@ p.feedback {
     margin:0;
 }
 span.feedback {
-    color: #808080;
+    color: #a6a6a6;
 }
 
 p.commentTitle {
@@ -70,7 +70,7 @@ p.commentTitle {
 }
 p.comment {
     margin: 0;
-    color: #808080;
+    color: #a6a6a6;
 }
 
 .card-body.feedback {
@@ -80,7 +80,7 @@ p.comment {
 }
 
 span.systemRequirements {
-    color: #808080;
+    color: #979797;
 }
 
 p.systemRequirements {
@@ -110,7 +110,7 @@ p.systemRequirementsTitle {
 }
 
 .nav-link:hover {
-    color: #495057;
+    color: #979797;
     border: none;
     outline: none;
 }
@@ -161,7 +161,7 @@ p.userName {
 span.rating {
     margin-left: 10px;
     font-size: 20px;
-    color: #808080;
+    color: #a6a6a6;
 }
 
 /*Навигация меню справа*/
@@ -193,7 +193,7 @@ p.main-info {
 }
 
 span.main-info {
-    color: #808080;
+    color: #979797;
 }
 
 /*Выравнивание текста на навигационном меню справа*/
@@ -211,7 +211,7 @@ div.tab-content-info {
 /*Сообщения в отзывах (войдите чтобы оставить отзыв, вы уже оставили отзыв, ещё никто не оставил отзыв)*/
 p.info-feedback-message {
     text-align:center;
-    color:#808080;
+    color:#979797;
 }
 
 /*Заголовок содержимого вкладок правого меню*/

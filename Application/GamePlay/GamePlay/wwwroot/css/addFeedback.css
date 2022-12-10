@@ -3,6 +3,20 @@
     background: #242F43;
 }
 
+.modal-body#feedback-body {
+    max-height: 65vh;
+    overflow-x: auto;
+}
+
+div#feedback-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+div#feedback-body::-webkit-scrollbar-thumb {
+    background-color: #2D3B55;
+    border-radius: 20px;
+}
+
 /*ЗАголовок и название игры*/
 div.container-fluid.header {
     text-align:center;
@@ -84,11 +98,17 @@ button.send {
     padding-right:15%;
 }
 
-button.btn-close.btn-close-white {
-    margin:0;
+button.btn-close.btn-close-white#close {
+    margin: 0;
 }
 
 /*Выравнивание кнопки закрытия*/
 .modal-header {
     align-items:start;
+}
+
+/*Выравнивание названия оценок*/
+div.rating-name {
+    display:flex;
+    align-items:center;
 }

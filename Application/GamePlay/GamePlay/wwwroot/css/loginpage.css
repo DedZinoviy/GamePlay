@@ -30,7 +30,7 @@ form[id="account"] {
 }
 
 .registerLink {
-    color: #8F8F8F;
+    color: #979797;
 }
 
 .registerLink:hover {
@@ -48,6 +48,7 @@ form[id="account"] {
     background: none;
     border: none;
     border-bottom: solid;
+    cursor: default;
 }
 
 .nav-link.registerLoginSwitch {

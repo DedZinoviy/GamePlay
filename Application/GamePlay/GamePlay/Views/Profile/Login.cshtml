@@ -25,12 +25,12 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-floating login">
                         Логин
-                        <input asp-for="User.Login" class="form-control" autocomplete="username" aria-required="true" style="padding:0;" />
+                        <input asp-for="User.Login" class="form-control" autocomplete="username" aria-required="true" style="padding:0;" maxlength="50"/>
                         <span asp-validation-for="User.Login" class="text-danger"></span>
                     </div>
                     <div class="form-floating password">
                         Пароль
-                        <input type="password" asp-for="User.Password" class="form-control" autocomplete="current-password" aria-required="true" style="padding:0;" />
+                        <input type="password" asp-for="User.Password" class="form-control" autocomplete="current-password" aria-required="true" style="padding:0;" maxlength="50"/>
                         <span asp-validation-for="User.Password" class="text-danger"></span>
                     </div>
                     @if (Model.ErrorMessage != null)

@@ -10,14 +10,14 @@
                     <h5 class="modal-title">Новый отзыв</h5>
                     <h5 class="modal-title" id="game-name">Игра: @Model.Game.Title</h5> @*Нужно вставить название игры*@
                 </div>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id='close'></button> @*Кнопка закрытия окна*@
             </div>
             
-            <div class="modal-body">
+            <div class="modal-body" id="feedback-body">
                     <div class="rating">
                         Оценки:
                         <div class="rating-part row" id="plot">
-                            <div class="col-4">Сюжет:</div>
+                            <div class="col-4 rating-name">Сюжет:</div>
                             <div class="col-8">
                                 @for (int i=1; i<=5; i++)
                                 {
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="rating-part row" id="gameplay">
-                            <div class="col-4">Геймплей:</div>
+                            <div class="col-4 rating-name">Геймплей:</div>
                             <div class="col-8">
                                 @for (int i = 1; i <= 5; i++)
                                 {
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="rating-part row" id="graphics">
-                            <div class="col-4">Графика:</div>
+                            <div class="col-4 rating-name">Графика:</div>
                             <div class="col-8">
                                 @for (int i = 1; i <= 5; i++)
                                 {
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="rating-part row" id="emotions">
-                            <div class="col-4">Впечатления:</div>
+                            <div class="col-4 rating-name">Впечатления:</div>
                             <div class="col-8">
                                 @for (int i = 1; i <= 5; i++)
                                 {
