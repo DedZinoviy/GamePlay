@@ -174,11 +174,11 @@ CREATE TABLE `news` (
   `iduser` int NOT NULL,
   `date` datetime DEFAULT NULL,
   `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `photo` text COLLATE utf8mb4_general_ci,
+  `photo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`),
   KEY `fk_from_ver_users` (`iduser`),
   CONSTRAINT `fk_from_ver_users` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,7 +187,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (3,'The Callisto Protocol: Это не Dead Space',14155,'0001-01-01 00:00:00','https://stopgame.ru/show/131531/the_callisto_protocol_eto_ne_dead_space','/News/5e8f049554-2_2780x1200.jpg'),(4,'Поиграли в Atomic Heart и делимся впечатлениями!',14163,'0001-01-01 00:00:00','https://www.igromania.ru/article/32277/Poigrali_v_Atomic_Heart_i_delimsya_vpechatleniyami!_Strah_i_roboty_v_SSSR.html?from=mpp','/News/d14f0d4aed586b07_848x477.jpg');
+INSERT INTO `news` VALUES (3,'The Callisto Protocol: Это не Dead Space',14155,'0001-01-01 00:00:00','https://stopgame.ru/show/131531/the_callisto_protocol_eto_ne_dead_space','/News/5e8f049554-2_2780x1200.jpg'),(4,'Поиграли в Atomic Heart и делимся впечатлениями!',14163,'0001-01-01 00:00:00','https://www.igromania.ru/article/32277/Poigrali_v_Atomic_Heart_i_delimsya_vpechatleniyami!_Strah_i_roboty_v_SSSR.html?from=mpp','/News/d14f0d4aed586b07_848x477.jpg'),(5,'Обновленный ведьмак получит улучшенную озвучку.',14160,'0001-01-01 00:00:00','https://www.playground.ru/witcher_3_wild_hunt/news/obnovlyonnaya_versiya_the_witcher_3_wild_hunt_poluchit_uluchshennuyu_ozvuchku_na_russkom_yazyke-1251162','/News/Witcher3Gameplay.jpeg'),(6,'Новый драйвер Intel Arc улучшает производителность',14160,'0001-01-01 00:00:00','https://vgtimes.ru/news/93690-novyy-drayver-videokart-intel-arc-uluchshaet-rabotu-so-starcraft-2-i-csgo.html','/News/Arc.jpeg'),(7,'EA выпустило DLC для UFC4 с Хасбиком',14160,'0001-01-01 00:00:00','https://gamemag.ru/news/173999/hasbilla-dlc-ufc-4','/News/Хасб.jpg'),(8,'Моддер добавил в Elden Ring Билла Клинтона.',14160,'0001-01-01 00:00:00','https://games.mail.ru/pc/news/2022-12-10/modder-dobavil-v-elden-ring-billa-klintona-posle-skandala-na-tga-2022/','/News/Билл.jpg'),(9,'Ностальгия. Обзор на \"Как достать соседа\".',14160,'0001-01-01 00:00:00','https://dtf.ru/games/1495333-mini-obzor-kak-dostat-soseda','/News/Сосед.jpg'),(10,'Тяжелые будни паромщика духов',14160,'0001-01-01 00:00:00','https://gamebomb.ru/games/48977/review?review_id=4419','/News/Spirit.jpg');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,6 +384,57 @@ INSERT INTO `studios` VALUES (1,'CD Project Red',NULL),(2,'Rockstar Studios',NUL
 UNLOCK TABLES;
 
 --
+-- Table structure for table `topics`
+--
+
+DROP TABLE IF EXISTS `topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topics` (
+  `idtopic` int NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  PRIMARY KEY (`idtopic`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics`
+--
+
+LOCK TABLES `topics` WRITE;
+/*!40000 ALTER TABLE `topics` DISABLE KEYS */;
+INSERT INTO `topics` VALUES (1,'Мультиплеерные игры'),(2,'В сревековом сеттинге'),(3,'Приставочные экслюзивы'),(4,'Шутерок на вечерок'),(5,'\"Just Like The Simulations\"'),(6,'Боль и страдания');
+/*!40000 ALTER TABLE `topics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `topics_to_games`
+--
+
+DROP TABLE IF EXISTS `topics_to_games`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topics_to_games` (
+  `idtopic` int NOT NULL,
+  `idgame` int NOT NULL,
+  PRIMARY KEY (`idtopic`,`idgame`),
+  KEY `fk_from_topic_to_game_idx` (`idgame`),
+  CONSTRAINT `fk_from_game_to_topic` FOREIGN KEY (`idtopic`) REFERENCES `topics` (`idtopic`),
+  CONSTRAINT `fk_from_topic_to_game` FOREIGN KEY (`idgame`) REFERENCES `games` (`idgame`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics_to_games`
+--
+
+LOCK TABLES `topics_to_games` WRITE;
+/*!40000 ALTER TABLE `topics_to_games` DISABLE KEYS */;
+INSERT INTO `topics_to_games` VALUES (2,1),(1,2),(2,3),(1,4),(2,4),(3,4),(5,5),(1,6),(5,6),(1,7),(5,7),(1,8),(2,8),(1,9),(5,9),(1,10),(4,10),(1,11),(4,11),(1,12),(2,13),(6,13),(3,14),(6,14),(3,15),(5,16),(2,18),(3,18),(3,19),(3,20);
+/*!40000 ALTER TABLE `topics_to_games` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -423,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-10 13:29:34
+-- Dump completed on 2022-12-10 20:43:51
