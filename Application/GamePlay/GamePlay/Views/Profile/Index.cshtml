@@ -58,20 +58,16 @@
                         {
                             <p id="error-message">@Model.ErrorMessage</p>
                         }
-                        <div class="form-floating form-floating-btn">
-                            <button class="btn btn-outline-primary">Изменить фото</button> @*Кнопка изменения фото*@
-                        </div>
                         <div class="form-floating">
                             <button id="saveBtn" class="btn btn-outline-primary" hidden>Сохранить изменения</button> @*Кнопка сохранения изменений, нужно делать видимой*@
                         </div>
                     </form>
                 </div>
-                <form asp-action="AddPhoto" asp-controller="Profile" method="post" enctype="multipart/form-data">
-                    <div class="addPhoto">
-                        <input type="file" name="uploadedFile" accept=".png, .jpg, .jpeg"/><br>
-                        <input type="submit" value="Загрузить" />
-                    </div>
-                </form>
+                <div class="form-floating form-floating-btn">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#add-photo-modal">Изменить фото</button> @*Кнопка изменения фото*@
+                </div>
+                @Html.Partial("AddPhoto")
+                
             </div>
             <div class="tab-pane fade" id="nav-myFeedbacks" role="tabpanel" aria-labelledby="nav-myFeedbacks-tab">
                 @*Мои отзывы*@

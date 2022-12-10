@@ -1,0 +1,29 @@
+﻿<link rel="stylesheet" href="~/css/addPhoto.css" asp-append-version="true" />
+
+<div class="modal fade" id="add-photo-modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addArticleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container-fluid header">
+                    <h5 class="modal-title">Изменить фото профиля</h5>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
+            </div>
+
+            <form asp-action="AddPhoto" asp-controller="Profile" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="addPhoto">
+                        <input type="file" name="uploadedFile" id="change-photo" accept=".png, .jpg, .jpeg"/><br>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary add-button" data-bs-dismiss="modal">Сохранить</button> @*Кнопка сохранения*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
