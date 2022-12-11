@@ -14,32 +14,30 @@ using GamePlay.Models.BbModels;
 
 namespace GamePlay.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        ApplicationDbContext _context;
 
-        public HomeController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public HomeController(ApplicationDbContext context) : base(context) { }
 
         [HttpGet]
         public IActionResult Index(IndexViewModel model)
         {
+            LoadGamesForSearch();
+
             if (model.Genres.Count == 0)
-                model.Set(_context.genres.OrderBy(g => g.Name).ToList());
+                model.Set(Context.genres.OrderBy(g => g.Name).ToList());
 
             if (model.Platforms.Count == 0)
-                model.Set(_context.platforms.OrderBy(p => p.Name).ToList());
+                model.Set(Context.platforms.OrderBy(p => p.Name).ToList());
 
             if (model.Studios.Count == 0)
-                model.Set(_context.studios.OrderBy(s => s.Name).ToList());
+                model.Set(Context.studios.OrderBy(s => s.Name).ToList());
 
             List<Genre> genres = model.GetSelectedGenres().FindAll(g => g != null);
             List<Platform> platforms = model.GetSelectedPlatforms().FindAll(p => p != null);
             List<Studio> studios = model.GetSelectedStudios().FindAll(s => s != null);
 
-            IQueryable<Game> games = _context.games
+            IQueryable<Game> games = Context.games
                 .Include(g => g.Genres)
                 .Include(g => g.Platforms)
                 .Include(g => g.Studio)

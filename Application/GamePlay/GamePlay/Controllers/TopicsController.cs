@@ -6,25 +6,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GamePlay.Controllers
 {
-    public class TopicsController : Controller
+    public class TopicsController : BaseController
     {
-        ApplicationDbContext _context;
-
-        public TopicsController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public TopicsController(ApplicationDbContext context) : base(context) { }
 
         public IActionResult Index()
         {
-            List<Topic> topics = _context.topics.ToList();
+            LoadGamesForSearch();
+            List<Topic> topics = Context.topics.ToList();
             TopicsViewModel topicsView = new TopicsViewModel() { Topics = topics };
             return View(topicsView);
         }
 
         public IActionResult Topic(int id)
         {
-            Topic topic = _context.topics
+            LoadGamesForSearch();
+            Topic topic = Context.topics
                                   .Include(t => t.Games).ThenInclude(g => g.Main_Image)
                                   .Include(t => t.Games).ThenInclude(g => g.Ratings)
                                   .First(t => t.Idtopic == id);

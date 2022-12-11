@@ -7,18 +7,15 @@ using System.Collections.Generic;
 
 namespace GamePlay.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : BaseController
     {
-        private readonly ApplicationDbContext _context;
-
-        public NewsController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public NewsController(ApplicationDbContext context) : base(context) { }
 
         public IActionResult Index()
         {
-            List<News> news = _context.news.Include(n => n.User).ToList();
+            LoadGamesForSearch();
+
+            List<News> news = Context.news.Include(n => n.User).ToList();
             NewsViewModel newsView = new NewsViewModel() { News = news };
 
             string[] source = news[0].Url.Split("/");

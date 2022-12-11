@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    IndexViewModel? model = (IndexViewModel?)ViewData["Games"];
+}
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8" />
@@ -8,6 +12,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GamePlay.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="/css/layout.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
     
 </head>
 <body style="background : #222B3D">
@@ -30,12 +35,20 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Topics" asp-action="Index">Подборки</a> @*Кнопка страницы с подборками*@
                         </li>
-                        <div class="search">
-                        <form class="d-flex">
-                            <input type="search" class="form-control" placeholder="Найти игру...">
-                            <button class="btn btn-outline-success" id="search-button" type="submit"></button>
-                        </form>
-                    </div>
+                        <li class="search d-flex">
+                            @*<input type="search" class="form-control" placeholder="Найти игру...">
+                            <button class="btn btn-outline-success" id="search-button" type="submit"></button>*@
+                                <select id="select-state" class="form-control" placeholder="Поиск...">
+                                @if (model != null)
+                                {
+                                    <option value="">Найти игру</option>
+                                    @foreach(var game in model.Games)
+                                    {
+                                        <option value="@game.Idgame">@game.Title</option>
+                                    }
+                                }
+                            </select>
+                        </li>
                     </ul>
                     
                     <partial name="_LoginPartial" />
@@ -57,6 +70,22 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $('select').selectize({
+            sortField: 'text'
+        });
+    });
+    $(document).ready(function () {
+        $('select').change(function () {
+            var url = '@Url.Action("Page", "Games", new { id = "__id__" })';
+            window.location.href = url.replace('__id__', $(this).val());
+        });
+    });
+</script>

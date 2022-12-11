@@ -11,29 +11,29 @@ using GamePlay.Models.BbModels;
 
 namespace GamePlay.Controllers
 {
-    public class ProfileController : Controller
+    public class ProfileController : BaseController
     {
-        private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
 
-        public ProfileController(ApplicationDbContext context, IWebHostEnvironment appEnvironment)
+        public ProfileController(ApplicationDbContext context, IWebHostEnvironment appEnvironment) : base(context)
         {
-            _context = context;
             _appEnvironment = appEnvironment;
         }
 
         [HttpGet]
         public IActionResult Login()
         {
+            LoadGamesForSearch();
             return View(new UserViewModel());
         }
 
         [HttpPost]
         public IActionResult Login(UserViewModel userView)
         {
-            if (userView.User != null && _context.users.Any(u => userView.User.Login == u.Login && userView.User.Password == u.Password))
+            LoadGamesForSearch();
+            if (userView.User != null && Context.users.Any(u => userView.User.Login == u.Login && userView.User.Password == u.Password))
             {
-                User user = _context.users.First(u => userView.User.Login == u.Login && userView.User.Password == u.Password);
+                User user = Context.users.First(u => userView.User.Login == u.Login && userView.User.Password == u.Password);
                 Response.Cookies.Append("iduser", user.Iduser.ToString());
                 return RedirectToAction(actionName: "Index", controllerName: "Profile");
             }
@@ -44,17 +44,19 @@ namespace GamePlay.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            LoadGamesForSearch();
             return View(new UserViewModel());
         }
 
         [HttpPost]
         public IActionResult Register(UserViewModel userView)
         {
-            if (userView.User != null && !_context.users.Any(u => userView.User.Login == u.Login))
+            LoadGamesForSearch();
+            if (userView.User != null && !Context.users.Any(u => userView.User.Login == u.Login))
             {
                 User newUser = userView.User;
-                _context.users.Add(newUser);
-                _context.SaveChanges();
+                Context.users.Add(newUser);
+                Context.SaveChanges();
                 return RedirectToAction(actionName: "Login", controllerName: "Profile");
             }
             userView.ErrorMessage = "Данный пользователь уже существует";
@@ -64,11 +66,12 @@ namespace GamePlay.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            LoadGamesForSearch();
             if (Request.Cookies.TryGetValue("iduser", out string? iduser))
             {
                 int id = int.Parse(iduser);
                 
-                User user = _context.users
+                User user = Context.users
                     .Include(u => u.Ratings)
                         .ThenInclude(r => r.Game)
                     .Include(u => u.News)
@@ -86,10 +89,10 @@ namespace GamePlay.Controllers
         {
             if (userView.User != null)
             {
-                _context.users.Update(userView.User);
+                Context.users.Update(userView.User);
                 try
                 {
-                    _context.SaveChanges();
+                    Context.SaveChanges();
                 }
                 catch
                 {
@@ -109,7 +112,7 @@ namespace GamePlay.Controllers
 
             int id = int.Parse(iduser);
 
-            User user = _context.users.First(u => u.Iduser == id);
+            User user = Context.users.First(u => u.Iduser == id);
 
             if (uploadedFile != null)
             {
@@ -123,8 +126,8 @@ namespace GamePlay.Controllers
                     await uploadedFile.CopyToAsync(fileStream);
                 }
                 user.Avatar = path;
-                _context.users.Update(user);
-                _context.SaveChanges();
+                Context.users.Update(user);
+                Context.SaveChanges();
             }
 
             return RedirectToAction("Index");
@@ -138,7 +141,7 @@ namespace GamePlay.Controllers
 
             int id = int.Parse(iduser);
 
-            User user = _context.users.First(u => u.Iduser == id);
+            User user = Context.users.First(u => u.Iduser == id);
 
             if (uploadedFile != null)
             {
@@ -153,8 +156,8 @@ namespace GamePlay.Controllers
                 }
                 userView.NewNews.Img = path;
                 userView.NewNews.Iduser = id;
-                _context.news.Add(userView.NewNews);
-                _context.SaveChanges();
+                Context.news.Add(userView.NewNews);
+                Context.SaveChanges();
             }
 
             return RedirectToAction("Index");
