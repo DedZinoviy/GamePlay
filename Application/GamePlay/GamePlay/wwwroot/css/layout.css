@@ -83,3 +83,30 @@ button.nav-link {
 }
 
 
+/*Поиск*/
+.selectize-control.single .selectize-input, .selectize-control.single .selectize-input input {
+    vertical-align: middle;
+}
+
+div.selectize-dropdown.single.form-control {
+    background: #222b3d;
+    color:white;
+    overflow-y:auto;
+}
+
+div.selectize-dropdown-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+div.selectize-dropdown-content::-webkit-scrollbar-thumb {
+    background-color: #2D3B55;
+    border-radius: 20px;
+}
+
+.option.active {
+    background: #222b3d; 
+    border-bottom: solid;
+    color:white;
+    cursor:default;
+}
+
