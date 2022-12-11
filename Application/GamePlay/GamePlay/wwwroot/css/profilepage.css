@@ -305,3 +305,7 @@ div[id="nav-tabContent"]::-webkit-scrollbar-thumb {
     background-color: #2D3B55;
     border-radius: 20px;
 }
+
+button#saveBtn {
+    margin-bottom:10px;
+}
