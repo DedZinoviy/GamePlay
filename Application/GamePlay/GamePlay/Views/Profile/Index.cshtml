@@ -134,15 +134,12 @@
             <img src="@Model.User.Avatar" class="img-fluid" /> @*Нужно вставить фото профиля*@
         </div>
         <div class="userName">
-            FirstName SecondName @*Нужно вставить имя и фамилию*@
+            @Model.User.Login @*Нужно вставить имя и фамилию*@
         </div>
         <div class="userType">
             Тип пользователя: обычный @*Нужно вставить тип пользователя*@
             <input type="button" class="verification  btn btn-primary" value="Подать на верификацию" onclick="this.blur()" data-bs-toggle="modal" data-bs-target="#submission-verification-modal"> @*Кнопка подачи на верификацию*@
             @Html.Partial("SubmissionVerificationPartial")
-        </div>
-        <div class="lastActivity">
-            Последняя активность: 00.00.0000 @*Нужно вставить последнюю активность*@
         </div>
     </div>
 </div>
