@@ -1,0 +1,38 @@
+﻿<link rel="stylesheet" href="~/css/submissionVerification.css" asp-append-version="true"/>
+
+<div class="modal fade" id="submission-verification-modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addArticleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container-fluid header">
+                    <h5 class="modal-title">Подача заявки на верификацию</h5>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> @*Кнопка закрытия окна*@
+             </div>   
+                <form>
+                    <div class="modal-body">
+                        <div class="input-data-for-verification" id="first-name">
+                            <label for="first-name-input" class="row verification-input">Имя:</label>
+                            <input type="text" id="first-name-input" class="row col-12 verification-input" placeholder="Введите свое настоящее имя..." /> @*Имя пользователя*@
+                        </div>
+                        <div class="input-data-for-verification" id="last-name">
+                            <label for="last-name-input" class="row verification-input">Фамилия:</label>
+                            <input type="text" id="last-name-input" class="row col-12 verification-input" placeholder="Введите свою настоящую фамилию..." /> @*Фамилия пользователя*@
+                        </div>
+                        <div class="input-data-for-verification" id="portal">
+                            <label for="portal-input" class="row verification-input">Представляемый портал:</label>
+                            <input type="text" id="portal-input" class="row col-12 verification-input" placeholder="Введите портал, который вы представляете..." /> @*Представляемый портал*@
+                        </div>
+                        <div class="input-data-for-verification" id="contacted-email">
+                            <label for="contacted-email-input" class="row verification-input">Контактная электронная почта:</label>
+                            <input type="email" id="contacted-email-input verification-input" class="row col-12 verification-input" placeholder="example@email.com" /> @*Почта для связи*@
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary add-button" data-bs-dismiss="modal">Отправить заявку</button> @*Кнопка отправки заявки*@
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>

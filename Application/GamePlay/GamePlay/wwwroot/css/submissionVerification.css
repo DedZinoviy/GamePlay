@@ -1,0 +1,14 @@
+﻿/*Поля для ввода информации*/
+input.verification-input {
+    margin:0;
+    margin-top:3px;
+}
+
+input.verification-input:focus {
+    outline:none;
+}
+
+label.verification-input {
+    margin:0;
+    margin-top:10px;
+}
